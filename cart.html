@@ -82,19 +82,72 @@
 
                 <div class="cart-summary">
                     <h3>Sipariş Özeti</h3>
+                    
+                    <!-- Coupon Section -->
+                    <div class="coupon-section">
+                        <h4>İndirim Kodu</h4>
+                        <div class="coupon-form">
+                            <input type="text" id="couponCode" placeholder="Kupon kodunuzu giriniz">
+                            <button type="button" class="apply-coupon-btn" id="applyCoupon">Uygula</button>
+                        </div>
+                        <div class="coupon-suggestions">
+                            <span class="coupon-tag" data-code="YENI25">YENI25 - %25 İndirim</span>
+                            <span class="coupon-tag" data-code="KARGO50">KARGO50 - Ücretsiz Kargo</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Campaign Suggestions -->
+                    <div class="campaign-suggestions">
+                        <h4>🎁 Mevcut Kampanyalar</h4>
+                        <div class="suggestion-item">
+                            <span class="suggestion-icon">🛍️</span>
+                            <div class="suggestion-text">
+                                <strong>2. Ürüne %50 İndirim</strong>
+                                <small>Sepetinize 1 ürün daha ekleyin</small>
+                            </div>
+                            <a href="shop.html" class="suggestion-link">Keşfet</a>
+                        </div>
+                        <div class="suggestion-item">
+                            <span class="suggestion-icon">🚚</span>
+                            <div class="suggestion-text">
+                                <strong>Ücretsiz Kargo</strong>
+                                <small>500₺ ve üzeri siparişlerde</small>
+                            </div>
+                            <span class="suggestion-achieved">✓ Kazandınız!</span>
+                        </div>
+                    </div>
+                    
                     <div class="summary-line">
                         <span>Ara Toplam</span>
                         <span>₺1,407</span>
                     </div>
+                    <div class="summary-line discount-line" style="display: none;">
+                        <span>İndirim</span>
+                        <span class="discount-amount">-₺0</span>
+                    </div>
                     <div class="summary-line">
                         <span>Kargo</span>
-                        <span>Ücretsiz</span>
+                        <span class="shipping-cost">Ücretsiz</span>
                     </div>
                     <div class="summary-total">
                         <span>Toplam</span>
-                        <span>₺1,407</span>
+                        <span class="final-total">₺1,407</span>
                     </div>
-                    <a href="checkout.html" class="checkout-btn">Güvenli Ödeme</a>
+                    
+                    <div class="checkout-actions">
+                        <a href="checkout.html" class="checkout-btn">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M9 12L11 14L15 10M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                            Güvenli Ödeme
+                        </a>
+                        <button class="save-for-later-btn">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                            Favorilere Kaydet
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
