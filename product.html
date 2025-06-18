@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ürün Detayı - SS Voila</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body lang="tr" class="page-product">
+    <header>
+        <nav>
+            <div class="logo">SS VOILA</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Ana Sayfa</a></li>
+                <li><a href="shop.html">Koleksiyon</a></li>
+                <li><a href="campaigns.html">Kampanyalar</a></li>
+                <li><a href="brand.html">Marka</a></li>
+                <li><a href="contact.html">İletişim</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="search-btn" aria-label="Arama"><span>🔍</span></button>
+                <button class="wishlist-btn" aria-label="Favoriler">
+                    <span>♡</span>
+                    <span class="wishlist-count">0</span>
+                </button>
+                <button class="cart-btn" aria-label="Sepet">
+                    <span>🛍</span>
+                    <span class="cart-count">0</span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Mini Cart Sidebar -->
+    <div id="miniCart" class="mini-cart">
+        <div class="mini-cart-header">
+            <h3>Sepetiniz</h3>
+            <button class="close-cart">×</button>
+        </div>
+        <div class="mini-cart-items">
+            <div class="empty-cart-message">
+                <p>Sepetiniz boş</p>
+                <a href="shop.html" class="shop-link">Alışverişe Başla</a>
+            </div>
+        </div>
+        <div class="mini-cart-footer">
+            <div class="cart-total">
+                <span>Toplam: <strong>₺0</strong></span>
+            </div>
+            <button class="checkout-btn">Ödemeye Geç</button>
+            <a href="cart.html" class="view-cart-btn">Sepeti Görüntüle</a>
+        </div>
+    </div>
+
+    <!-- Sticky Product Bar -->
+    <div class="sticky-product-bar" id="stickyBar">
+        <div class="sticky-bar-content">
+            <div class="sticky-product-info">
+                <img id="stickyProductImage" src="" alt="">
+                <div class="sticky-text">
+                    <h4 id="stickyProductName"></h4>
+                    <span id="stickyProductPrice"></span>
+                </div>
+            </div>
+            <button class="sticky-add-to-cart" id="stickyAddToCart">Sepete Ekle</button>
+        </div>
+    </div>
+
+    <main>
+        <nav class="breadcrumb">
+            <a href="index.html">Ana Sayfa</a>
+            <span>/</span>
+            <a href="shop.html">Koleksiyon</a>
+            <span>/</span>
+            <span id="breadcrumbProduct">Ürün</span>
+        </nav>
+
+        <section class="product-detail">
+            <div class="product-container">
+                <div class="product-gallery">
+                    <div class="main-image">
+                        <img id="mainProductImage" src="images/featured-look-1.jpg" alt="Ürün Ana Görseli">
+                        <button class="wishlist-toggle" data-product-id="1">♡</button>
+                    </div>
+                    <div class="thumbnail-images">
+                        <button class="thumbnail active" data-image="images/featured-look-1.jpg">
+                            <img src="images/featured-look-1.jpg" alt="Görünüm 1">
+                        </button>
+                        <button class="thumbnail" data-image="images/featured-look-2.jpg">
+                            <img src="images/featured-look-2.jpg" alt="Görünüm 2">
+                        </button>
+                        <button class="thumbnail" data-image="images/featured-look-3.jpg">
+                            <img src="images/featured-look-3.jpg" alt="Görünüm 3">
+                        </button>
+                        <button class="thumbnail" data-image="images/lookbook-item-1.jpg">
+                            <img src="images/lookbook-item-1.jpg" alt="Detay Görünümü">
+                        </button>
+                    </div>
+                </div>
+
+                <div class="product-info">
+                    <div class="product-header">
+                        <h1 id="productName">Beyaz Keten Gömlek</h1>
+                        <div class="product-rating">
+                            <div class="stars">★★★★★</div>
+                            <span class="review-count">(24 değerlendirme)</span>
+                        </div>
+                    </div>
+
+                    <div class="product-price">
+                        <span class="current-price" id="currentPrice">₺1.299</span>
+                        <span class="original-price" id="originalPrice">₺1.599</span>
+                        <span class="discount-badge">%19 İndirim</span>
+                    </div>
+
+                    <div class="product-description">
+                        <p>Premium keten kumaştan üretilmiş, yazın sıcak günlerinde maximum konfor sağlayan bu gömlek, zamansız tasarımı ile gardırobunuzun vazgeçilmezi olacak. Doğal nefes alabilir yapısı ve rahat kesimiyle günlük kullanıma mükemmel uyum sağlar.</p>
+                    </div>
+
+                    <div class="product-options">
+                        <div class="option-group">
+                            <label>Beden:</label>
+                            <div class="size-selector">
+                                <button class="size-option" data-size="xs">XS</button>
+                                <button class="size-option" data-size="s">S</button>
+                                <button class="size-option active" data-size="m">M</button>
+                                <button class="size-option" data-size="l">L</button>
+                                <button class="size-option" data-size="xl">XL</button>
+                            </div>
+                            <a href="#" class="size-guide">Beden Tablosu</a>
+                        </div>
+
+                        <div class="option-group">
+                            <label>Renk:</label>
+                            <div class="color-selector">
+                                <button class="color-option active" data-color="white" style="background: #ffffff;" title="Beyaz"></button>
+                                <button class="color-option" data-color="beige" style="background: #f5f5dc;" title="Bej"></button>
+                                <button class="color-option" data-color="navy" style="background: #1e392a;" title="Lacivert"></button>
+                            </div>
+                        </div>
+
+                        <div class="option-group">
+                            <label>Adet:</label>
+                            <div class="quantity-selector">
+                                <button class="quantity-btn minus">-</button>
+                                <input type="number" id="quantity" value="1" min="1" max="10">
+                                <button class="quantity-btn plus">+</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-actions">
+                        <button class="add-to-cart-btn" id="addToCartBtn">
+                            <span>Sepete Ekle</span>
+                            <span class="btn-price">₺1.299</span>
+                        </button>
+                        <button class="buy-now-btn">Hemen Al</button>
+                    </div>
+
+                    <div class="product-features">
+                        <div class="feature">
+                            <span class="feature-icon">🚚</span>
+                            <div class="feature-text">
+                                <strong>Ücretsiz Kargo</strong>
+                                <span>500₺ ve üzeri alışverişlerde</span>
+                            </div>
+                        </div>
+                        <div class="feature">
+                            <span class="feature-icon">↩️</span>
+                            <div class="feature-text">
+                                <strong>Kolay İade</strong>
+                                <span>30 gün içinde ücretsiz iade</span>
+                            </div>
+                        </div>
+                        <div class="feature">
+                            <span class="feature-icon">🔒</span>
+                            <div class="feature-text">
+                                <strong>Güvenli Ödeme</strong>
+                                <span>SSL sertifikalı güvenli alışveriş</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="product-tabs">
+            <div class="tabs-container">
+                <div class="tab-buttons">
+                    <button class="tab-btn active" data-tab="details">Ürün Detayları</button>
+                    <button class="tab-btn" data-tab="size">Beden ve Ölçüler</button>
+                    <button class="tab-btn" data-tab="care">Bakım Önerileri</button>
+                    <button class="tab-btn" data-tab="reviews">Değerlendirmeler</button>
+                </div>
+                
+                <div class="tab-content">
+                    <div class="tab-panel active" id="details">
+                        <h3>Ürün Detayları</h3>
+                        <ul>
+                            <li>%100 Premium Keten Kumaş</li>
+                            <li>Nefes Alabilir ve Doğal Yapı</li>
+                            <li>Klasik Yakalı Tasarım</li>
+                            <li>Düğmeli Ön Kapama</li>
+                            <li>Standart Kesim</li>
+                            <li>Makine Yıkanabilir</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="tab-panel" id="size">
+                        <h3>Beden Tablosu</h3>
+                        <div class="size-chart">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Beden</th>
+                                        <th>Göğüs (cm)</th>
+                                        <th>Bel (cm)</th>
+                                        <th>Kalça (cm)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>XS</td>
+                                        <td>86-90</td>
+                                        <td>66-70</td>
+                                        <td>90-94</td>
+                                    </tr>
+                                    <tr>
+                                        <td>S</td>
+                                        <td>90-94</td>
+                                        <td>70-74</td>
+                                        <td>94-98</td>
+                                    </tr>
+                                    <tr>
+                                        <td>M</td>
+                                        <td>94-98</td>
+                                        <td>74-78</td>
+                                        <td>98-102</td>
+                                    </tr>
+                                    <tr>
+                                        <td>L</td>
+                                        <td>98-102</td>
+                                        <td>78-82</td>
+                                        <td>102-106</td>
+                                    </tr>
+                                    <tr>
+                                        <td>XL</td>
+                                        <td>102-106</td>
+                                        <td>82-86</td>
+                                        <td>106-110</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    
+                    <div class="tab-panel" id="care">
+                        <h3>Bakım Önerileri</h3>
+                        <ul>
+                            <li>30°C'de ılık suda yıkayın</li>
+                            <li>Benzer renklerle yıkayın</li>
+                            <li>Çamaşır suyu kullanmayın</li>
+                            <li>Düşük ısıda ütüleyebilirsiniz</li>
+                            <li>Kuru temizleme için profesyonel hizmet alın</li>
+                            <li>Kurutma makinesinde düşük ısıda kurutun</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="tab-panel" id="reviews">
+                        <h3>Müşteri Değerlendirmeleri</h3>
+                        <div class="reviews-summary">
+                            <div class="average-rating">
+                                <span class="rating-number">4.8</span>
+                                <div class="stars">★★★★★</div>
+                                <span class="total-reviews">24 değerlendirme</span>
+                            </div>
+                        </div>
+                        
+                        <div class="review-item">
+                            <div class="review-header">
+                                <span class="reviewer-name">Elif S.</span>
+                                <div class="review-rating">★★★★★</div>
+                                <span class="review-date">15 Haziran 2025</span>
+                            </div>
+                            <p>Kalitesi ve konforu mükemmel. Yazın sıcak günlerinde ideal, kumaşı çok nefes alıyor. Kesimi de çok şık.</p>
+                        </div>
+                        
+                        <div class="review-item">
+                            <div class="review-header">
+                                <span class="reviewer-name">Mehmet K.</span>
+                                <div class="review-rating">★★★★★</div>
+                                <span class="review-date">10 Haziran 2025</span>
+                            </div>
+                            <p>SS Voila'dan aldığım ikinci ürün. Kalite standartları gerçekten yüksek. Tavsiye ederim.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="related-products">
+            <div class="section-header">
+                <h2>Kombini Tamamla</h2>
+                <p>Bu ürünle mükemmel uyum sağlayan parçalar</p>
+            </div>
+            
+            <div class="related-grid" id="relatedProducts">
+                <!-- Related products will be loaded dynamically -->
+            </div>
+        </section>
+
+        <section class="recently-viewed">
+            <div class="section-header">
+                <h2>Son Görüntülenen Ürünler</h2>
+            </div>
+            
+            <div class="recently-viewed-grid" id="recentlyViewedProducts">
+                <!-- Recently viewed products will be loaded dynamically -->
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>SS Voila</h3>
+                <p>Zamansız elegansı yaşayın</p>
+            </div>
+            <div class="footer-section">
+                <h4>Hızlı Linkler</h4>
+                <ul>
+                    <li><a href="shop.html">Koleksiyon</a></li>
+                    <li><a href="campaigns.html">Kampanyalar</a></li>
+                    <li><a href="brand.html">Marka Hikayesi</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Müşteri Hizmetleri</h4>
+                <ul>
+                    <li><a href="contact.html">İletişim</a></li>
+                    <li><a href="#shipping">Kargo Bilgisi</a></li>
+                    <li><a href="#returns">İade & Değişim</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 SS Voila. Tüm Hakları Saklıdır.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/product.js"></script>
+</body>
+</html> 

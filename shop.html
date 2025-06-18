@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Erkek Giyim Mağaza - SS Voila | Şort, Tişört, Gömlek</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="page-shop">
+    <header>
+        <nav>
+            <div class="logo">SS VOILA</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Ana Sayfa</a></li>
+                <li><a href="shop.html">Koleksiyon</a></li>
+                <li><a href="campaigns.html">Kampanyalar</a></li>
+                <li><a href="brand.html">Marka</a></li>
+                <li><a href="contact.html">İletişim</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="search-btn" aria-label="Arama"><span>🔍</span></button>
+                <button class="wishlist-btn" aria-label="Favoriler">
+                    <span>♡</span>
+                    <span class="wishlist-count">0</span>
+                </button>
+                <button class="cart-btn" aria-label="Sepet">
+                    <span>🛍</span>
+                    <span class="cart-count">0</span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Mini Cart Sidebar -->
+    <div id="miniCart" class="mini-cart">
+        <div class="mini-cart-header">
+            <h3>Sepetiniz</h3>
+            <button class="close-cart">×</button>
+        </div>
+        <div class="mini-cart-items">
+            <div class="empty-cart-message">
+                <p>Sepetiniz boş</p>
+                <a href="shop.html" class="shop-link">Alışverişe Başla</a>
+            </div>
+        </div>
+        <div class="mini-cart-footer">
+            <div class="cart-total">
+                <span>Toplam: <strong>₺0</strong></span>
+            </div>
+            <button class="checkout-btn">Ödemeye Geç</button>
+            <a href="cart.html" class="view-cart-btn">Sepeti Görüntüle</a>
+        </div>
+    </div>
+
+    <main>
+        <section class="shop-hero">
+            <div class="shop-hero-content">
+                <h1>Erkek Giyim Koleksiyonu</h1>
+                <p>Yazlık konforu ve şıklığı buluşturan erkek giyim parçaları</p>
+            </div>
+        </section>
+
+        <section class="shop-content">
+            <div class="shop-container">
+                <!-- Filters Sidebar -->
+                <aside class="filters-sidebar">
+                    <div class="filters-header">
+                        <h3>Filtreler</h3>
+                        <button class="clear-filters">Temizle</button>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <h4>Kategori</h4>
+                        <div class="filter-options">
+                            <label class="filter-option">
+                                <input type="checkbox" name="category" value="t-shirts">
+                                <span class="checkmark"></span>
+                                Tişörtler
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" name="category" value="shirts">
+                                <span class="checkmark"></span>
+                                Gömlekler
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" name="category" value="shorts">
+                                <span class="checkmark"></span>
+                                Şortlar
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" name="category" value="sets">
+                                <span class="checkmark"></span>
+                                Set Ürünler
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" name="category" value="accessories">
+                                <span class="checkmark"></span>
+                                Aksesuarlar
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="filter-group">
+                        <h4>Fiyat Aralığı</h4>
+                        <div class="price-range">
+                            <input type="range" id="priceRange" min="0" max="5000" step="100" value="5000">
+                            <div class="price-display">
+                                <span>₺0 - ₺<span id="priceValue">5000</span></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="filter-group">
+                        <h4>Beden</h4>
+                        <div class="size-options">
+                            <button class="size-btn" data-size="xs">XS</button>
+                            <button class="size-btn" data-size="s">S</button>
+                            <button class="size-btn" data-size="m">M</button>
+                            <button class="size-btn" data-size="l">L</button>
+                            <button class="size-btn" data-size="xl">XL</button>
+                        </div>
+                    </div>
+
+                    <div class="filter-group">
+                        <h4>Renk</h4>
+                        <div class="color-options">
+                            <button class="color-btn" data-color="white" style="background: #ffffff;"></button>
+                            <button class="color-btn" data-color="black" style="background: #000000;"></button>
+                            <button class="color-btn" data-color="beige" style="background: #f5f5dc;"></button>
+                            <button class="color-btn" data-color="navy" style="background: #1e392a;"></button>
+                            <button class="color-btn" data-color="gray" style="background: #808080;"></button>
+                        </div>
+                    </div>
+                </aside>
+
+                <!-- Products Section -->
+                <div class="products-section">
+                    <div class="products-header">
+                        <div class="results-info">
+                            <span id="productCount">24</span> ürün bulundu
+                        </div>
+                        <div class="sort-options">
+                            <select id="sortBy">
+                                <option value="newest">En Yeni</option>
+                                <option value="price-low">Fiyat: Düşükten Yükseğe</option>
+                                <option value="price-high">Fiyat: Yüksekten Düşüğe</option>
+                                <option value="popular">En Popüler</option>
+                            </select>
+                        </div>
+                        <button class="mobile-filter-btn">Filtreler</button>
+                    </div>
+
+                    <div class="products-grid" id="productsGrid">
+                        <!-- Products will be dynamically loaded here -->
+                    </div>
+
+                    <div class="load-more-section">
+                        <button class="load-more-btn">Daha Fazla Ürün Yükle</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>SS Voila</h3>
+                <p>Zamansız elegansı yaşayın</p>
+            </div>
+            <div class="footer-section">
+                <h4>Hızlı Linkler</h4>
+                <ul>
+                    <li><a href="shop.html">Koleksiyon</a></li>
+                    <li><a href="campaigns.html">Kampanyalar</a></li>
+                    <li><a href="brand.html">Marka Hikayesi</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Müşteri Hizmetleri</h4>
+                <ul>
+                    <li><a href="contact.html">İletişim</a></li>
+                    <li><a href="#shipping">Kargo Bilgisi</a></li>
+                    <li><a href="#returns">İade & Değişim</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 SS Voila. Tüm Hakları Saklıdır.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html> 

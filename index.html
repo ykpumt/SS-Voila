@@ -3,67 +3,386 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SS Voila - Ana Sayfa</title>
+    <title>SS Voila - Erkek Moda & Yazlık Giyim | Şort, Tişört, Gömlek</title>
+    <meta name="description" content="SS Voila erkek giyim koleksiyonu. Yazlık şortlar, salaş tişörtler, rahat gömlekler ve şort-tişört setleri ile tarzınızı yansıtın. Türkiye'nin modern erkek moda markası.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body lang="tr" class="page-index">
-    <header>
-        <nav>
-            <div class="logo">SS VOILA</div>
-            <ul>
-                <li><a href="index.html">Ana Sayfa</a></li>
-                <li><a href="lookbook.html">Koleksiyon</a></li>
-                <li><a href="brand.html">Marka Hikayesi</a></li>
-                <li><a href="contact.html">İletişim</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <main>
-        <section class="hero">
-            <video autoplay muted loop playsinline id="heroVideo" src="images/hero-video.mp4">
-                <!-- Fallback content if video is not supported -->
-                <p>Tarayıcınız video etiketini desteklemiyor.</p>
-            </video>
-            <div class="hero-overlay"></div>
-            <div class="hero-content">
-                <h1>Yazın Zahmetsiz Stili</h1>
-                <a href="lookbook.html" class="cta-button">Koleksiyonu Keşfet</a>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-left">
+                <a href="index.html" class="logo">SS Voila</a>
             </div>
-        </section>
+            
+            <div class="nav-center">
+                <ul class="nav-links">
+                    <li><a href="index.html" class="nav-link active">Ana Sayfa</a></li>
+                    <li><a href="shop.html" class="nav-link">Mağaza</a></li>
+                    <li><a href="lookbook.html" class="nav-link">Lookbook</a></li>
+                    <li><a href="campaigns.html" class="nav-link">Kampanyalar</a></li>
+                    <li><a href="brand.html" class="nav-link">Marka</a></li>
+                    <li><a href="contact.html" class="nav-link">İletişim</a></li>
+                </ul>
+            </div>
+            
+            <div class="nav-right">
+                <button class="wishlist-btn">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" stroke="currentColor" stroke-width="2" fill="none"/>
+                    </svg>
+                    <span class="counter wishlist-counter">0</span>
+                </button>
+                <button class="cart-btn" id="cartBtn">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M3 3H5L5.4 5M7 13H17L21 5H5.4M7 13L5.4 5M7 13L4.7 15.3C4.3 15.7 4.6 16.5 5.1 16.5H17M17 13V17C17 18.1 16.1 19 15 19H9C7.9 19 7 18.1 7 17V13M17 13H7" stroke="currentColor" stroke-width="2" fill="none"/>
+                    </svg>
+                    <span class="counter cart-counter">0</span>
+                </button>
+            </div>
+        </div>
+    </nav>
 
-        <section class="featured-looks">
-            <h2>Öne Çıkan Görünümler</h2>
-            <div class="looks-grid">
-                <div class="look-item">
-                    <img src="images/featured-look-1.jpg" alt="Öne Çıkan Görünüm 1">
-                    <h3>Görünüm Adı 1</h3>
-                    <a href="lookbook.html" class="explore-button">Daha Fazla</a>
-                </div>
-                <div class="look-item">
-                    <img src="images/featured-look-2.jpg" alt="Öne Çıkan Görünüm 2">
-                    <h3>Görünüm Adı 2</h3>
-                    <a href="lookbook.html" class="explore-button">Daha Fazla</a>
-                </div>
-                <div class="look-item">
-                    <img src="images/featured-look-3.jpg" alt="Öne Çıkan Görünüm 3">
-                    <h3>Görünüm Adı 3</h3>
-                    <a href="lookbook.html" class="explore-button">Daha Fazla</a>
+    <!-- Mini Cart -->
+    <div class="mini-cart" id="miniCart">
+        <div class="mini-cart-header">
+            <h3>Sepetim</h3>
+            <button class="close-cart" id="closeCart">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2"/>
+                </svg>
+            </button>
+        </div>
+        <div class="mini-cart-content">
+            <div class="empty-cart">
+                <svg width="64" height="64" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M3 3H5L5.4 5M7 13H17L21 5H5.4M7 13L5.4 5M7 13L4.7 15.3C4.3 15.7 4.6 16.5 5.1 16.5H17M17 13V17C17 18.1 16.1 19 15 19H9C7.9 19 7 18.1 7 17V13M17 13H7" stroke="currentColor" stroke-width="2" opacity="0.3"/>
+                </svg>
+                <p>Sepetiniz boş</p>
+                <a href="shop.html" class="shop-now-btn">Alışverişe Başla</a>
+            </div>
+            <div class="cart-items" style="display: none;">
+                <!-- Cart items will be populated here -->
+            </div>
+        </div>
+        <div class="mini-cart-footer" style="display: none;">
+            <div class="cart-total">
+                <span>Toplam: ₺0</span>
+            </div>
+            <a href="#" class="checkout-btn">Sepeti Görüntüle</a>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <div class="hero-badge">2024 Yaz Koleksiyonu</div>
+                <h1 class="hero-title">Yazın Ruhunu<br>Yaşa</h1>
+                <p class="hero-subtitle">Sıcak günlerin vazgeçilmezi salaş tişörtler, rahat şortlar ve şık gömleklerle tarzını yansıt</p>
+                <div class="hero-buttons">
+                    <a href="shop.html" class="btn-primary">Koleksiyonu Keşfet</a>
+                    <a href="campaigns.html" class="btn-secondary">Kampanyaları Gör</a>
                 </div>
             </div>
-        </section>
+            <div class="hero-image">
+                <video autoplay muted loop playsinline>
+                    <source src="images/hero-video.mp4" type="video/mp4">
+                </video>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="scroll-line"></div>
+            <span>Kaydır</span>
+        </div>
+    </section>
 
-        <section class="brand-statement">
-            <h2>Marka Felsefemiz</h2>
-            <p>SS Voila olarak, her parçada zarafeti ve kaliteyi ön planda tutuyoruz. Sürdürülebilir materyaller ve zamansız tasarımlarla, stilinizi özgün bir şekilde ifade etmenize yardımcı oluyoruz.</p>
-        </section>
-    </main>
+    <!-- Featured Collections -->
+    <section class="collections">
+        <div class="container">
+            <div class="section-header">
+                <h2>Yazlık Koleksiyonlar</h2>
+                <p>Sıcak günlerin vazgeçilmez parçaları</p>
+            </div>
+            
+            <div class="collections-grid">
+                <div class="collection-card large">
+                    <div class="collection-image">
+                        <img src="images/featured-look-1.jpg" alt="Şort Tişört Setleri">
+                        <div class="collection-overlay">
+                            <h3>Şort & Tişört Setleri</h3>
+                            <p>Uyumlu kombinlerin rahatlığı</p>
+                            <a href="shop.html?category=sets" class="btn-white">Setleri İncele</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="collection-card">
+                    <div class="collection-image">
+                        <img src="images/featured-look-2.jpg" alt="Salaş Tişörtler">
+                        <div class="collection-overlay">
+                            <h3>Salaş Tişörtler</h3>
+                            <p>Günlük şıklığın simgesi</p>
+                            <a href="shop.html?category=t-shirts" class="btn-white">Tişörtleri Gör</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="collection-card">
+                    <div class="collection-image">
+                        <img src="images/featured-look-3.jpg" alt="Yazlık Şortlar">
+                        <div class="collection-overlay">
+                            <h3>Yazlık Şortlar</h3>
+                            <p>Konforu buluşturan kesimler</p>
+                            <a href="shop.html?category=shorts" class="btn-white">Şortları İncele</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <footer>
-        <p>&copy; 2025 SS Voila. Tüm Hakları Saklıdır.</p>
+    <!-- Product Showcase -->
+    <section class="product-showcase">
+        <div class="container">
+            <div class="section-header">
+                <h2>Öne Çıkan Ürünler</h2>
+                <p>Bu sezonun en çok tercih edilen parçaları</p>
+            </div>
+            
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="images/lookbook-item-1.jpg" alt="Oversized Beyaz Tişört">
+                        <div class="product-badge">Yeni</div>
+                        <div class="product-actions">
+                            <button class="quick-view-btn">Hızlı Bakış</button>
+                            <button class="add-to-cart-btn">Sepete Ekle</button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>Oversized Beyaz Tişört</h3>
+                        <p class="product-price">₺299</p>
+                        <div class="product-colors">
+                            <span class="color-option" style="background: white; border: 1px solid #ddd;"></span>
+                            <span class="color-option" style="background: black;"></span>
+                            <span class="color-option" style="background: #1E392A;"></span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="images/lookbook-item-2.jpg" alt="Kargo Şort">
+                        <div class="product-badge sale">%20 İndirim</div>
+                        <div class="product-actions">
+                            <button class="quick-view-btn">Hızlı Bakış</button>
+                            <button class="add-to-cart-btn">Sepete Ekle</button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>Kargo Şort</h3>
+                        <p class="product-price">
+                            <span class="sale-price">₺399</span>
+                            <span class="original-price">₺499</span>
+                        </p>
+                        <div class="product-colors">
+                            <span class="color-option" style="background: #2C5F41;"></span>
+                            <span class="color-option" style="background: #8B4513;"></span>
+                            <span class="color-option" style="background: #36454F;"></span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="images/lookbook-item-3.jpg" alt="Keten Karışımlı Gömlek">
+                        <div class="product-actions">
+                            <button class="quick-view-btn">Hızlı Bakış</button>
+                            <button class="add-to-cart-btn">Sepete Ekle</button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>Keten Karışımlı Gömlek</h3>
+                        <p class="product-price">₺599</p>
+                        <div class="product-colors">
+                            <span class="color-option" style="background: #F5F5DC;"></span>
+                            <span class="color-option" style="background: #4169E1;"></span>
+                            <span class="color-option" style="background: #2F4F4F;"></span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="images/lookbook-item-4.jpg" alt="Set: Beyaz Tişört + Şort">
+                        <div class="product-badge">Set</div>
+                        <div class="product-actions">
+                            <button class="quick-view-btn">Hızlı Bakış</button>
+                            <button class="add-to-cart-btn">Sepete Ekle</button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>Set: Beyaz Tişört + Şort</h3>
+                        <p class="product-price">
+                            <span class="sale-price">₺549</span>
+                            <span class="set-saving">₺150 Tasarruf</span>
+                        </p>
+                        <div class="set-info">
+                            <span>2 Parça Set</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section-footer">
+                <a href="shop.html" class="btn-outline">Tüm Ürünleri Gör</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lifestyle Section -->
+    <section class="lifestyle">
+        <div class="container">
+            <div class="lifestyle-content">
+                <div class="lifestyle-text">
+                    <h2>Erkek Modası Redefined</h2>
+                    <p>SS Voila olarak, modern erkeğin yaşam tarzını anlıyor ve ona uygun giyim çözümleri sunuyoruz. Yazın sıcaklığında bile rahatlığınızdan ödün vermeden şık görünebileceğiniz parçalar tasarlıyoruz.</p>
+                    
+                    <div class="lifestyle-features">
+                        <div class="feature">
+                            <h4>Kaliteli Kumaşlar</h4>
+                            <p>Nefes alabilir, ter tutmayan doğal lifler kullanıyoruz</p>
+                        </div>
+                        <div class="feature">
+                            <h4>Modern Kesimler</h4>
+                            <p>Hem rahat hem şık, günlük yaşama uygun tasarımlar</p>
+                        </div>
+                        <div class="feature">
+                            <h4>Türkiye Üretimi</h4>
+                            <p>Yerel üretim, kalite garantisi ve hızlı kargo</p>
+                        </div>
+                    </div>
+                    
+                    <a href="brand.html" class="btn-primary">Markamızı Keşfet</a>
+                </div>
+                <div class="lifestyle-image">
+                    <img src="images/brand-artistic-photo.jpg" alt="SS Voila Lifestyle">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter">
+        <div class="container">
+            <div class="newsletter-content">
+                <h2>SS Voila Ailesine Katıl</h2>
+                <p>Yeni ürünler, özel kampanyalar ve moda trendlerinden ilk sen haberdar ol</p>
+                <form class="newsletter-form">
+                    <div class="form-group">
+                        <input type="email" placeholder="E-posta adresinizi girin" required>
+                        <button type="submit" class="btn-primary">Abone Ol</button>
+                    </div>
+                    <p class="newsletter-privacy">
+                        Abone olarak <a href="#">Gizlilik Politikası</a>'nı kabul etmiş olursunuz.
+                    </p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-brand">
+                        <h3>SS Voila</h3>
+                        <p>Modern erkeğin vazgeçilmez moda markası. Kalite, konfor ve stilin mükemmel uyumu.</p>
+                        <div class="social-links">
+                            <a href="#" aria-label="Instagram">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.43.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.43.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41-.56-.22-.96-.48-1.38-.9-.42-.42-.68-.82-.9-1.38-.16-.43-.36-1.06-.41-2.23C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.43-.16 1.06-.36 2.23-.41C8.42 2.17 8.8 2.16 12 2.16zm0-2.16c-3.26 0-3.67.01-4.95.07-1.28.06-2.16.27-2.92.57-.79.3-1.46.71-2.13 1.38-.67.67-1.08 1.34-1.38 2.13-.3.76-.51 1.64-.57 2.92C0 7.33 0 7.74 0 12s0 4.67.05 4.95c.06 1.28.27 2.16.57 2.92.3.79.71 1.46 1.38 2.13.67.67 1.34 1.08 2.13 1.38.76.3 1.64.51 2.92.57.28.01 4.95.05 4.95.05s4.67 0 4.95-.05c1.28-.06 2.16-.27 2.92-.57.79-.3 1.46-.71 2.13-1.38.67-.67 1.08-1.34 1.38-2.13.3-.76.51-1.64.57-2.92.05-.28.05-1.69.05-4.95s0-4.67-.05-4.95c-.06-1.28-.27-2.16-.57-2.92-.3-.79-.71-1.46-1.38-2.13-.67-.67-1.34-1.08-2.13-1.38-.76-.3-1.64-.51-2.92-.57C15.67 0 15.26 0 12 0z"/>
+                                    <circle cx="12" cy="12" r="3.2"/>
+                                    <circle cx="18.4" cy="5.6" r="1.44"/>
+                                </svg>
+                            </a>
+                            <a href="#" aria-label="Facebook">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                                </svg>
+                            </a>
+                            <a href="#" aria-label="Twitter">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Kategoriler</h4>
+                    <ul class="footer-links">
+                        <li><a href="shop.html?category=t-shirts">Tişörtler</a></li>
+                        <li><a href="shop.html?category=shirts">Gömlekler</a></li>
+                        <li><a href="shop.html?category=shorts">Şortlar</a></li>
+                        <li><a href="shop.html?category=sets">Set Ürünler</a></li>
+                        <li><a href="shop.html?category=accessories">Aksesuarlar</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Müşteri Hizmetleri</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Sipariş Takibi</a></li>
+                        <li><a href="#">Kargo & Teslimat</a></li>
+                        <li><a href="#">İade & Değişim</a></li>
+                        <li><a href="#">Beden Rehberi</a></li>
+                        <li><a href="#">SSS</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>İletişim</h4>
+                    <div class="contact-info">
+                        <p>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+                            </svg>
+                            +90 (212) 555 0123
+                        </p>
+                        <p>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                            </svg>
+                            info@ssvoila.com
+                        </p>
+                        <p>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                            </svg>
+                            İstanbul, Türkiye
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <p>&copy; 2024 SS Voila. Tüm hakları saklıdır.</p>
+                    <div class="footer-legal">
+                        <a href="#">Gizlilik Politikası</a>
+                        <a href="#">Kullanım Şartları</a>
+                        <a href="#">Çerez Politikası</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </footer>
 
     <script src="js/main.js"></script>

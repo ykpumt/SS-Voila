@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Erkek Giyim Kampanyaları - SS Voila | Yaz İndirimleri</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body lang="tr" class="page-campaigns">
+    <header>
+        <nav>
+            <div class="logo">SS VOILA</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Ana Sayfa</a></li>
+                <li><a href="shop.html">Koleksiyon</a></li>
+                <li><a href="campaigns.html">Kampanyalar</a></li>
+                <li><a href="brand.html">Marka</a></li>
+                <li><a href="contact.html">İletişim</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="search-btn" aria-label="Arama"><span>🔍</span></button>
+                <button class="wishlist-btn" aria-label="Favoriler">
+                    <span>♡</span>
+                    <span class="wishlist-count">0</span>
+                </button>
+                <button class="cart-btn" aria-label="Sepet">
+                    <span>🛍</span>
+                    <span class="cart-count">0</span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Mini Cart Sidebar -->
+    <div id="miniCart" class="mini-cart">
+        <div class="mini-cart-header">
+            <h3>Sepetiniz</h3>
+            <button class="close-cart">×</button>
+        </div>
+        <div class="mini-cart-items">
+            <div class="empty-cart-message">
+                <p>Sepetiniz boş</p>
+                <a href="shop.html" class="shop-link">Alışverişe Başla</a>
+            </div>
+        </div>
+        <div class="mini-cart-footer">
+            <div class="cart-total">
+                <span>Toplam: <strong>₺0</strong></span>
+            </div>
+            <button class="checkout-btn">Ödemeye Geç</button>
+            <a href="cart.html" class="view-cart-btn">Sepeti Görüntüle</a>
+        </div>
+    </div>
+
+    <main>
+        <section class="campaigns-hero">
+            <div class="campaigns-hero-content">
+                <h1>Erkek Giyim Kampanyaları</h1>
+                <p>Şort, tişört, gömlek ve setlerde sınırlı süreli özel indirimlер</p>
+            </div>
+        </section>
+
+        <section class="featured-campaign">
+            <div class="campaign-banner">
+                <div class="campaign-content">
+                    <div class="campaign-badge">ÖNE ÇIKAN KAMPANYA</div>
+                    <h2>Yazlık Erkek Giyimde %40'a Varan İndirim</h2>
+                    <p>Salaş tişörtler, rahat şortlar ve şık gömleklerde sınırlı süreli özel fiyatlar</p>
+                    <div class="campaign-timer">
+                        <h3>Kampanya Bitiş Süresi:</h3>
+                        <div class="countdown" id="mainCountdown">
+                            <div class="time-unit">
+                                <span class="time-value" id="days">--</span>
+                                <span class="time-label">Gün</span>
+                            </div>
+                            <div class="time-unit">
+                                <span class="time-value" id="hours">--</span>
+                                <span class="time-label">Saat</span>
+                            </div>
+                            <div class="time-unit">
+                                <span class="time-value" id="minutes">--</span>
+                                <span class="time-label">Dakika</span>
+                            </div>
+                            <div class="time-unit">
+                                <span class="time-value" id="seconds">--</span>
+                                <span class="time-label">Saniye</span>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="shop.html?campaign=summer-sale" class="campaign-cta">Hemen Alışveriş Yap</a>
+                </div>
+                <div class="campaign-image">
+                    <img src="images/featured-look-1.jpg" alt="Yaz Koleksiyonu">
+                </div>
+            </div>
+        </section>
+
+        <section class="campaigns-grid">
+            <div class="section-header">
+                <h2>Tüm Kampanyalar</h2>
+                <p>Size özel hazırlanmış avantajlı teklifler</p>
+            </div>
+
+            <div class="campaigns-container">
+                <div class="campaign-card premium">
+                    <div class="campaign-tag">PREMIUM</div>
+                    <div class="campaign-card-content">
+                        <h3>2. Ürüne %50 İndirim</h3>
+                        <p>Tüm tişört ve gömleklerde geçerli</p>
+                        <div class="campaign-details">
+                            <span class="campaign-code">Kod: TISORT50</span>
+                            <span class="campaign-validity">30 Ağustos'a kadar</span>
+                        </div>
+                        <a href="shop.html?category=t-shirts&campaign=second-half" class="campaign-button">Kampanyayı Kullan</a>
+                    </div>
+                </div>
+
+                <div class="campaign-card">
+                    <div class="campaign-tag">YENİ MÜŞTERİ</div>
+                    <div class="campaign-card-content">
+                        <h3>İlk Alışverişte %25 İndirim</h3>
+                        <p>500₺ ve üzeri alışverişlerde</p>
+                        <div class="campaign-details">
+                            <span class="campaign-code">Kod: HOSGELDIN25</span>
+                            <span class="campaign-validity">Süresiz</span>
+                        </div>
+                        <a href="shop.html?campaign=new-customer" class="campaign-button">Kampanyayı Kullan</a>
+                    </div>
+                </div>
+
+                <div class="campaign-card">
+                    <div class="campaign-tag">ÜCRETSIZ KARGO</div>
+                    <div class="campaign-card-content">
+                        <h3>Tüm Siparişlerde Ücretsiz Kargo</h3>
+                        <p>Minimum alışveriş tutarı yok</p>
+                        <div class="campaign-details">
+                            <span class="campaign-code">Otomatik uygulanır</span>
+                            <span class="campaign-validity">31 Temmuz'a kadar</span>
+                        </div>
+                        <a href="shop.html" class="campaign-button">Alışverişe Başla</a>
+                    </div>
+                </div>
+
+                <div class="campaign-card seasonal">
+                    <div class="campaign-tag">SEZON SONU</div>
+                    <div class="campaign-card-content">
+                        <h3>Sezon Sonu Fırsatları</h3>
+                        <p>Seçili ürünlerde %60'a varan indirim</p>
+                        <div class="campaign-details">
+                            <span class="campaign-code">Seçili ürünlerde</span>
+                            <span class="campaign-validity">Stok tükene kadar</span>
+                        </div>
+                        <a href="shop.html?campaign=end-of-season" class="campaign-button">Fırsatları Gör</a>
+                    </div>
+                </div>
+
+                <div class="campaign-card loyalty">
+                    <div class="campaign-tag">SADAKATLİ MÜŞTERİ</div>
+                    <div class="campaign-card-content">
+                        <h3>Sadakat Programı</h3>
+                        <p>Her alışverişte %5 puan kazan</p>
+                        <div class="campaign-details">
+                            <span class="campaign-code">Otomatik katılım</span>
+                            <span class="campaign-validity">Sürekli geçerli</span>
+                        </div>
+                        <a href="#loyalty-program" class="campaign-button">Detayları Gör</a>
+                    </div>
+                </div>
+
+                <div class="campaign-card bundle">
+                    <div class="campaign-tag">SET İNDİRİMİ</div>
+                    <div class="campaign-card-content">
+                        <h3>Şort-Tişört Setleri</h3>
+                        <p>Set alışverişlerinde %30 indirim</p>
+                        <div class="campaign-details">
+                            <span class="campaign-code">Kod: SETLER30</span>
+                            <span class="campaign-validity">31 Ağustos'a kadar</span>
+                        </div>
+                        <a href="shop.html?category=sets&campaign=bundle-discount" class="campaign-button">Setleri Gör</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="newsletter-signup">
+            <div class="newsletter-content">
+                <h2>Kampanyalardan İlk Siz Haberdar Olun</h2>
+                <p>Özel indirimleri ve sınırlı süreli teklifleri kaçırmayın</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="E-posta adresiniz" required>
+                    <button type="submit">Kampanya Bildirimlerini Aç</button>
+                </form>
+                <div class="newsletter-benefits">
+                    <div class="benefit">
+                        <span class="benefit-icon">📧</span>
+                        <span>Haftalık kampanya bülteni</span>
+                    </div>
+                    <div class="benefit">
+                        <span class="benefit-icon">🎁</span>
+                        <span>Özel üye indirimleri</span>
+                    </div>
+                    <div class="benefit">
+                        <span class="benefit-icon">⚡</span>
+                        <span>Flash sale bildirimleri</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="campaign-terms">
+            <div class="terms-container">
+                <h2>Kampanya Koşulları</h2>
+                <div class="terms-grid">
+                    <div class="term-item">
+                        <h3>Genel Koşullar</h3>
+                        <ul>
+                            <li>Kampanyalar birbirleriyle birleştirilemez</li>
+                            <li>İndirimler sadece listelenen ürünlerde geçerlidir</li>
+                            <li>Kampanyalar değişiklik yapılmaksızın iptal edilebilir</li>
+                        </ul>
+                    </div>
+                    <div class="term-item">
+                        <h3>İndirim Kodları</h3>
+                        <ul>
+                            <li>Her kod sadece bir kez kullanılabilir</li>
+                            <li>Kodlar büyük/küçük harf duyarlıdır</li>
+                            <li>Süresi dolan kodlar geçersizdir</li>
+                        </ul>
+                    </div>
+                    <div class="term-item">
+                        <h3>İade ve Değişim</h3>
+                        <ul>
+                            <li>İndirimli ürünler 30 gün içinde iade edilebilir</li>
+                            <li>İade işleminde indirimli tutar esas alınır</li>
+                            <li>Orijinal etiketlerle birlikte iade gereklidir</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>SS Voila</h3>
+                <p>Zamansız elegansı yaşayın</p>
+            </div>
+            <div class="footer-section">
+                <h4>Hızlı Linkler</h4>
+                <ul>
+                    <li><a href="shop.html">Koleksiyon</a></li>
+                    <li><a href="campaigns.html">Kampanyalar</a></li>
+                    <li><a href="brand.html">Marka Hikayesi</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Müşteri Hizmetleri</h4>
+                <ul>
+                    <li><a href="contact.html">İletişim</a></li>
+                    <li><a href="#shipping">Kargo Bilgisi</a></li>
+                    <li><a href="#returns">İade & Değişim</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 SS Voila. Tüm Hakları Saklıdır.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/campaigns.js"></script>
+</body>
+</html> 
