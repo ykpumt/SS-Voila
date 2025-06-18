@@ -638,6 +638,61 @@ document.addEventListener('DOMContentLoaded', function() {
     window.animationManager = new AnimationManager();
     window.mobileNavManager = new MobileNavManager();
 
+    // Initialize mobile navigation
+    const mobileToggle = document.getElementById('mobileNavToggle');
+    if (mobileToggle) {
+        mobileToggle.addEventListener('click', function() {
+            const navLinks = document.querySelector('.nav-links');
+            const mobileNav = document.createElement('div');
+            
+            if (!document.querySelector('.mobile-nav')) {
+                mobileNav.className = 'mobile-nav';
+                mobileNav.innerHTML = `
+                    <div class="mobile-nav-header">
+                        <span class="logo-text">SS Voila</span>
+                        <button class="mobile-nav-close" id="mobileNavClose">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <ul class="mobile-nav-links">
+                        <li><a href="index.html" class="nav-link">Ana Sayfa</a></li>
+                        <li><a href="shop.html" class="nav-link">Koleksiyon</a></li>
+                        <li><a href="campaigns.html" class="nav-link">Kampanyalar</a></li>
+                        <li><a href="brand.html" class="nav-link">Marka Hikayesi</a></li>
+                        <li><a href="contact.html" class="nav-link">İletişim</a></li>
+                    </ul>
+                `;
+                
+                const overlay = document.createElement('div');
+                overlay.className = 'mobile-nav-overlay';
+                
+                document.body.appendChild(overlay);
+                document.body.appendChild(mobileNav);
+                
+                // Animate in
+                setTimeout(() => {
+                    overlay.classList.add('active');
+                    mobileNav.classList.add('active');
+                }, 10);
+                
+                // Close handlers
+                const closeNav = () => {
+                    overlay.classList.remove('active');
+                    mobileNav.classList.remove('active');
+                    setTimeout(() => {
+                        overlay.remove();
+                        mobileNav.remove();
+                    }, 300);
+                };
+                
+                document.getElementById('mobileNavClose').addEventListener('click', closeNav);
+                overlay.addEventListener('click', closeNav);
+            }
+        });
+    }
+
     // Add loading states
     document.body.classList.add('loaded');
 

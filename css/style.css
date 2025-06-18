@@ -391,7 +391,7 @@ img {
     transform: translateY(-2px);
 }
 
-/* Hero Section */
+/* Hero Section - İyileştirilmiş */
 .hero {
     position: relative;
     min-height: 100vh;
@@ -414,13 +414,16 @@ img {
     position: relative;
     width: 100%;
     height: 100%;
+    min-height: 100vh;
 }
 
 .hero-image {
     width: 100%;
     height: 100%;
+    min-height: 100vh;
     object-fit: cover;
     object-position: center;
+    display: block;
 }
 
 .hero-overlay {
@@ -429,12 +432,16 @@ img {
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.7) 100%);
+    background: linear-gradient(135deg, 
+        rgba(255, 255, 255, 0.95) 0%, 
+        rgba(255, 255, 255, 0.85) 50%,
+        rgba(255, 255, 255, 0.7) 100%);
+    z-index: 1;
 }
 
 .hero-content {
     position: relative;
-    z-index: 2;
+    z-index: 3;
     width: 100%;
     max-width: var(--container-max-width);
     margin: 0 auto;
@@ -442,8 +449,9 @@ img {
 }
 
 .hero-text {
-    max-width: 600px;
-    padding-top: var(--header-height);
+    max-width: 650px;
+    padding-top: calc(var(--header-height) + 2rem);
+    margin-bottom: 2rem;
 }
 
 .brand-slogan {
@@ -452,24 +460,30 @@ img {
     margin-bottom: 2rem;
     font-family: var(--font-primary);
     font-weight: 800;
-    letter-spacing: 4px;
-    line-height: 1;
+    letter-spacing: 3px;
+    line-height: 1.2;
 }
 
 .slogan-line-1 {
-    font-size: clamp(0.75rem, 2vw, 1rem);
+    font-size: clamp(0.875rem, 2.5vw, 1.125rem);
     color: var(--color-accent);
-    margin-bottom: 0.25rem;
+    margin-bottom: 0.5rem;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.1);
 }
 
 .slogan-line-2 {
-    font-size: clamp(0.875rem, 2.5vw, 1.125rem);
+    font-size: clamp(1rem, 3vw, 1.25rem);
     color: var(--color-secondary);
+    font-weight: 900;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.1);
 }
 
 .hero-title {
     margin-bottom: 1.5rem;
-    font-weight: 600;
+    font-weight: 700;
+    color: var(--color-primary);
+    text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    line-height: 1.1;
 }
 
 .title-accent {
@@ -478,23 +492,30 @@ img {
 }
 
 .hero-subtitle {
-    font-size: 1.125rem;
-    line-height: 1.7;
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    line-height: 1.6;
     margin-bottom: 2.5rem;
-    color: var(--color-gray-600);
+    color: var(--color-gray-700);
+    font-weight: 400;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.05);
 }
 
 .hero-cta {
     display: flex;
     gap: 1rem;
     margin-bottom: 3rem;
+    flex-wrap: wrap;
 }
 
 .hero-stats {
     display: flex;
     gap: 3rem;
     padding-top: 2rem;
-    border-top: 1px solid var(--color-gray-200);
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: var(--border-radius);
+    padding: 2rem;
 }
 
 .stat {
@@ -502,20 +523,24 @@ img {
     flex-direction: column;
     align-items: center;
     text-align: center;
+    flex: 1;
 }
 
 .stat-number {
     font-family: var(--font-secondary);
-    font-size: 2rem;
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
     font-weight: 700;
     color: var(--color-secondary);
     line-height: 1;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.1);
 }
 
 .stat-label {
-    font-size: 0.875rem;
-    color: var(--color-gray-600);
+    font-size: clamp(0.75rem, 1.5vw, 0.875rem);
+    color: var(--color-gray-700);
     margin-top: 0.5rem;
+    font-weight: 500;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.05);
 }
 
 /* Scroll Indicator */
@@ -662,16 +687,18 @@ img {
     margin: 0 auto;
 }
 
-/* Collections */
+/* Collections - İyileştirilmiş */
 .collections {
     padding: 8rem 0;
+    background: var(--color-white);
 }
 
 .collections-grid {
     display: grid;
     grid-template-columns: 2fr 1fr 1fr;
+    grid-template-rows: 300px 300px;
     gap: 2rem;
-    height: 600px;
+    min-height: 600px;
 }
 
 .collection-card {
@@ -779,9 +806,12 @@ img {
 
 .products-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 2rem;
     margin-bottom: 4rem;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .product-card {
@@ -938,6 +968,7 @@ img {
 /* Brand Story Preview */
 .brand-story-preview {
     padding: 8rem 0;
+    background: linear-gradient(135deg, var(--color-gray-100) 0%, var(--color-white) 100%);
 }
 
 .brand-story-content {
@@ -953,22 +984,31 @@ img {
 
 .brand-story-text h2 {
     margin-bottom: 1.5rem;
+    color: var(--color-primary);
 }
 
 .brand-story-text p {
     font-size: 1.125rem;
     line-height: 1.7;
     margin-bottom: 2rem;
+    color: var(--color-gray-700);
 }
 
 .brand-highlights {
     display: flex;
     gap: 2rem;
     margin-bottom: 2rem;
+    flex-wrap: wrap;
 }
 
 .highlight {
     text-align: center;
+    background: var(--color-white);
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    flex: 1;
+    min-width: 120px;
 }
 
 .highlight-number {
@@ -984,16 +1024,26 @@ img {
     font-size: 0.875rem;
     color: var(--color-gray-600);
     margin-top: 0.5rem;
+    font-weight: 500;
 }
 
 .brand-story-visual {
     position: relative;
+    border-radius: var(--border-radius-lg);
+    overflow: hidden;
 }
 
 .brand-story-visual img {
     width: 100%;
+    height: 400px;
+    object-fit: cover;
     border-radius: var(--border-radius-lg);
     box-shadow: var(--shadow-lg);
+    transition: var(--transition-slow);
+}
+
+.brand-story-visual:hover img {
+    transform: scale(1.05);
 }
 
 .visual-accent {
@@ -1037,6 +1087,8 @@ img {
     width: 100%;
     height: 250px;
     overflow: hidden;
+    border-radius: var(--border-radius);
+    background: var(--color-gray-100);
 }
 
 .style-image img {
@@ -1044,10 +1096,11 @@ img {
     height: 100%;
     object-fit: cover;
     transition: var(--transition-slow);
+    display: block;
 }
 
 .style-card:hover .style-image img {
-    transform: scale(1.05);
+    transform: scale(1.1);
 }
 
 .style-content {
@@ -1326,11 +1379,16 @@ img {
     .modal-content {
         grid-template-columns: 1fr;
         gap: 1.5rem;
+        padding: 1rem;
     }
     
     .modal-image {
         max-width: 300px;
         margin: 0 auto;
+    }
+    
+    .hero-text {
+        padding-top: calc(var(--header-height) + 1rem);
     }
     
     .hero-cta {
@@ -1339,7 +1397,15 @@ img {
     }
     
     .hero-stats {
-        gap: 1.5rem;
+        gap: 1rem;
+        flex-direction: column;
+        padding: 1.5rem;
+    }
+    
+    .stat {
+        flex-direction: row;
+        gap: 1rem;
+        text-align: left;
     }
     
     .values-grid {
@@ -1349,11 +1415,18 @@ img {
     
     .collections-grid {
         grid-template-columns: 1fr;
+        grid-template-rows: auto;
         gap: 1.5rem;
+        min-height: auto;
     }
     
     .collection-card.featured {
         grid-column: span 1;
+        grid-row: span 1;
+    }
+    
+    .collection-card {
+        min-height: 250px;
     }
     
     .products-grid {
