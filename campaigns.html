@@ -3,13 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Erkek Giyim Kampanyaları - SS Voila | Yaz İndirimleri</title>
+    <title>Kampanyalar - SS Voila | Özel İndirimler ve Fırsatlar</title>
+    <meta name="description" content="SS Voila erkek giyim kampanyaları. Tişört, şort, gömlek ve setlerde %60'a varan indirimler. Sınırlı süreli özel fırsatlar.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body lang="tr" class="page-campaigns">
+<body class="page-campaigns">
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
@@ -23,9 +24,33 @@
             <div class="nav-center">
                 <ul class="nav-links">
                     <li><a href="index.html" class="nav-link">Ana Sayfa</a></li>
-                    <li><a href="shop.html" class="nav-link">Koleksiyon</a></li>
+                    <li class="nav-dropdown">
+                        <a href="shop.html" class="nav-link">Koleksiyon <svg width="12" height="12" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2"/></svg></a>
+                        <div class="dropdown-menu">
+                            <div class="dropdown-grid">
+                                <div class="dropdown-column">
+                                    <h4>Kategoriler</h4>
+                                    <a href="shop.html?category=t-shirts">Tişörtler</a>
+                                    <a href="shop.html?category=shirts">Gömlekler</a>
+                                    <a href="shop.html?category=polos">Polo Tişörtler</a>
+                                    <a href="shop.html?category=shorts">Şortlar</a>
+                                    <a href="shop.html?category=pants">Pantolonlar</a>
+                                    <a href="shop.html?category=sets">Set Ürünler</a>
+                                    <a href="shop.html?category=accessories">Aksesuarlar</a>
+                                </div>
+                                <div class="dropdown-column">
+                                    <h4>Özel Koleksiyonlar</h4>
+                                    <a href="shop.html?category=new">Yeni Gelenler</a>
+                                    <a href="shop.html?category=bestsellers">En Çok Satanlar</a>
+                                    <a href="shop.html?category=premium">Premium Koleksiyon</a>
+                                    <a href="shop.html?category=summer">Yaz Koleksiyonu</a>
+                                    <a href="shop.html?category=sale">İndirimli Ürünler</a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
                     <li><a href="campaigns.html" class="nav-link active">Kampanyalar</a></li>
-                    <li><a href="brand.html" class="nav-link">Marka Hikayesi</a></li>
+                    <li><a href="about.html" class="nav-link">Hakkında</a></li>
                     <li><a href="contact.html" class="nav-link">İletişim</a></li>
                 </ul>
             </div>
@@ -49,6 +74,10 @@
                     </svg>
                     <span class="counter cart-counter">0</span>
                 </button>
+                <div class="auth-links">
+                    <a href="login.html" class="auth-link">Giriş Yap</a>
+                    <a href="register.html" class="auth-link">Kaydol</a>
+                </div>
                 <button class="mobile-nav-toggle" id="mobileNavToggle">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M3 12H21M3 6H21M3 18H21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
@@ -58,208 +87,380 @@
         </div>
     </nav>
 
-    <!-- Mini Cart Sidebar -->
-    <div id="miniCart" class="mini-cart">
+    <!-- Mini Cart -->
+    <div class="mini-cart" id="miniCart">
         <div class="mini-cart-header">
-            <h3>Sepetiniz</h3>
-            <button class="close-cart">×</button>
+            <h3>Sepetim</h3>
+            <button class="close-cart" id="closeCart">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2"/>
+                </svg>
+            </button>
         </div>
-        <div class="mini-cart-items">
-            <div class="empty-cart-message">
-                <p>Sepetiniz boş</p>
-                <a href="shop.html" class="shop-link">Alışverişe Başla</a>
+        <div class="mini-cart-content">
+            <div class="empty-cart">
+                <div class="empty-cart-icon">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M3 3H5L5.4 5M7 13H17L21 5H5.4M7 13L5.4 5M7 13L4.7 15.3C4.3 15.7 4.6 16.5 5.1 16.5H17M17 13V17C17 18.1 16.1 19 15 19H9C7.9 19 7 18.1 7 17V13M17 13H7" stroke="currentColor" stroke-width="2" opacity="0.3"/>
+                    </svg>
+                </div>
+                <p>Sepetiniz henüz boş</p>
+                <a href="shop.html" class="shop-now-btn">Alışverişe Başla</a>
+            </div>
+            <div class="cart-items" style="display: none;">
+                <!-- Cart items will be populated here -->
             </div>
         </div>
-        <div class="mini-cart-footer">
+        <div class="mini-cart-footer" style="display: none;">
             <div class="cart-total">
-                <span>Toplam: <strong>₺0</strong></span>
+                <span>Toplam: ₺0</span>
             </div>
-            <button class="checkout-btn">Ödemeye Geç</button>
-            <a href="cart.html" class="view-cart-btn">Sepeti Görüntüle</a>
+            <a href="cart.html" class="checkout-btn">Sepeti Görüntüle</a>
         </div>
     </div>
 
-    <main>
-        <section class="campaigns-hero">
-            <div class="campaigns-hero-content">
-                <h1>Erkek Giyim Kampanyaları</h1>
-                <p>Şort, tişört, gömlek ve setlerde sınırlı süreli özel indirimlер</p>
+    <!-- Main Content -->
+    <main class="campaigns-main">
+        <!-- Page Header -->
+        <section class="page-header campaigns-header">
+            <div class="container">
+                <div class="breadcrumb">
+                    <a href="index.html">Ana Sayfa</a>
+                    <span class="separator">/</span>
+                    <span class="current">Kampanyalar</span>
+                </div>
+                <h1 class="page-title">Özel Kampanyalar</h1>
+                <p class="page-subtitle">Sınırlı süreli teklifler ve özel indirimlerle tarzını yansıt</p>
             </div>
         </section>
 
+        <!-- Featured Campaign -->
         <section class="featured-campaign">
-            <div class="campaign-banner">
-                <div class="campaign-content">
-                    <div class="campaign-badge">ÖNE ÇIKAN KAMPANYA</div>
-                    <h2>Yazlık Erkek Giyimde %40'a Varan İndirim</h2>
-                    <p>Salaş tişörtler, rahat şortlar ve şık gömleklerde sınırlı süreli özel fiyatlar</p>
-                    <div class="campaign-timer">
-                        <h3>Kampanya Bitiş Süresi:</h3>
-                        <div class="countdown" id="mainCountdown">
-                            <div class="time-unit">
-                                <span class="time-value" id="days">--</span>
-                                <span class="time-label">Gün</span>
+            <div class="container">
+                <div class="campaign-banner">
+                    <div class="campaign-visual">
+                        <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=800&h=600&fit=crop" alt="Yaz Koleksiyonu" loading="lazy">
+                        <div class="campaign-overlay"></div>
+                    </div>
+                    <div class="campaign-content">
+                        <div class="campaign-badge featured">🔥 ÖNE ÇIKAN KAMPANYA</div>
+                        <h2>Yazlık Erkek Giyimde %40'a Varan İndirim</h2>
+                        <p>Salaş tişörtler, rahat şortlar ve şık gömleklerde sınırlı süreli özel fiyatlar. Yaz koleksiyonumuzda bulunan tüm ürünlerde geçerli.</p>
+                        
+                        <div class="campaign-features">
+                            <div class="feature">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12 2L13.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="currentColor"/>
+                                </svg>
+                                <span>Premium ürünlerde geçerli</span>
                             </div>
-                            <div class="time-unit">
-                                <span class="time-value" id="hours">--</span>
-                                <span class="time-label">Saat</span>
+                            <div class="feature">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M13 2L3 14H12L11 22L21 10H12L13 2Z" fill="currentColor"/>
+                                </svg>
+                                <span>Ücretsiz kargo</span>
                             </div>
-                            <div class="time-unit">
-                                <span class="time-value" id="minutes">--</span>
-                                <span class="time-label">Dakika</span>
+                            <div class="feature">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="currentColor" stroke-width="2"/>
+                                    <path d="M9 12L11 14L15 10" stroke="currentColor" stroke-width="2"/>
+                                </svg>
+                                <span>30 gün iade garantisi</span>
                             </div>
-                            <div class="time-unit">
-                                <span class="time-value" id="seconds">--</span>
-                                <span class="time-label">Saniye</span>
+                        </div>
+
+                        <div class="campaign-timer">
+                            <h3>Kampanya Bitiş Süresi</h3>
+                            <div class="countdown" id="mainCountdown">
+                                <div class="time-unit">
+                                    <span class="time-value" id="days">07</span>
+                                    <span class="time-label">Gün</span>
+                                </div>
+                                <div class="time-unit">
+                                    <span class="time-value" id="hours">12</span>
+                                    <span class="time-label">Saat</span>
+                                </div>
+                                <div class="time-unit">
+                                    <span class="time-value" id="minutes">45</span>
+                                    <span class="time-label">Dakika</span>
+                                </div>
+                                <div class="time-unit">
+                                    <span class="time-value" id="seconds">32</span>
+                                    <span class="time-label">Saniye</span>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <a href="shop.html?campaign=summer-sale" class="campaign-cta">Hemen Alışveriş Yap</a>
-                </div>
-                <div class="campaign-image">
-                    <img src="images/featured-look-1.jpg" alt="Yaz Koleksiyonu">
-                </div>
-            </div>
-        </section>
-
-        <section class="campaigns-grid">
-            <div class="section-header">
-                <h2>Tüm Kampanyalar</h2>
-                <p>Size özel hazırlanmış avantajlı teklifler</p>
-            </div>
-
-            <div class="campaigns-container">
-                <div class="campaign-card premium">
-                    <div class="campaign-tag">PREMIUM</div>
-                    <div class="campaign-card-content">
-                        <h3>2. Ürüne %50 İndirim</h3>
-                        <p>Tüm tişört ve gömleklerde geçerli</p>
-                        <div class="campaign-details">
-                            <span class="campaign-code">Kod: TISORT50</span>
-                            <span class="campaign-validity">30 Ağustos'a kadar</span>
+                        
+                        <div class="campaign-actions">
+                            <a href="shop.html?campaign=summer-sale" class="btn-primary campaign-cta">
+                                Hemen Alışveriş Yap
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2"/>
+                                </svg>
+                            </a>
+                            <a href="#all-campaigns" class="btn-secondary">Tüm Kampanyalar</a>
                         </div>
-                        <a href="shop.html?category=t-shirts&campaign=second-half" class="campaign-button">Kampanyayı Kullan</a>
-                    </div>
-                </div>
-
-                <div class="campaign-card">
-                    <div class="campaign-tag">YENİ MÜŞTERİ</div>
-                    <div class="campaign-card-content">
-                        <h3>İlk Alışverişte %25 İndirim</h3>
-                        <p>500₺ ve üzeri alışverişlerde</p>
-                        <div class="campaign-details">
-                            <span class="campaign-code">Kod: HOSGELDIN25</span>
-                            <span class="campaign-validity">Süresiz</span>
-                        </div>
-                        <a href="shop.html?campaign=new-customer" class="campaign-button">Kampanyayı Kullan</a>
-                    </div>
-                </div>
-
-                <div class="campaign-card">
-                    <div class="campaign-tag">ÜCRETSIZ KARGO</div>
-                    <div class="campaign-card-content">
-                        <h3>Tüm Siparişlerde Ücretsiz Kargo</h3>
-                        <p>Minimum alışveriş tutarı yok</p>
-                        <div class="campaign-details">
-                            <span class="campaign-code">Otomatik uygulanır</span>
-                            <span class="campaign-validity">31 Temmuz'a kadar</span>
-                        </div>
-                        <a href="shop.html" class="campaign-button">Alışverişe Başla</a>
-                    </div>
-                </div>
-
-                <div class="campaign-card seasonal">
-                    <div class="campaign-tag">SEZON SONU</div>
-                    <div class="campaign-card-content">
-                        <h3>Sezon Sonu Fırsatları</h3>
-                        <p>Seçili ürünlerde %60'a varan indirim</p>
-                        <div class="campaign-details">
-                            <span class="campaign-code">Seçili ürünlerde</span>
-                            <span class="campaign-validity">Stok tükene kadar</span>
-                        </div>
-                        <a href="shop.html?campaign=end-of-season" class="campaign-button">Fırsatları Gör</a>
-                    </div>
-                </div>
-
-                <div class="campaign-card loyalty">
-                    <div class="campaign-tag">SADAKATLİ MÜŞTERİ</div>
-                    <div class="campaign-card-content">
-                        <h3>Sadakat Programı</h3>
-                        <p>Her alışverişte %5 puan kazan</p>
-                        <div class="campaign-details">
-                            <span class="campaign-code">Otomatik katılım</span>
-                            <span class="campaign-validity">Sürekli geçerli</span>
-                        </div>
-                        <a href="#loyalty-program" class="campaign-button">Detayları Gör</a>
-                    </div>
-                </div>
-
-                <div class="campaign-card bundle">
-                    <div class="campaign-tag">SET İNDİRİMİ</div>
-                    <div class="campaign-card-content">
-                        <h3>Şort-Tişört Setleri</h3>
-                        <p>Set alışverişlerinde %30 indirim</p>
-                        <div class="campaign-details">
-                            <span class="campaign-code">Kod: SETLER30</span>
-                            <span class="campaign-validity">31 Ağustos'a kadar</span>
-                        </div>
-                        <a href="shop.html?category=sets&campaign=bundle-discount" class="campaign-button">Setleri Gör</a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="newsletter-signup">
-            <div class="newsletter-content">
-                <h2>Kampanyalardan İlk Siz Haberdar Olun</h2>
-                <p>Özel indirimleri ve sınırlı süreli teklifleri kaçırmayın</p>
-                <form class="newsletter-form">
-                    <input type="email" placeholder="E-posta adresiniz" required>
-                    <button type="submit">Kampanya Bildirimlerini Aç</button>
-                </form>
-                <div class="newsletter-benefits">
-                    <div class="benefit">
-                        <span class="benefit-icon">📧</span>
-                        <span>Haftalık kampanya bülteni</span>
+        <!-- Campaigns Grid -->
+        <section class="campaigns-grid" id="all-campaigns">
+            <div class="container">
+                <div class="section-header">
+                    <div class="section-badge">Aktif Kampanyalar</div>
+                    <h2>Tüm Kampanyalar</h2>
+                    <p>Size özel hazırlanmış avantajlı teklifler ve indirimler</p>
+                </div>
+
+                <div class="campaigns-container">
+                    <div class="campaign-card premium">
+                        <div class="campaign-tag">⭐ PREMIUM</div>
+                        <div class="campaign-icon">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 2L13.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="currentColor"/>
+                            </svg>
+                        </div>
+                        <div class="campaign-card-content">
+                            <h3>2. Ürüne %50 İndirim</h3>
+                            <p>Tüm tişört ve gömleklerde geçerli. En düşük fiyatlı ürüne indirim uygulanır.</p>
+                            <div class="campaign-details">
+                                <div class="detail">
+                                    <span class="label">Kod:</span>
+                                    <span class="code">TISORT50</span>
+                                </div>
+                                <div class="detail">
+                                    <span class="label">Geçerlilik:</span>
+                                    <span class="validity">30 Ağustos'a kadar</span>
+                                </div>
+                            </div>
+                            <a href="shop.html?category=t-shirts&campaign=second-half" class="campaign-button">
+                                Kampanyayı Kullan
+                            </a>
+                        </div>
                     </div>
-                    <div class="benefit">
-                        <span class="benefit-icon">🎁</span>
-                        <span>Özel üye indirimleri</span>
+
+                    <div class="campaign-card new-customer">
+                        <div class="campaign-tag">🎁 YENİ MÜŞTERİ</div>
+                        <div class="campaign-icon">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M16 21V19C16 16.7909 14.2091 15 12 15H5C2.79086 15 1 16.7909 1 19V21" stroke="currentColor" stroke-width="2"/>
+                                <circle cx="8.5" cy="7" r="4" stroke="currentColor" stroke-width="2"/>
+                                <path d="M20 8V21L17 19L15 21V8" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        </div>
+                        <div class="campaign-card-content">
+                            <h3>İlk Alışverişte %25 İndirim</h3>
+                            <p>500₺ ve üzeri ilk alışverişinizde geçerli hoş geldin indirimi.</p>
+                            <div class="campaign-details">
+                                <div class="detail">
+                                    <span class="label">Kod:</span>
+                                    <span class="code">HOSGELDIN25</span>
+                                </div>
+                                <div class="detail">
+                                    <span class="label">Geçerlilik:</span>
+                                    <span class="validity">Süresiz</span>
+                                </div>
+                            </div>
+                            <a href="shop.html?campaign=new-customer" class="campaign-button">
+                                Kampanyayı Kullan
+                            </a>
+                        </div>
                     </div>
-                    <div class="benefit">
-                        <span class="benefit-icon">⚡</span>
-                        <span>Flash sale bildirimleri</span>
+
+                    <div class="campaign-card free-shipping">
+                        <div class="campaign-tag">🚚 ÜCRETSIZ KARGO</div>
+                        <div class="campaign-icon">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M14 18V6C14 5.44772 13.5523 5 13 5H1V18H14Z" stroke="currentColor" stroke-width="2"/>
+                                <path d="M14 9H18L23 14V18H14V9Z" stroke="currentColor" stroke-width="2"/>
+                                <circle cx="6" cy="18" r="2" stroke="currentColor" stroke-width="2"/>
+                                <circle cx="18" cy="18" r="2" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        </div>
+                        <div class="campaign-card-content">
+                            <h3>Tüm Siparişlerde Ücretsiz Kargo</h3>
+                            <p>Minimum alışveriş tutarı olmadan tüm siparişlerde ücretsiz kargo.</p>
+                            <div class="campaign-details">
+                                <div class="detail">
+                                    <span class="label">Kod:</span>
+                                    <span class="code">Otomatik uygulanır</span>
+                                </div>
+                                <div class="detail">
+                                    <span class="label">Geçerlilik:</span>
+                                    <span class="validity">31 Temmuz'a kadar</span>
+                                </div>
+                            </div>
+                            <a href="shop.html" class="campaign-button">
+                                Alışverişe Başla
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="campaign-card seasonal">
+                        <div class="campaign-tag">🍂 SEZON SONU</div>
+                        <div class="campaign-icon">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 2L13.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="currentColor"/>
+                            </svg>
+                        </div>
+                        <div class="campaign-card-content">
+                            <h3>Sezon Sonu Fırsatları</h3>
+                            <p>Seçili bahar ve yaz ürünlerinde %60'a varan muhteşem indirimler.</p>
+                            <div class="campaign-details">
+                                <div class="detail">
+                                    <span class="label">Kod:</span>
+                                    <span class="code">Seçili ürünlerde</span>
+                                </div>
+                                <div class="detail">
+                                    <span class="label">Geçerlilik:</span>
+                                    <span class="validity">Stok tükene kadar</span>
+                                </div>
+                            </div>
+                            <a href="shop.html?campaign=end-of-season" class="campaign-button">
+                                Fırsatları Gör
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="campaign-card loyalty">
+                        <div class="campaign-tag">💎 SADAKATLİ MÜŞTERİ</div>
+                        <div class="campaign-icon">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="currentColor"/>
+                            </svg>
+                        </div>
+                        <div class="campaign-card-content">
+                            <h3>Sadakat Programı</h3>
+                            <p>Her alışverişte %5 puan kazan, puanlarınızla indirim yap.</p>
+                            <div class="campaign-details">
+                                <div class="detail">
+                                    <span class="label">Kod:</span>
+                                    <span class="code">Otomatik katılım</span>
+                                </div>
+                                <div class="detail">
+                                    <span class="label">Geçerlilik:</span>
+                                    <span class="validity">Sürekli geçerli</span>
+                                </div>
+                            </div>
+                            <a href="profile.html" class="campaign-button">
+                                Detayları Gör
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="campaign-card bundle">
+                        <div class="campaign-tag">👕 SET İNDİRİMİ</div>
+                        <div class="campaign-icon">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M4 7V5C4 4.44772 4.44772 4 5 4H19C19.5523 4 20 4.44772 20 5V7" stroke="currentColor" stroke-width="2"/>
+                                <path d="M4 7H20L19 20H5L4 7Z" stroke="currentColor" stroke-width="2"/>
+                                <path d="M9 11V12C9 13.6569 10.3431 15 12 15C13.6569 15 15 13.6569 15 12V11" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        </div>
+                        <div class="campaign-card-content">
+                            <h3>Şort-Tişört Setleri</h3>
+                            <p>Set halinde alışverişlerinizde %30 özel indirim fırsatı.</p>
+                            <div class="campaign-details">
+                                <div class="detail">
+                                    <span class="label">Kod:</span>
+                                    <span class="code">SETLER30</span>
+                                </div>
+                                <div class="detail">
+                                    <span class="label">Geçerlilik:</span>
+                                    <span class="validity">31 Ağustos'a kadar</span>
+                                </div>
+                            </div>
+                            <a href="shop.html?category=sets&campaign=bundle-discount" class="campaign-button">
+                                Setleri Gör
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
+        <!-- Newsletter Section -->
+        <section class="newsletter campaign-newsletter">
+            <div class="container">
+                <div class="newsletter-content">
+                    <div class="newsletter-text">
+                        <div class="section-badge">Özel Teklifler</div>
+                        <h2>Kampanyalardan İlk Siz Haberdar Olun</h2>
+                        <p>Özel indirimleri, sınırlı süreli teklifleri ve flash sale'leri kaçırmayın. Sadece üyelerimize özel fırsatlar.</p>
+                    </div>
+                    <form class="newsletter-form" id="campaignNewsletterForm">
+                        <div class="form-group">
+                            <input type="email" placeholder="E-posta adresiniz" required>
+                            <button type="submit">
+                                Kampanya Bildirimlerini Aç
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2"/>
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="newsletter-benefits">
+                            <span>📧 Haftalık kampanya bülteni</span>
+                            <span>🎁 Özel üye indirimleri</span>
+                            <span>⚡ Flash sale bildirimleri</span>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Campaign Terms -->
         <section class="campaign-terms">
-            <div class="terms-container">
-                <h2>Kampanya Koşulları</h2>
+            <div class="container">
+                <div class="terms-header">
+                    <h2>Kampanya Koşulları</h2>
+                    <p>Kampanyalarımızla ilgili önemli bilgiler ve kullanım koşulları</p>
+                </div>
                 <div class="terms-grid">
                     <div class="term-item">
+                        <div class="term-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="currentColor" stroke-width="2"/>
+                                <path d="M12 8V16M12 8C10.8954 8 10 7.10457 10 6C10 4.89543 10.8954 4 12 4C13.1046 4 14 4.89543 14 6C14 7.10457 13.1046 8 12 8Z" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        </div>
                         <h3>Genel Koşullar</h3>
                         <ul>
                             <li>Kampanyalar birbirleriyle birleştirilemez</li>
                             <li>İndirimler sadece listelenen ürünlerde geçerlidir</li>
-                            <li>Kampanyalar değişiklik yapılmaksızın iptal edilebilir</li>
+                            <li>Kampanyalar önceden haber verilmeksizin iptal edilebilir</li>
+                            <li>Kampanya süresi boyunca stok durumuna göre ürünler satıştan kaldırılabilir</li>
                         </ul>
                     </div>
                     <div class="term-item">
+                        <div class="term-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M9 12L11 14L15 10M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        </div>
                         <h3>İndirim Kodları</h3>
                         <ul>
                             <li>Her kod sadece bir kez kullanılabilir</li>
                             <li>Kodlar büyük/küçük harf duyarlıdır</li>
-                            <li>Süresi dolan kodlar geçersizdir</li>
+                            <li>Süresi dolan kodlar otomatik olarak geçersiz hale gelir</li>
+                            <li>Kodlar başka kullanıcılarla paylaşılamaz</li>
                         </ul>
                     </div>
                     <div class="term-item">
+                        <div class="term-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M16 3H5C3.89543 3 3 3.89543 3 5V19C3 20.1046 3.89543 21 5 21H19C20.1046 21 21 20.1046 21 19V8L16 3Z" stroke="currentColor" stroke-width="2"/>
+                                <path d="M16 3V8H21" stroke="currentColor" stroke-width="2"/>
+                                <path d="M9 15L11 17L15 13" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        </div>
                         <h3>İade ve Değişim</h3>
                         <ul>
                             <li>İndirimli ürünler 30 gün içinde iade edilebilir</li>
                             <li>İade işleminde indirimli tutar esas alınır</li>
-                            <li>Orijinal etiketlerle birlikte iade gereklidir</li>
+                            <li>Orijinal etiketleri ile birlikte iade gereklidir</li>
+                            <li>Giyilmiş veya hasarlı ürünlerde iade kabul edilmez</li>
                         </ul>
                     </div>
                 </div>
@@ -267,35 +468,101 @@
         </section>
     </main>
 
-    <footer>
-        <div class="footer-content">
-            <div class="footer-section">
-                <h3>SS Voila</h3>
-                <p>Zamansız elegansı yaşayın</p>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <span class="logo-text">SS Voila</span>
+                        <span class="logo-tagline">MODERN MEN</span>
+                    </div>
+                    <p class="footer-description">
+                        Modern erkeğin tarzını belirleyen, kaliteli ve özgün tasarımları buluşturan Türkiye'nin önde gelen erkek giyim markası.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Instagram">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="Facebook">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="Twitter">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="YouTube">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Alışveriş</h4>
+                        <ul>
+                            <li><a href="shop.html">Tüm Ürünler</a></li>
+                            <li><a href="shop.html?category=new">Yeni Gelenler</a></li>
+                            <li><a href="shop.html?category=bestsellers">En Çok Satanlar</a></li>
+                            <li><a href="campaigns.html">Kampanyalar</a></li>
+                            <li><a href="shop.html?category=sale">İndirimli Ürünler</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h4>Kategoriler</h4>
+                        <ul>
+                            <li><a href="shop.html?category=t-shirts">Tişörtler</a></li>
+                            <li><a href="shop.html?category=shirts">Gömlekler</a></li>
+                            <li><a href="shop.html?category=shorts">Şortlar</a></li>
+                            <li><a href="shop.html?category=sets">Set Ürünler</a></li>
+                            <li><a href="shop.html?category=accessories">Aksesuarlar</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h4>Hesap</h4>
+                        <ul>
+                            <li><a href="profile.html">Profilim</a></li>
+                            <li><a href="cart.html">Sepetim</a></li>
+                            <li><a href="login.html">Giriş Yap</a></li>
+                            <li><a href="register.html">Kaydol</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h4>Kurumsal</h4>
+                        <ul>
+                            <li><a href="about.html">Hakkımızda</a></li>
+                            <li><a href="contact.html">İletişim</a></li>
+                            <li><a href="#">Kariyer</a></li>
+                            <li><a href="#">Basın</a></li>
+                            <li><a href="#">İş Ortaklığı</a></li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-            <div class="footer-section">
-                <h4>Hızlı Linkler</h4>
-                <ul>
-                    <li><a href="shop.html">Koleksiyon</a></li>
-                    <li><a href="campaigns.html">Kampanyalar</a></li>
-                    <li><a href="brand.html">Marka Hikayesi</a></li>
-                </ul>
+            
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <p>&copy; 2024 SS Voila. Tüm hakları saklıdır.</p>
+                    <div class="footer-legal">
+                        <a href="#">Gizlilik Politikası</a>
+                        <a href="#">Kullanım Şartları</a>
+                        <a href="#">Çerez Politikası</a>
+                    </div>
+                </div>
             </div>
-            <div class="footer-section">
-                <h4>Müşteri Hizmetleri</h4>
-                <ul>
-                    <li><a href="contact.html">İletişim</a></li>
-                    <li><a href="#shipping">Kargo Bilgisi</a></li>
-                    <li><a href="#returns">İade & Değişim</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2025 SS Voila. Tüm Hakları Saklıdır.</p>
         </div>
     </footer>
 
     <script src="js/main.js"></script>
-    <script src="js/campaigns.js"></script>
 </body>
 </html> 
