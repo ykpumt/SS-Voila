@@ -1,1 +1,1 @@
-# SS-Voila
+# SS Voila Showcase Project
