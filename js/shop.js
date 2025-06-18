@@ -14,6 +14,7 @@ class ShopManager {
         };
         this.currentSort = 'newest';
         this.currentView = 'grid';
+        this.wishlist = JSON.parse(localStorage.getItem('ssvoila_wishlist')) || [];
         this.allProducts = this.generateProducts();
         this.filteredProducts = [...this.allProducts];
         
@@ -43,6 +44,22 @@ class ShopManager {
             'sets': ['Yazlık Set', 'Tatil Seti', 'Casual Set', 'Sport Set', 'Premium Set'],
             'polo': ['Classic Polo', 'Slim Polo', 'Premium Polo', 'Sport Polo', 'Pique Polo']
         };
+
+        // Real product reviews data
+        const reviewsData = [
+            { author: 'Mehmet K.', rating: 5, comment: 'Mükemmel kalite, kumaşı çok yumuşak. Tavsiye ederim!', date: '15 Ocak 2024', helpful: 12 },
+            { author: 'Ali D.', rating: 4, comment: 'Güzel ürün ama biraz büyük geldi. Bir beden küçük alın.', date: '10 Ocak 2024', helpful: 8 },
+            { author: 'Emre S.', rating: 5, comment: 'Çok beğendim, rengi fotoğraftaki gibi. Hızlı kargo.', date: '5 Ocak 2024', helpful: 15 },
+            { author: 'Can Y.', rating: 3, comment: 'Fena değil ama beklediğim kadar kaliteli değildi.', date: '28 Aralık 2023', helpful: 3 },
+            { author: 'Burak M.', rating: 5, comment: 'Harika! İkincisini de aldım. Çok rahat ve şık.', date: '20 Aralık 2023', helpful: 20 },
+            { author: 'Onur T.', rating: 4, comment: 'Güzel tasarım, fiyat performans açısından iyi.', date: '15 Aralık 2023', helpful: 7 },
+            { author: 'Kemal A.', rating: 5, comment: 'SS Voila kalitesi her zamanki gibi mükemmel!', date: '12 Aralık 2023', helpful: 18 },
+            { author: 'Serkan L.', rating: 4, comment: 'Beğendim ama kargo biraz geç geldi.', date: '8 Aralık 2023', helpful: 5 },
+            { author: 'Tolga R.', rating: 5, comment: 'Arkadaşıma da tavsiye ettim. Çok memnunum.', date: '5 Aralık 2023', helpful: 11 },
+            { author: 'Murat G.', rating: 3, comment: 'Ortalama bir ürün. Daha iyi olabilirdi.', date: '1 Aralık 2023', helpful: 2 },
+            { author: 'Deniz B.', rating: 5, comment: 'Kalite çok iyi, fiyatına göre süper. Aldığıma değdi.', date: '28 Kasım 2023', helpful: 16 },
+            { author: 'Cem F.', rating: 4, comment: 'Güzel ürün, sadece renk biraz soluk geldi.', date: '25 Kasım 2023', helpful: 6 }
+        ];
         
         const colors = ['white', 'black', 'navy', 'gray', 'beige', 'khaki', 'light-blue', 'burgundy'];
         const sizes = ['XS', 'S', 'M', 'L', 'XL', 'XXL'];
@@ -72,6 +89,20 @@ class ShopManager {
                 const originalPrice = Math.floor(Math.random() * (800 - 200) + 200);
                 const salePrice = isOnSale ? Math.floor(originalPrice * 0.7) : originalPrice;
                 
+                // Generate reviews for this product
+                const productReviewCount = Math.floor(Math.random() * 5) + 2;
+                const productReviews = [];
+                const shuffledReviews = [...reviewsData].sort(() => 0.5 - Math.random());
+                
+                for (let i = 0; i < productReviewCount && i < shuffledReviews.length; i++) {
+                    productReviews.push(shuffledReviews[i]);
+                }
+                
+                // Calculate average rating based on reviews
+                const avgRating = productReviews.length > 0 
+                    ? (productReviews.reduce((sum, review) => sum + review.rating, 0) / productReviews.length).toFixed(1)
+                    : (Math.random() * 2 + 3).toFixed(1);
+                
                 products.push({
                     id: productId++,
                     name: baseName,
@@ -82,8 +113,9 @@ class ShopManager {
                     colors: colors.slice(0, Math.floor(Math.random() * 4) + 2),
                     sizes: sizes.slice(0, Math.floor(Math.random() * 3) + 3),
                     features: randomFeatures,
-                    rating: (Math.random() * 2 + 3).toFixed(1),
-                    reviews: Math.floor(Math.random() * 200) + 10,
+                    rating: parseFloat(avgRating),
+                    reviews: productReviews,
+                    reviewCount: productReviews.length,
                     description: `Premium kalitede ${category.label.toLowerCase()}. Yüksek kaliteli kumaş ve modern tasarım.`,
                     isNew: randomFeatures.includes('new'),
                     isBestseller: randomFeatures.includes('bestseller'),
@@ -395,8 +427,8 @@ class ShopManager {
                                     <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2"/>
                                 </svg>
                             </button>
-                            <button class="wishlist-btn" onclick="productManager.toggleWishlist(${product.id})" title="Favorilere Ekle">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                            <button class="wishlist-btn ${this.isInWishlist(product.id) ? 'active' : ''}" onclick="shopManager.toggleWishlist(${product.id})" title="Favorilere Ekle">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="${this.isInWishlist(product.id) ? 'currentColor' : 'none'}">
                                     <path d="M12 21.35L10.55 20.03C5.4 15.36 2 12.28 2 8.5C2 5.42 4.42 3 7.5 3C9.24 3 10.91 3.81 12 5.09C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.42 22 8.5C22 12.28 18.6 15.36 13.45 20.04L12 21.35Z" stroke="currentColor" stroke-width="2"/>
                                 </svg>
                             </button>
@@ -414,7 +446,7 @@ class ShopManager {
                         <div class="stars">
                             ${this.generateStars(product.rating)}
                         </div>
-                        <span class="rating-text">${product.rating} (${product.reviews} değerlendirme)</span>
+                        <span class="rating-text">${product.rating} (${product.reviewCount} değerlendirme)</span>
                     </div>
                     ${priceHTML}
                     <div class="product-colors">
@@ -524,6 +556,53 @@ class ShopManager {
     
     getProductById(id) {
         return this.allProducts.find(product => product.id === parseInt(id));
+    }
+
+    isInWishlist(productId) {
+        return this.wishlist.includes(productId);
+    }
+
+    toggleWishlist(productId) {
+        const product = this.getProductById(productId);
+        if (!product) return;
+
+        if (this.isInWishlist(productId)) {
+            this.wishlist = this.wishlist.filter(id => id !== productId);
+            this.showNotification(`${product.name} favorilerden çıkarıldı`, 'info');
+        } else {
+            this.wishlist.push(productId);
+            this.showNotification(`${product.name} favorilere eklendi!`, 'success');
+        }
+
+        localStorage.setItem('ssvoila_wishlist', JSON.stringify(this.wishlist));
+        this.updateWishlistDisplay();
+        this.renderProducts(); // Re-render to update heart icons
+    }
+
+    updateWishlistDisplay() {
+        const wishlistCounter = document.querySelector('.wishlist-counter');
+        if (wishlistCounter) {
+            wishlistCounter.textContent = this.wishlist.length;
+            wishlistCounter.style.display = this.wishlist.length > 0 ? 'flex' : 'none';
+        }
+    }
+
+    showNotification(message, type = 'info') {
+        const notification = document.createElement('div');
+        notification.className = `notification notification-${type}`;
+        notification.innerHTML = `
+            <div class="notification-content">
+                <span>${message}</span>
+                <button onclick="this.parentElement.parentElement.remove()">×</button>
+            </div>
+        `;
+        
+        document.body.appendChild(notification);
+        setTimeout(() => notification.classList.add('show'), 100);
+        setTimeout(() => {
+            notification.classList.remove('show');
+            setTimeout(() => notification.remove(), 300);
+        }, 3000);
     }
 }
 

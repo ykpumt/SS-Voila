@@ -155,6 +155,8 @@ class CartManager {
     constructor() {
         this.cart = JSON.parse(localStorage.getItem('ssvoila_cart')) || [];
         this.wishlist = JSON.parse(localStorage.getItem('ssvoila_wishlist')) || [];
+        this.appliedCoupon = localStorage.getItem('ssvoila_coupon') || null;
+        this.appliedDiscount = localStorage.getItem('ssvoila_discount') || 0;
         this.initializeEventListeners();
         this.updateCartDisplay();
     }
@@ -243,7 +245,44 @@ class CartManager {
     }
 
     getCartTotal() {
-        return this.cart.reduce((total, item) => total + (item.price * item.quantity), 0);
+        let total = this.cart.reduce((total, item) => total + (item.price * item.quantity), 0);
+        
+        // Apply discount if SCREENSHOT coupon is active
+        if (this.appliedCoupon === 'SCREENSHOT') {
+            total = total * 0.01; // 99% discount
+        }
+        
+        return total;
+    }
+
+    applyCoupon(code) {
+        const coupons = {
+            'SCREENSHOT': { discount: 99, type: 'percentage', description: 'Özel Sunum İndirimi' },
+            'HOSGELDIN15': { discount: 15, type: 'percentage', description: 'Hoşgeldin İndirimi' },
+            'YAZLIK30': { discount: 30, type: 'percentage', description: 'Yazlık Ürünler İndirimi' },
+            'ILKKEZ20': { discount: 20, type: 'percentage', description: 'İlk Alışveriş İndirimi' }
+        };
+
+        const coupon = coupons[code.toUpperCase()];
+        if (coupon) {
+            this.appliedCoupon = code.toUpperCase();
+            this.appliedDiscount = coupon.discount;
+            this.saveCart();
+            this.updateCartDisplay();
+            this.showNotification(`${coupon.description} uygulandı! %${coupon.discount} indirim`, 'success');
+            return true;
+        } else {
+            this.showNotification('Geçersiz kupon kodu!', 'error');
+            return false;
+        }
+    }
+
+    removeCoupon() {
+        this.appliedCoupon = null;
+        this.appliedDiscount = 0;
+        this.saveCart();
+        this.updateCartDisplay();
+        this.showNotification('Kupon kaldırıldı', 'info');
     }
 
     getCartItemCount() {
@@ -252,6 +291,8 @@ class CartManager {
 
     saveCart() {
         localStorage.setItem('ssvoila_cart', JSON.stringify(this.cart));
+        localStorage.setItem('ssvoila_coupon', this.appliedCoupon);
+        localStorage.setItem('ssvoila_discount', this.appliedDiscount);
     }
 
     updateCartDisplay() {
