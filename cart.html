@@ -30,7 +30,7 @@
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M3 3H5L5.4 5M7 13H17L21 5H5.4M7 13L5.4 5M7 13L4.7 15.3C4.3 15.7 4.6 16.5 5.1 16.5H17M17 13V17C17 18.1 16.1 19 15 19H9C7.9 19 7 18.1 7 17V13M17 13H7" stroke="currentColor" stroke-width="2"/>
                     </svg>
-                    <span class="counter cart-counter">3</span>
+                    <span class="counter cart-counter" id="cartCounter">0</span>
                 </button>
                 <div class="auth-links">
                     <a href="login.html" class="auth-link">Giriş Yap</a>
@@ -43,116 +43,487 @@
     <main class="cart-main">
         <div class="container">
             <div class="page-header">
-                <h1>Alışveriş Sepetim</h1>
-                <span class="item-count">3 ürün</span>
+                <div class="breadcrumb">
+                    <a href="index.html">Ana Sayfa</a>
+                    <span class="separator">›</span>
+                    <span class="current">Sepetim</span>
+                </div>
+                <h1 class="page-title">Alışveriş Sepetim</h1>
+                <span class="item-count" id="itemCountDisplay">Sepetiniz boş</span>
             </div>
 
-            <div class="cart-content">
-                <div class="cart-items">
-                    <div class="cart-item">
-                        <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=120&h=120&fit=crop" alt="Premium Polo">
-                        <div class="item-info">
-                            <h3>Premium Pamuk Polo</h3>
-                            <p>Lacivert - L</p>
-                            <div class="price">₺349</div>
-                        </div>
-                        <div class="quantity">
-                            <button class="qty-btn">-</button>
-                            <span>1</span>
-                            <button class="qty-btn">+</button>
-                        </div>
-                        <button class="remove-btn">Kaldır</button>
+            <!-- Empty Cart State -->
+            <div class="empty-cart-container" id="emptyCartContainer">
+                <div class="empty-cart-content">
+                    <div class="empty-cart-icon">
+                        <svg width="80" height="80" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M3 3H5L5.4 5M7 13H17L21 5H5.4M7 13L5.4 5M7 13L4.7 15.3C4.3 15.7 4.6 16.5 5.1 16.5H17M17 13V17C17 18.1 16.1 19 15 19H9C7.9 19 7 18.1 7 17V13M17 13H7" stroke="currentColor" stroke-width="1.5"/>
+                        </svg>
                     </div>
-                    
-                    <div class="cart-item">
-                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=120&h=120&fit=crop" alt="Keten Gömlek">
-                        <div class="item-info">
-                            <h3>Keten Karışım Gömlek</h3>
-                            <p>Beyaz - M</p>
-                            <div class="price">₺529</div>
-                        </div>
-                        <div class="quantity">
-                            <button class="qty-btn">-</button>
-                            <span>2</span>
-                            <button class="qty-btn">+</button>
-                        </div>
-                        <button class="remove-btn">Kaldır</button>
+                    <h2>Sepetiniz Boş</h2>
+                    <p>Henüz sepetinizde ürün bulunmuyor. Koleksiyonumuzu keşfetmek için alışverişe başlayın!</p>
+                    <div class="empty-cart-actions">
+                        <a href="shop.html" class="btn-primary">Alışverişe Başla</a>
+                        <a href="index.html" class="btn-outline">Ana Sayfaya Dön</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cart Content -->
+            <div class="cart-content" id="cartContent" style="display: none;">
+                <div class="cart-items-section">
+                    <div class="cart-items-header">
+                        <h2>Sepetinizleki Ürünler</h2>
+                        <button class="clear-cart-btn" id="clearCartBtn">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M19 7L18.1327 19.1425C18.0579 20.1891 17.187 21 16.1378 21H7.86224C6.81296 21 5.94208 20.1891 5.86732 19.1425L5 7M10 11V17M14 11V17M15 7V4C15 3.44772 14.5523 3 14 3H10C9.44772 3 9 3.44772 9 4V7M4 7H20" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                            Sepeti Temizle
+                        </button>
+                    </div>
+                    <div class="cart-items" id="cartItemsContainer">
+                        <!-- Cart items will be dynamically generated here -->
                     </div>
                 </div>
 
-                <div class="cart-summary">
-                    <h3>Sipariş Özeti</h3>
-                    
-                    <!-- Coupon Section -->
-                    <div class="coupon-section">
-                        <h4>İndirim Kodu</h4>
-                        <div class="coupon-form">
-                            <input type="text" id="couponCode" placeholder="Kupon kodunuzu giriniz">
-                            <button type="button" class="apply-coupon-btn" id="applyCoupon">Uygula</button>
-                        </div>
-                        <div class="coupon-suggestions">
-                            <span class="coupon-tag" data-code="YENI25">YENI25 - %25 İndirim</span>
-                            <span class="coupon-tag" data-code="KARGO50">KARGO50 - Ücretsiz Kargo</span>
-                        </div>
-                    </div>
-                    
-                    <!-- Campaign Suggestions -->
-                    <div class="campaign-suggestions">
-                        <h4>🎁 Mevcut Kampanyalar</h4>
-                        <div class="suggestion-item">
-                            <span class="suggestion-icon">🛍️</span>
-                            <div class="suggestion-text">
-                                <strong>2. Ürüne %50 İndirim</strong>
-                                <small>Sepetinize 1 ürün daha ekleyin</small>
+                <div class="cart-summary-section">
+                    <div class="cart-summary">
+                        <h3>Sipariş Özeti</h3>
+                        
+                        <!-- Coupon Section -->
+                        <div class="coupon-section">
+                            <h4>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12 2L13.09 8.26L22 9L13.09 9.74L12 16L10.91 9.74L2 9L10.91 8.26L12 2Z" stroke="currentColor" stroke-width="2"/>
+                                </svg>
+                                İndirim Kodu
+                            </h4>
+                            <div class="coupon-form">
+                                <input type="text" id="couponCode" placeholder="Kupon kodunuzu giriniz (örn: SCREENSHOT)">
+                                <button type="button" class="apply-coupon-btn" id="applyCoupon">Uygula</button>
                             </div>
-                            <a href="shop.html" class="suggestion-link">Keşfet</a>
-                        </div>
-                        <div class="suggestion-item">
-                            <span class="suggestion-icon">🚚</span>
-                            <div class="suggestion-text">
-                                <strong>Ücretsiz Kargo</strong>
-                                <small>500₺ ve üzeri siparişlerde</small>
+                            <div class="coupon-suggestions">
+                                <span class="coupon-tag" data-code="SCREENSHOT">📸 SCREENSHOT - %99 İndirim!</span>
+                                <span class="coupon-tag" data-code="HOSGELDIN15">🎉 HOSGELDIN15 - %15 İndirim</span>
+                                <span class="coupon-tag" data-code="YAZLIK30">☀️ YAZLIK30 - %30 İndirim</span>
                             </div>
-                            <span class="suggestion-achieved">✓ Kazandınız!</span>
+                            <div class="applied-coupon" id="appliedCoupon" style="display: none;">
+                                <div class="coupon-info">
+                                    <span class="coupon-name" id="appliedCouponName"></span>
+                                    <button class="remove-coupon-btn" id="removeCoupon">
+                                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2"/>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Campaign Suggestions -->
+                        <div class="campaign-suggestions">
+                            <h4>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M7 8H17M7 12H17M7 16H12M3 4V20L6 18L9 20V4H3Z" stroke="currentColor" stroke-width="2"/>
+                                </svg>
+                                Mevcut Kampanyalar
+                            </h4>
+                            <div class="suggestion-item">
+                                <span class="suggestion-icon">🛍️</span>
+                                <div class="suggestion-text">
+                                    <strong>500₺ Üzeri Ücretsiz Kargo</strong>
+                                    <small id="shippingStatus">Sepetinizi 500₺'ye tamamlayın</small>
+                                </div>
+                                <span class="suggestion-status" id="freeShippingStatus">🎯</span>
+                            </div>
+                            <div class="suggestion-item">
+                                <span class="suggestion-icon">💝</span>
+                                <div class="suggestion-text">
+                                    <strong>2. Ürüne %20 İndirim</strong>
+                                    <small>Sepetinize bir ürün daha ekleyin</small>
+                                </div>
+                                <a href="shop.html" class="suggestion-link">Keşfet</a>
+                            </div>
+                            <div class="suggestion-item special-screenshot">
+                                <span class="suggestion-icon">📸</span>
+                                <div class="suggestion-text">
+                                    <strong>SCREENSHOT Kodu ile %99 İndirim!</strong>
+                                    <small>Özel sunum kodu ile neredeyse bedava</small>
+                                </div>
+                                <span class="suggestion-highlight">ÖZEL!</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Order Summary -->
+                        <div class="order-breakdown">
+                            <div class="summary-line">
+                                <span>Ara Toplam (<span id="totalItems">0</span> ürün)</span>
+                                <span id="subtotalAmount">₺0</span>
+                            </div>
+                            <div class="summary-line discount-line" id="discountLine" style="display: none;">
+                                <span>İndirim <span id="discountPercentage"></span></span>
+                                <span class="discount-amount" id="discountAmount">-₺0</span>
+                            </div>
+                            <div class="summary-line">
+                                <span>Kargo</span>
+                                <span class="shipping-cost" id="shippingCost">₺29</span>
+                            </div>
+                            <div class="summary-line tax-line">
+                                <span>KDV (%20)</span>
+                                <span id="taxAmount">₺0</span>
+                            </div>
+                            <div class="summary-total">
+                                <span>Toplam</span>
+                                <span class="final-total" id="finalTotal">₺0</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Action Buttons -->
+                        <div class="checkout-actions">
+                            <a href="checkout.html" class="checkout-btn" id="checkoutBtn">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M9 12L11 14L15 10M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="currentColor" stroke-width="2"/>
+                                </svg>
+                                Güvenli Ödeme
+                                <span class="checkout-total" id="checkoutTotal">₺0</span>
+                            </a>
+                            <button class="save-for-later-btn" id="saveForLaterBtn">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" stroke="currentColor" stroke-width="2"/>
+                                </svg>
+                                Favorilere Kaydet
+                            </button>
                         </div>
                     </div>
-                    
-                    <div class="summary-line">
-                        <span>Ara Toplam</span>
-                        <span>₺1,407</span>
-                    </div>
-                    <div class="summary-line discount-line" style="display: none;">
-                        <span>İndirim</span>
-                        <span class="discount-amount">-₺0</span>
-                    </div>
-                    <div class="summary-line">
-                        <span>Kargo</span>
-                        <span class="shipping-cost">Ücretsiz</span>
-                    </div>
-                    <div class="summary-total">
-                        <span>Toplam</span>
-                        <span class="final-total">₺1,407</span>
-                    </div>
-                    
-                    <div class="checkout-actions">
-                        <a href="checkout.html" class="checkout-btn">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M9 12L11 14L15 10M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="currentColor" stroke-width="2"/>
+
+                    <!-- Security & Trust Badges -->
+                    <div class="security-badges">
+                        <div class="security-item">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 22C12 22 20 18 20 12V5L12 2L4 5V12C4 18 12 22 12 22Z" stroke="currentColor" stroke-width="2"/>
                             </svg>
-                            Güvenli Ödeme
-                        </a>
-                        <button class="save-for-later-btn">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" stroke="currentColor" stroke-width="2"/>
+                            <span>Güvenli Ödeme</span>
+                        </div>
+                        <div class="security-item">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M16 3H5C3.89543 3 3 3.89543 3 5V19C3 20.1046 3.89543 21 5 21H19C20.1046 21 21 20.1046 21 19V8L16 3Z" stroke="currentColor" stroke-width="2"/>
                             </svg>
-                            Favorilere Kaydet
-                        </button>
+                            <span>14 Gün İade</span>
+                        </div>
+                        <div class="security-item">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M8 16L16 8M8 8L16 16" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                            <span>Ücretsiz Kargo</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </main>
 
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay" style="display: none;">
+        <div class="loading-spinner"></div>
+        <span>Güncelleniyor...</span>
+    </div>
+
     <script src="js/main.js"></script>
+    <script>
+        // Enhanced Cart Page Functionality
+        class CartPageManager {
+            constructor() {
+                this.cartManager = window.cartManager;
+                this.initializeCartPage();
+                this.setupEventListeners();
+                this.updateCartDisplay();
+            }
+
+            initializeCartPage() {
+                // Initialize cart if not already done
+                if (!this.cartManager) {
+                    this.cartManager = new CartManager();
+                    window.cartManager = this.cartManager;
+                }
+            }
+
+            setupEventListeners() {
+                // Coupon application
+                const applyCouponBtn = document.getElementById('applyCoupon');
+                const couponCode = document.getElementById('couponCode');
+                
+                if (applyCouponBtn) {
+                    applyCouponBtn.addEventListener('click', () => this.applyCoupon());
+                }
+
+                if (couponCode) {
+                    couponCode.addEventListener('keypress', (e) => {
+                        if (e.key === 'Enter') {
+                            this.applyCoupon();
+                        }
+                    });
+                }
+
+                // Coupon suggestions
+                document.querySelectorAll('.coupon-tag').forEach(tag => {
+                    tag.addEventListener('click', () => {
+                        const code = tag.dataset.code;
+                        document.getElementById('couponCode').value = code;
+                        this.applyCoupon();
+                    });
+                });
+
+                // Remove coupon
+                const removeCouponBtn = document.getElementById('removeCoupon');
+                if (removeCouponBtn) {
+                    removeCouponBtn.addEventListener('click', () => this.removeCoupon());
+                }
+
+                // Clear cart
+                const clearCartBtn = document.getElementById('clearCartBtn');
+                if (clearCartBtn) {
+                    clearCartBtn.addEventListener('click', () => this.clearCart());
+                }
+            }
+
+            updateCartDisplay() {
+                const cart = this.cartManager.cart;
+                const emptyContainer = document.getElementById('emptyCartContainer');
+                const cartContent = document.getElementById('cartContent');
+                const itemCountDisplay = document.getElementById('itemCountDisplay');
+
+                if (cart.length === 0) {
+                    emptyContainer.style.display = 'block';
+                    cartContent.style.display = 'none';
+                    itemCountDisplay.textContent = 'Sepetiniz boş';
+                } else {
+                    emptyContainer.style.display = 'none';
+                    cartContent.style.display = 'block';
+                    
+                    const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+                    itemCountDisplay.textContent = `${totalItems} ürün`;
+                    
+                    this.renderCartItems();
+                    this.updateSummary();
+                }
+
+                // Update navigation cart counter
+                const cartCounter = document.getElementById('cartCounter');
+                if (cartCounter) {
+                    const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+                    cartCounter.textContent = totalItems;
+                    cartCounter.style.display = totalItems > 0 ? 'flex' : 'none';
+                }
+            }
+
+            renderCartItems() {
+                const container = document.getElementById('cartItemsContainer');
+                const cart = this.cartManager.cart;
+
+                container.innerHTML = cart.map(item => `
+                    <div class="cart-item enhanced" data-item-id="${item.id}-${item.size}-${item.color}">
+                        <div class="item-image">
+                            <img src="${item.image}" alt="${item.name}" loading="lazy">
+                        </div>
+                        <div class="item-details">
+                            <h3 class="item-name">${item.name}</h3>
+                            <div class="item-options">
+                                <span class="item-size">Beden: ${item.size}</span>
+                                <span class="item-color">Renk: ${this.getColorName(item.color)}</span>
+                            </div>
+                            <div class="item-price">₺${item.price}</div>
+                        </div>
+                        <div class="quantity-controls">
+                            <button class="qty-btn minus" onclick="cartPageManager.updateQuantity(${item.id}, '${item.size}', '${item.color}', ${item.quantity - 1})">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M5 12H19" stroke="currentColor" stroke-width="2"/>
+                                </svg>
+                            </button>
+                            <span class="qty-display">${item.quantity}</span>
+                            <button class="qty-btn plus" onclick="cartPageManager.updateQuantity(${item.id}, '${item.size}', '${item.color}', ${item.quantity + 1})">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12 5V19M5 12H19" stroke="currentColor" stroke-width="2"/>
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="item-total">₺${item.price * item.quantity}</div>
+                        <button class="remove-item-btn" onclick="cartPageManager.removeItem(${item.id}, '${item.size}', '${item.color}')" title="Ürünü Kaldır">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M19 7L18.1327 19.1425C18.0579 20.1891 17.187 21 16.1378 21H7.86224C6.81296 21 5.94208 20.1891 5.86732 19.1425L5 7M10 11V17M14 11V17M15 7V4C15 3.44772 14.5523 3 14 3H10C9.44772 3 9 3.44772 9 4V7M4 7H20" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        </button>
+                    </div>
+                `).join('');
+            }
+
+            updateSummary() {
+                const cart = this.cartManager.cart;
+                const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+                const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+                
+                // Calculate discount
+                let discount = 0;
+                let discountPercent = 0;
+                if (this.cartManager.appliedCoupon === 'SCREENSHOT') {
+                    discountPercent = 99;
+                    discount = subtotal * 0.99;
+                } else if (this.cartManager.appliedDiscount > 0) {
+                    discountPercent = this.cartManager.appliedDiscount;
+                    discount = subtotal * (this.cartManager.appliedDiscount / 100);
+                }
+
+                const afterDiscount = subtotal - discount;
+                
+                // Shipping calculation
+                const freeShippingThreshold = 500;
+                const shipping = afterDiscount >= freeShippingThreshold ? 0 : 29;
+                
+                // Tax calculation
+                const tax = afterDiscount * 0.20;
+                
+                const total = afterDiscount + shipping + tax;
+
+                // Update DOM
+                document.getElementById('totalItems').textContent = totalItems;
+                document.getElementById('subtotalAmount').textContent = `₺${subtotal.toFixed(2)}`;
+                
+                // Discount line
+                const discountLine = document.getElementById('discountLine');
+                if (discount > 0) {
+                    discountLine.style.display = 'flex';
+                    document.getElementById('discountPercentage').textContent = `(-${discountPercent}%)`;
+                    document.getElementById('discountAmount').textContent = `-₺${discount.toFixed(2)}`;
+                } else {
+                    discountLine.style.display = 'none';
+                }
+
+                // Shipping
+                const shippingElement = document.getElementById('shippingCost');
+                const shippingStatus = document.getElementById('shippingStatus');
+                const freeShippingStatus = document.getElementById('freeShippingStatus');
+                
+                if (shipping === 0) {
+                    shippingElement.textContent = 'Ücretsiz';
+                    shippingElement.style.color = '#10B981';
+                    shippingStatus.textContent = 'Ücretsiz kargo kazandınız!';
+                    freeShippingStatus.textContent = '✅';
+                } else {
+                    shippingElement.textContent = `₺${shipping}`;
+                    shippingElement.style.color = '';
+                    const remaining = freeShippingThreshold - afterDiscount;
+                    shippingStatus.textContent = `${remaining.toFixed(0)}₺ daha alışveriş yapın`;
+                    freeShippingStatus.textContent = '🎯';
+                }
+
+                document.getElementById('taxAmount').textContent = `₺${tax.toFixed(2)}`;
+                document.getElementById('finalTotal').textContent = `₺${total.toFixed(2)}`;
+                document.getElementById('checkoutTotal').textContent = `₺${total.toFixed(2)}`;
+
+                // Update applied coupon display
+                this.updateAppliedCouponDisplay();
+            }
+
+            updateAppliedCouponDisplay() {
+                const appliedCouponDiv = document.getElementById('appliedCoupon');
+                const appliedCouponName = document.getElementById('appliedCouponName');
+                
+                if (this.cartManager.appliedCoupon) {
+                    appliedCouponDiv.style.display = 'block';
+                    const couponNames = {
+                        'SCREENSHOT': '📸 SCREENSHOT (%99 İndirim)',
+                        'HOSGELDIN15': '🎉 HOSGELDIN15 (%15 İndirim)',
+                        'YAZLIK30': '☀️ YAZLIK30 (%30 İndirim)',
+                        'ILKKEZ20': '🆕 ILKKEZ20 (%20 İndirim)'
+                    };
+                    appliedCouponName.textContent = couponNames[this.cartManager.appliedCoupon] || this.cartManager.appliedCoupon;
+                } else {
+                    appliedCouponDiv.style.display = 'none';
+                }
+            }
+
+            applyCoupon() {
+                const code = document.getElementById('couponCode').value.trim();
+                if (!code) return;
+
+                this.showLoading();
+                
+                // Simulate API delay
+                setTimeout(() => {
+                    const success = this.cartManager.applyCoupon(code);
+                    if (success) {
+                        document.getElementById('couponCode').value = '';
+                        this.updateSummary();
+                    }
+                    this.hideLoading();
+                }, 500);
+            }
+
+            removeCoupon() {
+                this.cartManager.removeCoupon();
+                this.updateSummary();
+            }
+
+            updateQuantity(productId, size, color, quantity) {
+                this.showLoading();
+                setTimeout(() => {
+                    this.cartManager.updateQuantity(productId, size, color, quantity);
+                    this.updateCartDisplay();
+                    this.hideLoading();
+                }, 300);
+            }
+
+            removeItem(productId, size, color) {
+                if (confirm('Bu ürünü sepetinizden kaldırmak istediğinizden emin misiniz?')) {
+                    this.showLoading();
+                    setTimeout(() => {
+                        this.cartManager.removeFromCart(productId, size, color);
+                        this.updateCartDisplay();
+                        this.hideLoading();
+                    }, 300);
+                }
+            }
+
+            clearCart() {
+                if (confirm('Sepetinizdeki tüm ürünleri kaldırmak istediğinizden emin misiniz?')) {
+                    this.showLoading();
+                    setTimeout(() => {
+                        this.cartManager.cart = [];
+                        this.cartManager.removeCoupon();
+                        this.cartManager.saveCart();
+                        this.updateCartDisplay();
+                        this.hideLoading();
+                        this.cartManager.showNotification('Sepetiniz temizlendi', 'info');
+                    }, 500);
+                }
+            }
+
+            getColorName(colorCode) {
+                const colorMap = {
+                    'white': 'Beyaz',
+                    'black': 'Siyah',
+                    'navy': 'Lacivert',
+                    'khaki': 'Haki',
+                    'beige': 'Bej',
+                    'gray': 'Gri',
+                    'light-blue': 'Açık Mavi',
+                    'burgundy': 'Bordo',
+                    'sage': 'Yeşil'
+                };
+                return colorMap[colorCode] || colorCode;
+            }
+
+            showLoading() {
+                document.getElementById('loadingOverlay').style.display = 'flex';
+            }
+
+            hideLoading() {
+                document.getElementById('loadingOverlay').style.display = 'none';
+            }
+        }
+
+        // Initialize cart page when DOM is ready
+        document.addEventListener('DOMContentLoaded', () => {
+            window.cartPageManager = new CartPageManager();
+        });
+    </script>
 </body>
 </html> 
