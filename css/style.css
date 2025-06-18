@@ -1,0 +1,693 @@
+/* Global CSS Variables */
+:root {
+    --font-primary: 'Manrope', sans-serif;
+    --color-background: #FDFDFD; /* Off-White */
+    --color-text: #2D2D2D; /* Charcoal */
+    --color-accent: #1E392A; /* Deep Forest Green */
+    --color-light-gray: #EEE;
+    --color-white: #FFFFFF;
+    --header-height: 70px; /* Standard header height */
+}
+
+/* Global Resets and Basic Setup */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-primary);
+    background-color: var(--color-background);
+    color: var(--color-text);
+    line-height: 1.6;
+    opacity: 0; /* Initially hidden for fade-in */
+    transition: opacity 0.5s ease-in-out;
+}
+
+body.fade-in {
+    opacity: 1;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+/* Header and Navigation */
+header {
+    background-color: var(--color-background);
+    padding: 0 2em; /* Adjusted padding */
+    height: var(--header-height);
+    border-bottom: 1px solid var(--color-light-gray);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between; /* Ensures logo and nav are spaced out */
+    align-items: center;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between; /* Content within nav */
+    align-items: center;
+    width: 100%; /* Nav takes full width of header */
+}
+
+.logo {
+    font-size: 1.5em;
+    font-weight: 700;
+    color: var(--color-accent);
+}
+
+nav ul {
+    list-style-type: none;
+    display: flex;
+    gap: 2em;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--color-accent);
+    font-weight: 500;
+    transition: color 0.3s ease;
+    padding: 0.5em 0; /* Add some padding for easier clicking */
+}
+
+nav a:hover, nav a.active {
+    color: var(--color-text); /* Charcoal for hover/active */
+    /* text-decoration: underline; Remove default underline, use border or other indication */
+}
+
+nav a.active {
+    border-bottom: 2px solid var(--color-accent);
+}
+
+/* Main content padding to offset fixed header */
+main {
+    padding-top: var(--header-height); /* Use variable */
+}
+
+/* Footer */
+footer {
+    background-color: var(--color-text);
+    color: var(--color-background); /* Swapped for better contrast */
+    text-align: center;
+    padding: 2em 0;
+}
+
+/* Utility class for page transition */
+.page-fade-out {
+    opacity: 0 !important;
+    transition: opacity 0.3s ease-in-out !important;
+}
+
+/* Hero Section */
+.hero {
+    position: relative;
+    height: 100vh; /* Full viewport height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden; /* Ensures video doesn't overflow */
+}
+
+#heroVideo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: auto;
+    height: auto;
+    min-width: 100%;
+    min-height: 100%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4); /* Subtle dark overlay */
+    z-index: 2;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 3;
+    color: var(--color-white); /* Off-white text on video */
+}
+
+.hero-content h1 {
+    font-size: 3.5em; /* Bold heading */
+    font-weight: 800;
+    margin-bottom: 0.5em;
+    color: var(--color-white); /* Ensure h1 color is white for hero */
+}
+
+.cta-button {
+    display: inline-block;
+    background-color: var(--color-accent); /* Deep Forest Green */
+    color: var(--color-white);
+    padding: 0.8em 1.8em;
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+    background-color: var(--color-text); /* Charcoal on hover */
+}
+
+/* Featured Looks Section */
+.featured-looks {
+    padding: 4em 2em;
+    text-align: center;
+    background-color: var(--color-background);
+}
+
+.featured-looks h2 {
+    font-size: 2.5em;
+    margin-bottom: 1.5em;
+    color: var(--color-accent);
+}
+
+.looks-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2em;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.look-item {
+    background-color: var(--color-white);
+    border: 1px solid var(--color-light-gray);
+    border-radius: 4px;
+    padding: 1.5em;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    text-align: left;
+}
+
+.look-item img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 3/4; /* Maintain aspect ratio for placeholder */
+    object-fit: cover; /* Cover the area */
+    background-color: #e0e0e0; /* Placeholder bg */
+    border-radius: 4px;
+    margin-bottom: 1em;
+}
+
+.look-item h3 {
+    font-size: 1.5em;
+    margin-bottom: 0.5em;
+    color: var(--color-text);
+}
+
+.explore-button {
+    display: inline-block;
+    color: var(--color-accent);
+    text-decoration: none;
+    font-weight: 600;
+    padding: 0.5em 0;
+    border-bottom: 2px solid transparent;
+    transition: border-bottom-color 0.3s ease;
+}
+
+.explore-button:hover {
+    border-bottom-color: var(--color-accent);
+}
+
+/* Brand Statement Section */
+.brand-statement {
+    padding: 4em 2em;
+    background-color: #f9f9f9; /* Slightly different background for separation */
+    text-align: center;
+}
+
+.brand-statement h2 {
+    font-size: 2.5em;
+    margin-bottom: 1em;
+    color: var(--color-accent);
+}
+
+.brand-statement p {
+    font-size: 1.2em;
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.8;
+}
+
+/* Responsive adjustments for homepage sections (basic example) */
+@media (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 2.5em;
+    }
+    /* General nav ul hiding for mobile, specific pages might need their own adjustments if structure differs */
+    nav ul {
+        display: none;
+    }
+    .logo { /* Center logo if nav items hidden, ensure this doesn't conflict with other pages */
+        margin: 0 auto;
+    }
+    .looks-grid { /* Applies to homepage featured looks */
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* Lookbook Page Specific Styles */
+/* .lookbook-page main padding-top is handled by global main rule */
+
+.lookbook-gallery-container {
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 2em;
+    text-align: center;
+}
+
+.lookbook-gallery-container h1 {
+    font-size: 2.8em;
+    margin-bottom: 0.25em;
+    color: var(--color-accent);
+}
+
+.gallery-intro {
+    font-size: 1.1em;
+    color: #555;
+    margin-bottom: 3em;
+}
+
+.lookbook-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-auto-rows: auto;
+    gap: 1.5em;
+    align-items: start;
+}
+
+.grid-item {
+    background-color: var(--color-white);
+    border: 1px solid #e7e7e7;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+}
+
+.grid-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+}
+
+.grid-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+    background-color: #e0e0e0;
+    cursor: pointer; /* Add cursor pointer to images in grid */
+}
+
+.item-caption {
+    padding: 0.8em 1em;
+    font-size: 0.95em;
+    color: #333;
+    background-color: #fdfdfd;
+    text-align: center;
+    border-top: 1px solid #e7e7e7;
+}
+
+.grid-item:nth-child(3n+1) img { aspect-ratio: 3/4; }
+.grid-item:nth-child(3n+2) img { aspect-ratio: 2/3; }
+.grid-item:nth-child(3n+3) img { aspect-ratio: 4/5; }
+
+
+@media (max-width: 768px) {
+    .lookbook-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 1em;
+    }
+    .lookbook-gallery-container h1 {
+        font-size: 2.2em;
+    }
+    /* .lookbook-page main padding-top is handled by global main rule */
+}
+
+@media (max-width: 480px) {
+    .lookbook-grid {
+        grid-template-columns: 1fr; /* Single column on very small screens */
+    }
+}
+
+/* Brand Page Specific Styles */
+/* .brand-page main padding-top is handled by global main rule */
+
+.brand-story-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2em;
+}
+
+.brand-story-container h1 {
+    font-size: 2.8em;
+    margin-bottom: 1em;
+    color: var(--color-accent);
+    text-align: center;
+}
+
+.brand-content-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two equal columns */
+    gap: 3em;
+    align-items: center; /* Vertically align items in the grid */
+}
+
+.brand-text h2 {
+    font-size: 2em;
+    color: var(--color-accent);
+    margin-bottom: 1em;
+}
+
+.brand-text p {
+    font-size: 1.1em;
+    line-height: 1.8;
+    margin-bottom: 1.5em;
+    color: #333;
+}
+
+.brand-image img {
+    width: 100%;
+    height: auto;
+    max-height: 600px;
+    object-fit: cover;
+    border-radius: 4px;
+    background-color: #e0e0e0;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+}
+
+@media (max-width: 992px) {
+    .brand-content-grid {
+        gap: 2em;
+    }
+    .brand-text h2 {
+        font-size: 1.8em;
+    }
+}
+
+@media (max-width: 768px) {
+    .brand-content-grid {
+        grid-template-columns: 1fr; /* Stack columns on smaller screens */
+        gap: 2.5em;
+    }
+    .brand-story-container h1 {
+        font-size: 2.2em;
+    }
+    .brand-image {
+        order: -1;
+        margin-bottom: 1.5em;
+    }
+    .brand-image img {
+        max-height: 400px;
+    }
+    /* .brand-page main padding-top is handled by global main rule */
+}
+
+/* Contact Page Specific Styles */
+/* .contact-page main padding-top is handled by global main rule */
+
+.contact-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 2em;
+}
+
+.contact-container h1 {
+    font-size: 2.8em;
+    margin-bottom: 0.25em;
+    color: var(--color-accent);
+    text-align: center;
+}
+
+.contact-intro {
+    font-size: 1.1em;
+    color: #555;
+    margin-bottom: 3em;
+    text-align: center;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.contact-content-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr; /* Details column, Form column */
+    gap: 3em;
+    align-items: flex-start;
+}
+
+.contact-details h2, .contact-form-section h2 {
+    font-size: 1.8em;
+    color: var(--color-accent);
+    margin-bottom: 1em;
+}
+
+.contact-details p {
+    font-size: 1.05em;
+    line-height: 1.7;
+    margin-bottom: 0.8em;
+}
+
+.contact-details a {
+    color: var(--color-accent);
+    text-decoration: none;
+}
+
+.contact-details a:hover {
+    text-decoration: underline;
+}
+
+.form-group {
+    margin-bottom: 1.5em;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.5em;
+    color: #333;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group textarea {
+    width: 100%;
+    padding: 0.8em 1em;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: var(--font-primary);
+    font-size: 1em;
+    background-color: var(--color-white);
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="email"]:focus,
+.form-group textarea:focus {
+    border-color: var(--color-accent);
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(30, 57, 42, 0.2);
+}
+
+.form-group textarea {
+    resize: vertical;
+}
+
+.submit-button {
+    display: inline-block;
+    background-color: var(--color-accent);
+    color: var(--color-white);
+    padding: 0.9em 2em;
+    text-decoration: none;
+    font-weight: 600;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 1em;
+}
+
+.submit-button:hover {
+    background-color: var(--color-text);
+}
+
+@media (max-width: 992px) {
+    .contact-content-grid {
+        gap: 2em;
+    }
+}
+
+@media (max-width: 768px) {
+    .contact-content-grid {
+        grid-template-columns: 1fr; /* Stack columns on smaller screens */
+    }
+    .contact-details {
+        margin-bottom: 2.5em;
+    }
+    .contact-container h1 {
+        font-size: 2.2em;
+    }
+    /* .contact-page main padding-top is handled by global main rule */
+}
+/* On-Scroll Reveal Animations */
+.reveal-item {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.reveal-item.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Lightbox Styles */
+.lightbox-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85); /* Darker overlay */
+    display: none; /* Hidden by default */
+    justify-content: center;
+    align-items: center;
+    z-index: 2000; /* Above everything else */
+    opacity: 0;
+    transition: opacity 0.4s ease-in-out;
+}
+
+.lightbox-overlay.visible {
+    display: flex; /* Use flex for centering */
+    opacity: 1;
+}
+
+.lightbox-modal {
+    background-color: var(--color-background); /* Use variable */
+    padding: 20px;
+    border-radius: 5px;
+    position: relative;
+    max-width: 90vw;
+    max-height: 90vh;
+    display: flex; /* For aligning image and caption */
+    flex-direction: column;
+    align-items: center;
+    transform: scale(0.8);
+    transition: transform 0.4s ease-in-out;
+}
+
+.lightbox-overlay.visible .lightbox-modal {
+    transform: scale(1);
+}
+
+.lightbox-modal img#lightboxImage {
+    max-width: 100%;
+    max-height: calc(80vh - 80px); /* Adjust based on padding/caption height */
+    display: block;
+    margin-bottom: 15px;
+    border-radius: 3px;
+}
+
+.lightbox-caption {
+    color: var(--color-text); /* Use variable */
+    text-align: center;
+    font-size: 1.1em;
+    padding: 10px 0;
+    min-height: 30px; /* Ensure space for caption */
+}
+
+.lightbox-close {
+    position: absolute;
+    top: -10px; /* Position outside the modal slightly */
+    right: -5px;
+    color: var(--color-white);
+    background-color: var(--color-accent);
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    line-height: 1;
+    transition: background-color 0.3s ease;
+}
+
+.lightbox-close:hover {
+    background-color: var(--color-text); /* Charcoal on hover */
+}
+
+.lightbox-prev,
+.lightbox-next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 16px;
+    color: var(--color-white);
+    background-color: rgba(45, 45, 45, 0.6); /* Semi-transparent charcoal */
+    font-weight: bold;
+    font-size: 24px;
+    transition: background-color 0.3s ease;
+    user-select: none;
+    border-radius: 0 3px 3px 0;
+}
+
+.lightbox-next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+.lightbox-prev {
+    left: 0;
+}
+
+.lightbox-prev:hover,
+.lightbox-next:hover {
+    background-color: var(--color-accent); /* Accent on hover */
+}
+
+/* Custom Cursor Styles */
+.custom-cursor {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 10px; /* Small dot */
+    height: 10px; /* Small dot */
+    background-color: var(--color-accent); /* Accent color */
+    border-radius: 50%;
+    pointer-events: none; /* Allows clicking through the cursor */
+    transform: translate(-50%, -50%); /* Center the dot on the mouse position */
+    z-index: 9999; /* Highest z-index */
+    transition: width 0.2s ease, height 0.2s ease, background-color 0.2s ease; /* Smooth transitions */
+    display: none; /* Initially hidden, shown by JS on mouse move */
+}
+
+.custom-cursor.hover-effect {
+    width: 20px; /* Larger dot on hover */
+    height: 20px; /* Larger dot on hover */
+    background-color: rgba(30, 57, 42, 0.5); /* Semi-transparent accent */
+}
+
+/* Hide default cursor for the body when custom cursor is active */
+body.custom-cursor-active {
+    cursor: none;
+}
