@@ -2,837 +2,869 @@
 let cart = JSON.parse(localStorage.getItem('ssvoila_cart')) || [];
 let wishlist = JSON.parse(localStorage.getItem('ssvoila_wishlist')) || [];
 
-// Sample Products Data
-const sampleProducts = [
-    {
-        id: 1,
-        name: "Beyaz Keten Gömlek",
-        brand: "SS Voila",
-        price: 1299,
-        originalPrice: 1599,
-        images: ["images/featured-look-1.jpg", "images/lookbook-item-1.jpg"],
-        category: "gomlek",
-        sizes: ["XS", "S", "M", "L", "XL"],
-        colors: ["white", "beige"],
-        description: "Premium keten kumaştan üretilmiş, yazın sıcak günlerinde maximum konfor sağlayan gömlek."
-    },
-    {
-        id: 2,
-        name: "Denizci Elbise",
-        brand: "SS Voila",
-        price: 2299,
-        originalPrice: null,
-        images: ["images/featured-look-2.jpg", "images/lookbook-item-2.jpg"],
-        category: "elbise",
-        sizes: ["XS", "S", "M", "L"],
-        colors: ["navy", "white"],
-        description: "Klasik kesim ile modern detayların buluştuğu zarif elbise."
-    },
-    {
-        id: 3,
-        name: "Rahat Kesim Pantolon",
-        brand: "SS Voila",
-        price: 1899,
-        originalPrice: 2299,
-        images: ["images/featured-look-3.jpg", "images/lookbook-item-3.jpg"],
-        category: "pantolon",
-        sizes: ["S", "M", "L", "XL"],
-        colors: ["black", "beige", "navy"],
-        description: "Günlük kullanım için mükemmel, rahat ve şık pantolon."
-    },
-    {
-        id: 4,
-        name: "Casual Blazer",
-        brand: "SS Voila",
-        price: 3299,
-        originalPrice: null,
-        images: ["images/lookbook-item-4.jpg", "images/lookbook-item-5.jpg"],
-        category: "ceket",
-        sizes: ["XS", "S", "M", "L", "XL"],
-        colors: ["black", "navy"],
-        description: "İş ve günlük yaşamda kullanabileceğiniz çok amaçlı blazer."
-    }
-];
-
-// Sample Men's Fashion Products Data
-const mensFashionProducts = [
+// Modern Men's Fashion Product Data for SS Voila
+const products = [
     {
         id: 1,
         name: "Oversized Beyaz Tişört",
-        category: "t-shirts",
         price: 299,
         originalPrice: null,
-        image: "images/lookbook-item-1.jpg",
-        badge: "Yeni",
-        colors: ["white", "black", "green"],
-        sizes: ["S", "M", "L", "XL"],
-        description: "Yaz günlerinin vazgeçilmez parçası oversized beyaz tişört. %100 pamuk kumaş."
+        discount: null,
+        category: "t-shirts",
+        tags: ["new", "summer", "oversized"],
+        colors: ["white", "black", "navy"],
+        sizes: ["S", "M", "L", "XL", "XXL"],
+        image: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400&h=400&fit=crop",
+        description: "Premium pamuk karışımı oversized kesim. Günlük kullanım için ideal.",
+        features: ["100% Pamuk", "Nefes Alabilir", "Kolay Bakım"],
+        rating: 4.8,
+        reviews: 156,
+        inStock: true,
+        badge: "Yeni"
     },
     {
         id: 2,
-        name: "Kargo Şort",
-        category: "shorts",
+        name: "Kargo Şort - Haki",
         price: 399,
         originalPrice: 499,
-        image: "images/lookbook-item-2.jpg",
-        badge: "%20 İndirim",
-        colors: ["olive", "brown", "navy"],
+        discount: 20,
+        category: "shorts",
+        tags: ["sale", "summer", "cargo"],
+        colors: ["khaki", "navy", "black"],
         sizes: ["S", "M", "L", "XL"],
-        description: "Rahat kesimli kargo şort. Çok cepli pratik tasarım."
+        image: "https://images.unsplash.com/photo-1506629905607-c6394faf7b47?w=400&h=400&fit=crop",
+        description: "Çok cepli kargo şort. Outdoor aktiviteler için mükemmel.",
+        features: ["Ripstop Kumaş", "Su İtici", "6 Cep"],
+        rating: 4.6,
+        reviews: 89,
+        inStock: true,
+        badge: "%20 İndirim"
     },
     {
         id: 3,
-        name: "Keten Karışımlı Gömlek",
-        category: "shirts",
+        name: "Linen Karışımlı Gömlek",
         price: 599,
         originalPrice: null,
-        image: "images/lookbook-item-3.jpg",
-        badge: null,
-        colors: ["beige", "blue", "gray"],
+        discount: null,
+        category: "shirts",
+        tags: ["premium", "summer", "linen"],
+        colors: ["white", "light-blue", "beige"],
         sizes: ["S", "M", "L", "XL"],
-        description: "Nefes alabilir keten karışımlı yazlık gömlek. Şık ve rahat."
+        image: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=400&h=400&fit=crop",
+        description: "Keten karışımlı hafif dokuma. Özel günler için şık seçim.",
+        features: ["Keten Karışımı", "Hafif Dokuma", "Anti-Wrinkle"],
+        rating: 4.9,
+        reviews: 234,
+        inStock: true,
+        badge: "Premium"
     },
     {
         id: 4,
-        name: "Set: Beyaz Tişört + Şort",
-        category: "sets",
+        name: "Set: Polo + Şort Kombini",
         price: 549,
-        originalPrice: 699,
-        image: "images/lookbook-item-4.jpg",
-        badge: "Set",
-        colors: ["white", "gray"],
+        originalPrice: 698,
+        discount: null,
+        category: "sets",
+        tags: ["set", "summer", "combo"],
+        colors: ["navy-white", "black-gray", "khaki-beige"],
         sizes: ["S", "M", "L", "XL"],
-        description: "Uyumlu 2'li set. Ayrı alınabilir ürünler."
+        image: "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=400&h=400&fit=crop",
+        description: "Uyumlu polo tişört ve şort kombinasyonu. 2 parça set.",
+        features: ["2 Parça Set", "Uyumlu Renkler", "₺149 Tasarruf"],
+        rating: 4.7,
+        reviews: 67,
+        inStock: true,
+        badge: "Set"
     },
     {
         id: 5,
-        name: "Vintage Tişört",
-        category: "t-shirts",
+        name: "Vintage Grafik Tişört",
         price: 349,
         originalPrice: null,
-        image: "images/lookbook-item-5.jpg",
-        badge: null,
-        colors: ["gray", "navy", "black"],
+        discount: null,
+        category: "t-shirts",
+        tags: ["trendy", "graphic", "vintage"],
+        colors: ["black", "white", "gray"],
         sizes: ["S", "M", "L", "XL"],
-        description: "Vintage baskılı pamuklu tişört. Retro tarz."
+        image: "https://images.unsplash.com/photo-1571945153237-4929e783af4a?w=400&h=400&fit=crop",
+        description: "Retro grafik baskılı tişört. Sokak modası severler için.",
+        features: ["Grafik Baskı", "Soft Touch", "Vintage Look"],
+        rating: 4.5,
+        reviews: 112,
+        inStock: true,
+        badge: "Trend"
     },
     {
         id: 6,
-        name: "Chino Şort",
-        category: "shorts",
+        name: "Chino Pantolon - Slim Fit",
         price: 449,
         originalPrice: null,
-        image: "images/lookbook-item-6.jpg",
-        badge: null,
-        colors: ["beige", "navy", "olive"],
-        sizes: ["S", "M", "L", "XL"],
-        description: "Klasik chino şort. Her kombine uygun."
+        discount: null,
+        category: "pants",
+        tags: ["chino", "business", "slim"],
+        colors: ["beige", "navy", "black"],
+        sizes: ["30", "32", "34", "36", "38"],
+        image: "https://images.unsplash.com/photo-1473966968600-fa801b869a1a?w=400&h=400&fit=crop",
+        description: "Klasik chino pantolon slim fit kesim. İş ve günlük için.",
+        features: ["Slim Fit", "Stretch Kumaş", "Klasik Kesim"],
+        rating: 4.8,
+        reviews: 198,
+        inStock: true,
+        badge: null
     },
     {
         id: 7,
-        name: "Polo Tişört",
-        category: "t-shirts",
+        name: "Polo Tişört - Pique",
         price: 399,
         originalPrice: null,
-        image: "images/lookbook-item-7.jpg",
-        badge: null,
-        colors: ["white", "navy", "green"],
+        discount: null,
+        category: "polo",
+        tags: ["polo", "classic", "summer"],
+        colors: ["white", "navy", "burgundy"],
         sizes: ["S", "M", "L", "XL"],
-        description: "Şık polo yaka tişört. İş ve günlük kullanım."
+        image: "https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=400&h=400&fit=crop",
+        description: "Klasik pique polo tişört. Zamansız şıklık.",
+        features: ["Pique Kumaş", "Klasik Yaka", "Nefes Alabilir"],
+        rating: 4.6,
+        reviews: 143,
+        inStock: true,
+        badge: null
     },
     {
         id: 8,
-        name: "Linen Gömlek",
-        category: "shirts",
+        name: "Linen Gömlek - Premium",
         price: 699,
         originalPrice: null,
-        image: "images/lookbook-item-8.jpg",
-        badge: "Premium",
-        colors: ["white", "beige", "blue"],
+        discount: null,
+        category: "shirts",
+        tags: ["premium", "linen", "luxury"],
+        colors: ["white", "light-blue", "sage"],
         sizes: ["S", "M", "L", "XL"],
-        description: "%100 keten gömlek. Yazın en şık seçimi."
+        image: "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=400&h=400&fit=crop",
+        description: "100% keten premium gömlek. Lüks hissin adresi.",
+        features: ["100% Keten", "El Yapımı", "Premium Kalite"],
+        rating: 4.9,
+        reviews: 87,
+        inStock: true,
+        badge: "Premium"
     }
 ];
 
-document.addEventListener('DOMContentLoaded', () => {
-    // Initialize app
-    initializeApp();
-    
-    // Page Fade-In
-    document.body.classList.add('fade-in');
-    
-    // Initialize navigation
-    initializeNavigation();
-    
-    // Initialize cart
-    initializeCart();
-    
-    // Initialize animations
-    initializeAnimations();
-    
-    // Page-specific initializations
-    if (document.body.classList.contains('page-index')) {
-        initializeHomePage();
-    } else if (document.body.classList.contains('page-shop')) {
-        initializeShopPage();
-    } else if (document.body.classList.contains('page-product')) {
-        initializeProductPage();
+// Cart Management
+class CartManager {
+    constructor() {
+        this.cart = JSON.parse(localStorage.getItem('ssvoila_cart')) || [];
+        this.wishlist = JSON.parse(localStorage.getItem('ssvoila_wishlist')) || [];
+        this.initializeEventListeners();
+        this.updateCartDisplay();
     }
-});
 
-function initializeApp() {
-    // Update cart and wishlist counters
-    updateCartCounter();
-    updateWishlistCounter();
-    
-    // Load products into localStorage if not exists
-    if (!localStorage.getItem('ssvoila_products')) {
-        localStorage.setItem('ssvoila_products', JSON.stringify(sampleProducts));
-    }
-}
-
-function initializeNavigation() {
-    // Active Navigation Link
-    const navLinks = document.querySelectorAll('.nav-links a');
-    const currentPath = window.location.pathname.split('/').pop() || 'index.html';
-    
-    navLinks.forEach(link => {
-        const linkPath = link.getAttribute('href').split('/').pop() || 'index.html';
-        link.classList.remove('active');
-        if (linkPath === currentPath) {
-            link.classList.add('active');
+    initializeEventListeners() {
+        // Cart toggle
+        const cartBtn = document.getElementById('cartBtn');
+        const miniCart = document.getElementById('miniCart');
+        const closeCart = document.getElementById('closeCart');
+        
+        if (cartBtn && miniCart) {
+            cartBtn.addEventListener('click', () => {
+                miniCart.classList.toggle('open');
+            });
         }
-    });
-    
-    // Page transitions
-    const allLinks = document.querySelectorAll('a:not([href^="#"]):not([target="_blank"]):not(.no-transition)');
-    allLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
-            const href = this.getAttribute('href');
-            if (href && (href.startsWith('/') || href.includes('.html'))) {
-                e.preventDefault();
-                document.body.classList.add('page-fade-out');
-                setTimeout(() => {
-                    window.location.href = href;
-                }, 300);
+        
+        if (closeCart && miniCart) {
+            closeCart.addEventListener('click', () => {
+                miniCart.classList.remove('open');
+            });
+        }
+
+        // Close cart when clicking outside
+        document.addEventListener('click', (e) => {
+            if (miniCart && !miniCart.contains(e.target) && !cartBtn.contains(e.target)) {
+                miniCart.classList.remove('open');
             }
         });
-    });
-}
 
-function initializeCart() {
-    const cartBtn = document.querySelector('.cart-btn');
-    const miniCart = document.getElementById('miniCart');
-    const closeMiniCart = document.querySelector('.close-cart');
-    
-    // Cart button click
-    if (cartBtn) {
-        cartBtn.addEventListener('click', () => {
-            openMiniCart();
-        });
+        // Newsletter form
+        const newsletterForm = document.getElementById('newsletterForm');
+        if (newsletterForm) {
+            newsletterForm.addEventListener('submit', this.handleNewsletterSubmit.bind(this));
+        }
     }
-    
-    // Close mini cart
-    if (closeMiniCart) {
-        closeMiniCart.addEventListener('click', () => {
-            closeMiniCartFunc();
-        });
-    }
-    
-    // Close cart when clicking outside
-    if (miniCart) {
-        miniCart.addEventListener('click', (e) => {
-            if (e.target === miniCart) {
-                closeMiniCartFunc();
-            }
-        });
-    }
-    
-    // Render cart items
-    renderMiniCart();
-}
 
-function openMiniCart() {
-    const miniCart = document.getElementById('miniCart');
-    if (miniCart) {
-        miniCart.classList.add('open');
-        document.body.style.overflow = 'hidden';
-        renderMiniCart();
-    }
-}
+    addToCart(productId, size = 'M', color = null) {
+        const product = products.find(p => p.id === productId);
+        if (!product) return;
 
-function closeMiniCartFunc() {
-    const miniCart = document.getElementById('miniCart');
-    if (miniCart) {
-        miniCart.classList.remove('open');
-        document.body.style.overflow = '';
-    }
-}
+        const existingItem = this.cart.find(item => 
+            item.id === productId && item.size === size && item.color === color
+        );
 
-function addToCart(productId, size = 'M', color = 'white', quantity = 1) {
-    const products = JSON.parse(localStorage.getItem('ssvoila_products')) || sampleProducts;
-    const product = products.find(p => p.id === productId);
-    
-    if (!product) return;
-    
-    const cartItemId = `${productId}-${size}-${color}`;
-    const existingItem = cart.find(item => item.id === cartItemId);
-    
-    if (existingItem) {
-        existingItem.quantity += quantity;
-    } else {
-        cart.push({
-            id: cartItemId,
-            productId: productId,
-            name: product.name,
-            price: product.price,
-            image: product.images[0],
-            size: size,
-            color: color,
-            quantity: quantity
-        });
-    }
-    
-    saveCart();
-    updateCartCounter();
-    renderMiniCart();
-    
-    // Show success animation
-    showAddToCartSuccess();
-}
-
-function removeFromCart(cartItemId) {
-    cart = cart.filter(item => item.id !== cartItemId);
-    saveCart();
-    updateCartCounter();
-    renderMiniCart();
-}
-
-function updateCartQuantity(cartItemId, newQuantity) {
-    const item = cart.find(item => item.id === cartItemId);
-    if (item) {
-        if (newQuantity <= 0) {
-            removeFromCart(cartItemId);
+        if (existingItem) {
+            existingItem.quantity += 1;
         } else {
-            item.quantity = newQuantity;
-            saveCart();
-            updateCartCounter();
-            renderMiniCart();
+            this.cart.push({
+                id: productId,
+                name: product.name,
+                price: product.price,
+                image: product.image,
+                size,
+                color: color || product.colors[0],
+                quantity: 1
+            });
+        }
+
+        this.saveCart();
+        this.updateCartDisplay();
+        this.showNotification(`${product.name} sepete eklendi!`, 'success');
+    }
+
+    removeFromCart(productId, size, color) {
+        this.cart = this.cart.filter(item => 
+            !(item.id === productId && item.size === size && item.color === color)
+        );
+        this.saveCart();
+        this.updateCartDisplay();
+    }
+
+    updateQuantity(productId, size, color, quantity) {
+        const item = this.cart.find(item => 
+            item.id === productId && item.size === size && item.color === color
+        );
+        
+        if (item) {
+            if (quantity <= 0) {
+                this.removeFromCart(productId, size, color);
+            } else {
+                item.quantity = quantity;
+                this.saveCart();
+                this.updateCartDisplay();
+            }
         }
     }
-}
 
-function saveCart() {
-    localStorage.setItem('ssvoila_cart', JSON.stringify(cart));
-}
+    getCartTotal() {
+        return this.cart.reduce((total, item) => total + (item.price * item.quantity), 0);
+    }
 
-function updateCartCounter() {
-    const cartCount = document.querySelector('.cart-count');
-    const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-    if (cartCount) {
-        cartCount.textContent = totalItems;
+    getCartItemCount() {
+        return this.cart.reduce((total, item) => total + item.quantity, 0);
+    }
+
+    saveCart() {
+        localStorage.setItem('ssvoila_cart', JSON.stringify(this.cart));
+    }
+
+    updateCartDisplay() {
+        // Update cart counter
+        const cartCounter = document.querySelector('.cart-counter');
+        if (cartCounter) {
+            const itemCount = this.getCartItemCount();
+            cartCounter.textContent = itemCount;
+            cartCounter.style.display = itemCount > 0 ? 'flex' : 'none';
+        }
+
+        // Update mini cart content
+        this.updateMiniCartContent();
+    }
+
+    updateMiniCartContent() {
+        const emptyCart = document.querySelector('.empty-cart');
+        const cartItems = document.querySelector('.cart-items');
+        const miniCartFooter = document.querySelector('.mini-cart-footer');
+        
+        if (this.cart.length === 0) {
+            if (emptyCart) emptyCart.style.display = 'block';
+            if (cartItems) cartItems.style.display = 'none';
+            if (miniCartFooter) miniCartFooter.style.display = 'none';
+        } else {
+            if (emptyCart) emptyCart.style.display = 'none';
+            if (cartItems) cartItems.style.display = 'block';
+            if (miniCartFooter) miniCartFooter.style.display = 'block';
+            
+            // Render cart items
+            if (cartItems) {
+                cartItems.innerHTML = this.cart.map(item => `
+                    <div class="cart-item">
+                        <img src="${item.image}" alt="${item.name}" class="cart-item-image">
+                        <div class="cart-item-details">
+                            <h4>${item.name}</h4>
+                            <p>Beden: ${item.size} | Renk: ${this.getColorName(item.color)}</p>
+                            <div class="quantity-controls">
+                                <button onclick="cartManager.updateQuantity(${item.id}, '${item.size}', '${item.color}', ${item.quantity - 1})">-</button>
+                                <span>${item.quantity}</span>
+                                <button onclick="cartManager.updateQuantity(${item.id}, '${item.size}', '${item.color}', ${item.quantity + 1})">+</button>
+                            </div>
+                        </div>
+                        <div class="cart-item-price">
+                            <span>₺${item.price * item.quantity}</span>
+                            <button onclick="cartManager.removeFromCart(${item.id}, '${item.size}', '${item.color}')" class="remove-item">×</button>
+                        </div>
+                    </div>
+                `).join('');
+            }
+            
+            // Update total
+            const cartTotal = document.querySelector('.cart-total span');
+            if (cartTotal) {
+                cartTotal.textContent = `Toplam: ₺${this.getCartTotal()}`;
+            }
+        }
+    }
+
+    getColorName(colorCode) {
+        const colorMap = {
+            'white': 'Beyaz',
+            'black': 'Siyah',
+            'navy': 'Lacivert',
+            'khaki': 'Haki',
+            'beige': 'Bej',
+            'gray': 'Gri',
+            'light-blue': 'Açık Mavi',
+            'burgundy': 'Bordo',
+            'sage': 'Yeşil'
+        };
+        return colorMap[colorCode] || colorCode;
+    }
+
+    // Wishlist management
+    addToWishlist(productId) {
+        if (!this.wishlist.includes(productId)) {
+            this.wishlist.push(productId);
+            localStorage.setItem('ssvoila_wishlist', JSON.stringify(this.wishlist));
+            this.updateWishlistDisplay();
+            
+            const product = products.find(p => p.id === productId);
+            this.showNotification(`${product.name} favorilere eklendi!`, 'success');
+        }
+    }
+
+    removeFromWishlist(productId) {
+        this.wishlist = this.wishlist.filter(id => id !== productId);
+        localStorage.setItem('ssvoila_wishlist', JSON.stringify(this.wishlist));
+        this.updateWishlistDisplay();
+    }
+
+    updateWishlistDisplay() {
+        const wishlistCounter = document.querySelector('.wishlist-counter');
+        if (wishlistCounter) {
+            wishlistCounter.textContent = this.wishlist.length;
+            wishlistCounter.style.display = this.wishlist.length > 0 ? 'flex' : 'none';
+        }
+    }
+
+    // Notification system
+    showNotification(message, type = 'info') {
+        const notification = document.createElement('div');
+        notification.className = `notification notification-${type}`;
+        notification.innerHTML = `
+            <div class="notification-content">
+                <span>${message}</span>
+                <button onclick="this.parentElement.parentElement.remove()">×</button>
+            </div>
+        `;
+        
+        // Add to page
+        document.body.appendChild(notification);
+        
+        // Animate in
+        setTimeout(() => notification.classList.add('show'), 100);
+        
+        // Auto remove
+        setTimeout(() => {
+            notification.classList.remove('show');
+            setTimeout(() => notification.remove(), 300);
+        }, 3000);
+    }
+
+    // Newsletter subscription
+    handleNewsletterSubmit(e) {
+        e.preventDefault();
+        const email = e.target.querySelector('input[type="email"]').value;
+        
+        // Simulate API call
+        setTimeout(() => {
+            this.showNotification('Bültenimize başarıyla abone oldunuz! %15 indirim kodu: HOSGELDIN15', 'success');
+            e.target.reset();
+        }, 1000);
     }
 }
 
-function renderMiniCart() {
-    const miniCartItems = document.querySelector('.mini-cart-items');
-    const cartTotal = document.querySelector('.cart-total strong');
-    const emptyMessage = document.querySelector('.empty-cart-message');
-    
-    if (!miniCartItems) return;
-    
-    if (cart.length === 0) {
-        if (emptyMessage) emptyMessage.style.display = 'block';
-        return;
+// Product Display Manager
+class ProductManager {
+    constructor() {
+        this.currentFilter = 'all';
+        this.currentSort = 'newest';
+        this.loadFeaturedProducts();
     }
-    
-    if (emptyMessage) emptyMessage.style.display = 'none';
-    
-    let total = 0;
-    let cartHTML = '';
-    
-    cart.forEach(item => {
-        total += item.price * item.quantity;
-        cartHTML += `
-            <div class="cart-item" data-id="${item.id}">
-                <div class="cart-item-image">
-                    <img src="${item.image}" alt="${item.name}">
-                </div>
-                <div class="cart-item-details">
-                    <h4>${item.name}</h4>
-                    <p>Beden: ${item.size} | Renk: ${item.color}</p>
-                    <div class="cart-item-controls">
-                        <button onclick="updateCartQuantity('${item.id}', ${item.quantity - 1})">-</button>
-                        <span>${item.quantity}</span>
-                        <button onclick="updateCartQuantity('${item.id}', ${item.quantity + 1})">+</button>
+
+    loadFeaturedProducts() {
+        const featuredGrid = document.getElementById('featuredProductsGrid');
+        if (!featuredGrid) return;
+
+        // Get featured products (first 8 products)
+        const featuredProducts = products.slice(0, 8);
+        
+        featuredGrid.innerHTML = featuredProducts.map(product => this.createProductCard(product)).join('');
+    }
+
+    createProductCard(product) {
+        const discountBadge = product.discount ? 
+            `<div class="product-badge sale">%${product.discount} İndirim</div>` : 
+            product.badge ? `<div class="product-badge ${product.badge.toLowerCase()}">${product.badge}</div>` : '';
+
+        const priceDisplay = product.originalPrice ?
+            `<span class="sale-price">₺${product.price}</span>
+             <span class="original-price">₺${product.originalPrice}</span>` :
+            `₺${product.price}`;
+
+        const colorOptions = product.colors.slice(0, 3).map(color => 
+            `<span class="color-option" style="background: ${this.getColorCode(color)}; ${color === 'white' ? 'border: 1px solid #ddd;' : ''}"></span>`
+        ).join('');
+
+        return `
+            <div class="product-card" data-product-id="${product.id}">
+                <div class="product-image">
+                    <img src="${product.image}" alt="${product.name}" loading="lazy">
+                    ${discountBadge}
+                    <div class="product-actions">
+                        <button class="quick-view-btn" onclick="productManager.quickView(${product.id})">Hızlı Bakış</button>
+                        <button class="add-to-cart-btn" onclick="cartManager.addToCart(${product.id})">Sepete Ekle</button>
                     </div>
                 </div>
-                <div class="cart-item-price">
-                    <span>₺${(item.price * item.quantity).toLocaleString()}</span>
-                    <button onclick="removeFromCart('${item.id}')" class="remove-item">×</button>
+                <div class="product-info">
+                    <h3>${product.name}</h3>
+                    <p class="product-price">${priceDisplay}</p>
+                    <div class="product-colors">${colorOptions}</div>
                 </div>
             </div>
         `;
-    });
-    
-    miniCartItems.innerHTML = cartHTML;
-    if (cartTotal) cartTotal.textContent = `₺${total.toLocaleString()}`;
+    }
+
+    getColorCode(colorName) {
+        const colorCodes = {
+            'white': '#FFFFFF',
+            'black': '#000000',
+            'navy': '#1E3A8A',
+            'khaki': '#8B7355',
+            'beige': '#F5F5DC',
+            'gray': '#6B7280',
+            'light-blue': '#3B82F6',
+            'burgundy': '#7C2D12',
+            'sage': '#84CC16'
+        };
+        return colorCodes[colorName] || '#000000';
+    }
+
+    quickView(productId) {
+        const product = products.find(p => p.id === productId);
+        if (!product) return;
+
+        // Create quick view modal
+        const modal = document.createElement('div');
+        modal.className = 'quick-view-modal';
+        modal.innerHTML = `
+            <div class="quick-view-content">
+                <button class="close-modal" onclick="this.parentElement.parentElement.remove()">×</button>
+                <div class="quick-view-image">
+                    <img src="${product.image}" alt="${product.name}">
+                </div>
+                <div class="quick-view-details">
+                    <h2>${product.name}</h2>
+                    <p class="price">₺${product.price}</p>
+                    <p class="description">${product.description}</p>
+                    <div class="product-features">
+                        ${product.features.map(feature => `<span class="feature-tag">${feature}</span>`).join('')}
+                    </div>
+                    <div class="size-selector">
+                        <label>Beden:</label>
+                        <select id="quickViewSize">
+                            ${product.sizes.map(size => `<option value="${size}">${size}</option>`).join('')}
+                        </select>
+                    </div>
+                    <div class="color-selector">
+                        <label>Renk:</label>
+                        <div class="color-options">
+                            ${product.colors.map((color, index) => 
+                                `<input type="radio" id="color-${index}" name="color" value="${color}" ${index === 0 ? 'checked' : ''}>
+                                 <label for="color-${index}" style="background: ${this.getColorCode(color)}"></label>`
+                            ).join('')}
+                        </div>
+                    </div>
+                    <button class="add-to-cart-btn-large" onclick="cartManager.addToCart(${product.id}, document.getElementById('quickViewSize').value, document.querySelector('input[name=color]:checked').value)">
+                        Sepete Ekle - ₺${product.price}
+                    </button>
+                </div>
+            </div>
+        `;
+        
+        document.body.appendChild(modal);
+        setTimeout(() => modal.classList.add('show'), 100);
+    }
 }
 
-function showAddToCartSuccess() {
-    // Create success notification
-    const notification = document.createElement('div');
-    notification.className = 'add-to-cart-success';
-    notification.innerHTML = `
-        <div class="success-content">
-            <span class="success-icon">✓</span>
-            <span>Ürün sepete eklendi!</span>
-        </div>
+// Animation and Scroll Effects
+class AnimationManager {
+    constructor() {
+        this.initializeAnimations();
+        this.initializeScrollEffects();
+    }
+
+    initializeAnimations() {
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add intersection observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-in');
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animation
+        document.querySelectorAll('.product-card, .collection-card, .value-item, .style-card').forEach(el => {
+            observer.observe(el);
+        });
+    }
+
+    initializeScrollEffects() {
+        let lastScrollTop = 0;
+        const navbar = document.querySelector('.navbar');
+
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            // Navbar hide/show on scroll
+            if (scrollTop > lastScrollTop && scrollTop > 100) {
+                navbar.style.transform = 'translateY(-100%)';
+            } else {
+                navbar.style.transform = 'translateY(0)';
+            }
+            
+            // Add shadow to navbar when scrolled
+            if (scrollTop > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+            
+            lastScrollTop = scrollTop;
+        });
+    }
+}
+
+// Mobile Navigation Manager
+class MobileNavManager {
+    constructor() {
+        this.isOpen = false;
+        this.initializeMobileNav();
+    }
+
+    initializeMobileNav() {
+        // Create mobile menu toggle if it doesn't exist
+        const navContainer = document.querySelector('.nav-container');
+        if (navContainer && window.innerWidth <= 768) {
+            this.createMobileToggle();
+        }
+
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768 && this.isOpen) {
+                this.closeMobileNav();
+            }
+        });
+    }
+
+    createMobileToggle() {
+        const mobileToggle = document.createElement('button');
+        mobileToggle.className = 'mobile-nav-toggle';
+        mobileToggle.innerHTML = `
+            <span></span>
+            <span></span>
+            <span></span>
+        `;
+        
+        mobileToggle.addEventListener('click', () => {
+            this.toggleMobileNav();
+        });
+
+        const navCenter = document.querySelector('.nav-center');
+        if (navCenter) {
+            navCenter.appendChild(mobileToggle);
+        }
+    }
+
+    toggleMobileNav() {
+        const navLinks = document.querySelector('.nav-links');
+        if (navLinks) {
+            this.isOpen = !this.isOpen;
+            navLinks.classList.toggle('mobile-open', this.isOpen);
+            document.body.classList.toggle('nav-open', this.isOpen);
+        }
+    }
+
+    closeMobileNav() {
+        const navLinks = document.querySelector('.nav-links');
+        if (navLinks) {
+            this.isOpen = false;
+            navLinks.classList.remove('mobile-open');
+            document.body.classList.remove('nav-open');
+        }
+    }
+}
+
+// Initialize everything when DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize managers
+    window.cartManager = new CartManager();
+    window.productManager = new ProductManager();
+    window.animationManager = new AnimationManager();
+    window.mobileNavManager = new MobileNavManager();
+
+    // Add loading states
+    document.body.classList.add('loaded');
+
+    // Initialize image lazy loading
+    if ('IntersectionObserver' in window) {
+        const imageObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    img.src = img.dataset.src || img.src;
+                    img.classList.remove('lazy');
+                    observer.unobserve(img);
+                }
+            });
+        });
+
+        document.querySelectorAll('img[loading="lazy"]').forEach(img => {
+            imageObserver.observe(img);
+        });
+    }
+
+    // Add CSS for animations and notifications
+    const style = document.createElement('style');
+    style.textContent = `
+        .animate-in {
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .navbar.scrolled {
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .notification {
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            background: white;
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+            z-index: 10000;
+            transform: translateX(400px);
+            transition: transform 0.3s ease;
+        }
+
+        .notification.show {
+            transform: translateX(0);
+        }
+
+        .notification-success {
+            border-left: 4px solid #28A745;
+        }
+
+        .notification-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .notification-content button {
+            background: none;
+            border: none;
+            font-size: 1.25rem;
+            cursor: pointer;
+            opacity: 0.7;
+        }
+
+        .quick-view-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .quick-view-modal.show {
+            opacity: 1;
+        }
+
+        .quick-view-content {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            max-width: 800px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            position: relative;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            font-size: 2rem;
+            cursor: pointer;
+            z-index: 1;
+        }
+
+        .feature-tag {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            background: #f0f0f0;
+            border-radius: 6px;
+            font-size: 0.875rem;
+            margin: 0.25rem;
+        }
+
+        .add-to-cart-btn-large {
+            width: 100%;
+            padding: 1rem;
+            background: #1A1A1A;
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .add-to-cart-btn-large:hover {
+            background: #2B4F3B;
+            transform: translateY(-2px);
+        }
+
+        .cart-item {
+            display: flex;
+            gap: 1rem;
+            padding: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .cart-item-image {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .cart-item-details {
+            flex: 1;
+        }
+
+        .cart-item-details h4 {
+            font-size: 0.875rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .cart-item-details p {
+            font-size: 0.75rem;
+            color: #666;
+            margin-bottom: 0.5rem;
+        }
+
+        .quantity-controls {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .quantity-controls button {
+            width: 24px;
+            height: 24px;
+            border: 1px solid #ddd;
+            background: white;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .cart-item-price {
+            text-align: right;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .remove-item {
+            background: none;
+            border: none;
+            color: #999;
+            cursor: pointer;
+            font-size: 1.25rem;
+        }
+
+        @media (max-width: 768px) {
+            .quick-view-content {
+                grid-template-columns: 1fr;
+                width: 95%;
+                margin: 1rem;
+            }
+            
+            .notification {
+                right: 10px;
+                left: 10px;
+                transform: translateY(-100px);
+            }
+            
+            .notification.show {
+                transform: translateY(0);
+            }
+        }
     `;
-    
-    document.body.appendChild(notification);
-    
-    setTimeout(() => {
-        notification.classList.add('show');
-    }, 100);
-    
-    setTimeout(() => {
-        notification.classList.remove('show');
-        setTimeout(() => {
-            document.body.removeChild(notification);
-        }, 300);
-    }, 2000);
-}
+    document.head.appendChild(style);
 
-// Wishlist Functions
-function toggleWishlist(productId) {
-    const index = wishlist.indexOf(productId);
-    if (index > -1) {
-        wishlist.splice(index, 1);
-    } else {
-        wishlist.push(productId);
-    }
-    
-    localStorage.setItem('ssvoila_wishlist', JSON.stringify(wishlist));
-    updateWishlistCounter();
-    updateWishlistUI();
-}
-
-function updateWishlistCounter() {
-    const wishlistCount = document.querySelector('.wishlist-count');
-    if (wishlistCount) {
-        wishlistCount.textContent = wishlist.length;
-    }
-}
-
-function updateWishlistUI() {
-    const wishlistButtons = document.querySelectorAll('.wishlist-toggle');
-    wishlistButtons.forEach(btn => {
-        const productId = parseInt(btn.dataset.productId);
-        if (wishlist.includes(productId)) {
-            btn.classList.add('active');
-            btn.innerHTML = '♥';
-        } else {
-            btn.classList.remove('active');
-            btn.innerHTML = '♡';
-        }
-    });
-}
-
-function initializeAnimations() {
-    // Intersection Observer for scroll animations
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
-    
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-            }
-        });
-    }, observerOptions);
-    
-    // Observe all reveal items
-    document.querySelectorAll('.reveal-item').forEach(item => {
-        observer.observe(item);
-    });
-    
-    // Add reveal class to collection cards
-    document.querySelectorAll('.collection-card, .product-card').forEach(item => {
-        item.classList.add('reveal-item');
-        observer.observe(item);
-    });
-    
-    // Smooth scroll for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                target.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            }
-        });
-    });
-}
-
-function initializeHomePage() {
-    // Newsletter form
-    const newsletterForm = document.querySelector('.newsletter-form');
-    if (newsletterForm) {
-        newsletterForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const email = e.target.querySelector('input[type="email"]').value;
-            showNotification('Başarıyla abone oldunuz! 🎉', 'success');
-            e.target.reset();
-        });
-    }
-    
-    // Dynamic product loading for home page
-    loadFeaturedProducts();
-}
-
-function loadFeaturedProducts() {
-    // This would typically load from an API
-    // For now, we'll use our sample data
-    const products = JSON.parse(localStorage.getItem('ssvoila_products')) || sampleProducts;
-    
-    // Add event listeners for quick actions if products are displayed
-    setTimeout(() => {
-        document.querySelectorAll('.quick-add-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                const productId = parseInt(this.dataset.productId);
-                addToCart(productId);
-            });
-        });
-        
-        document.querySelectorAll('.wishlist-toggle').forEach(btn => {
-            btn.addEventListener('click', function() {
-                const productId = parseInt(this.dataset.productId);
-                toggleWishlist(productId);
-            });
-        });
-        
-        updateWishlistUI();
-    }, 100);
-}
-
-// Utility Functions
-function showNotification(message, type = 'info') {
-    const notification = document.createElement('div');
-    notification.className = `notification notification-${type}`;
-    notification.textContent = message;
-    
-    document.body.appendChild(notification);
-    
-    setTimeout(() => {
-        notification.classList.add('show');
-    }, 100);
-    
-    setTimeout(() => {
-        notification.classList.remove('show');
-        setTimeout(() => {
-            if (document.body.contains(notification)) {
-                document.body.removeChild(notification);
-            }
-        }, 300);
-    }, 3000);
-}
-
-function formatPrice(price) {
-    return `₺${price.toLocaleString()}`;
-}
-
-function calculateDiscount(originalPrice, currentPrice) {
-    if (!originalPrice || originalPrice <= currentPrice) return 0;
-    return Math.round(((originalPrice - currentPrice) / originalPrice) * 100);
-}
-
-// Custom Cursor (if enabled)
-function initializeCustomCursor() {
-    const cursor = document.createElement('div');
-    cursor.classList.add('custom-cursor');
-    document.body.appendChild(cursor);
-    
-    let cursorVisible = false;
-    
-    document.addEventListener('mousemove', (e) => {
-        if (!cursorVisible) {
-            cursor.style.display = 'block';
-            document.body.classList.add('custom-cursor-active');
-            cursorVisible = true;
-        }
-        cursor.style.left = e.clientX + 'px';
-        cursor.style.top = e.clientY + 'px';
-    });
-    
-    document.addEventListener('mouseleave', () => {
-        cursor.style.display = 'none';
-        document.body.classList.remove('custom-cursor-active');
-        cursorVisible = false;
-    });
-    
-    // Hover effects
-    const interactiveElements = 'a, button, .product-card, .collection-card, input, textarea';
-    document.addEventListener('mouseover', (e) => {
-        if (e.target.matches(interactiveElements)) {
-            cursor.classList.add('hover-effect');
-        }
-    });
-    
-    document.addEventListener('mouseout', (e) => {
-        if (e.target.matches(interactiveElements)) {
-            cursor.classList.remove('hover-effect');
-        }
-    });
-}
-
-// Initialize custom cursor if not on mobile
-if (window.innerWidth > 768) {
-    initializeCustomCursor();
-}
-
-// Global functions for cart operations (accessible from HTML)
-window.addToCart = addToCart;
-window.removeFromCart = removeFromCart;
-window.updateCartQuantity = updateCartQuantity;
-window.toggleWishlist = toggleWishlist;
-window.addToCart = addToCart;
-window.addToWishlist = addToWishlist;
-window.quickView = quickView;
-
-// Shop page initialization
-function initializeShopPage() {
-    loadProducts();
-}
-
-// Shop page functionality
-function loadProducts() {
-    const productsGrid = document.getElementById('productsGrid');
-    if (!productsGrid) return;
-    
-    renderProducts(mensFashionProducts);
-    
-    // Setup filters
-    setupFilters();
-    setupSorting();
-}
-
-function renderProducts(products) {
-    const productsGrid = document.getElementById('productsGrid');
-    if (!productsGrid) return;
-    
-    productsGrid.innerHTML = '';
-    
-    products.forEach(product => {
-        const productCard = document.createElement('div');
-        productCard.className = 'product-card';
-        
-        const badge = product.badge ? `<div class="product-badge ${product.originalPrice ? 'sale' : ''}">${product.badge}</div>` : '';
-        const priceHTML = product.originalPrice ? 
-            `<span class="sale-price">₺${product.price}</span><span class="original-price">₺${product.originalPrice}</span>` :
-            `₺${product.price}`;
-        
-        const colorsHTML = product.colors.map(color => {
-            const colorMap = {
-                white: '#ffffff',
-                black: '#000000',
-                gray: '#808080',
-                navy: '#1e392a',
-                green: '#1e392a',
-                beige: '#f5f5dc',
-                blue: '#4169e1',
-                olive: '#2c5f41',
-                brown: '#8b4513'
-            };
-            const colorStyle = color === 'white' ? 'background: white; border: 1px solid #ddd;' : `background: ${colorMap[color] || color};`;
-            return `<span class="color-option" style="${colorStyle}"></span>`;
-        }).join('');
-        
-        productCard.innerHTML = `
-            <div class="product-image">
-                <img src="${product.image}" alt="${product.name}">
-                ${badge}
-                <div class="product-actions">
-                    <button class="quick-view-btn" onclick="quickView(${product.id})">Hızlı Bakış</button>
-                    <button class="add-to-cart-btn" onclick="addToCart(${product.id})">Sepete Ekle</button>
-                </div>
-                <button class="wishlist-btn-product" onclick="addToWishlist(${product.id})">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
-                    </svg>
-                </button>
-            </div>
-            <div class="product-info">
-                <h3>${product.name}</h3>
-                <p class="product-price">${priceHTML}</p>
-                <div class="product-colors">${colorsHTML}</div>
-            </div>
-        `;
-        
-        productsGrid.appendChild(productCard);
-    });
-    
-    // Update product count
-    const productCount = document.getElementById('productCount');
-    if (productCount) {
-        productCount.textContent = products.length;
-    }
-}
-
-function setupFilters() {
-    // Category filters
-    const categoryFilters = document.querySelectorAll('input[name="category"]');
-    categoryFilters.forEach(filter => {
-        filter.addEventListener('change', applyFilters);
-    });
-    
-    // Price range
-    const priceRange = document.getElementById('priceRange');
-    const priceValue = document.getElementById('priceValue');
-    if (priceRange && priceValue) {
-        priceRange.addEventListener('input', function() {
-            priceValue.textContent = this.value;
-            applyFilters();
-        });
-    }
-    
-    // Size filters
-    const sizeButtons = document.querySelectorAll('.size-btn');
-    sizeButtons.forEach(btn => {
-        btn.addEventListener('click', function() {
-            this.classList.toggle('active');
-            applyFilters();
-        });
-    });
-    
-    // Color filters
-    const colorButtons = document.querySelectorAll('.color-btn');
-    colorButtons.forEach(btn => {
-        btn.addEventListener('click', function() {
-            this.classList.toggle('active');
-            applyFilters();
-        });
-    });
-    
-    // Clear filters
-    const clearFilters = document.querySelector('.clear-filters');
-    if (clearFilters) {
-        clearFilters.addEventListener('click', function() {
-            // Reset all filters
-            categoryFilters.forEach(filter => filter.checked = false);
-            sizeButtons.forEach(btn => btn.classList.remove('active'));
-            colorButtons.forEach(btn => btn.classList.remove('active'));
-            if (priceRange) priceRange.value = priceRange.max;
-            if (priceValue) priceValue.textContent = priceRange.max;
-            
-            renderProducts(mensFashionProducts);
-        });
-    }
-}
-
-function applyFilters() {
-    let filteredProducts = [...mensFashionProducts];
-    
-    // Category filter
-    const selectedCategories = Array.from(document.querySelectorAll('input[name="category"]:checked'))
-        .map(input => input.value);
-    if (selectedCategories.length > 0) {
-        filteredProducts = filteredProducts.filter(product => 
-            selectedCategories.includes(product.category)
-        );
-    }
-    
-    // Price filter
-    const maxPrice = document.getElementById('priceRange')?.value;
-    if (maxPrice) {
-        filteredProducts = filteredProducts.filter(product => product.price <= parseInt(maxPrice));
-    }
-    
-    // Size filter
-    const selectedSizes = Array.from(document.querySelectorAll('.size-btn.active'))
-        .map(btn => btn.dataset.size.toUpperCase());
-    if (selectedSizes.length > 0) {
-        filteredProducts = filteredProducts.filter(product => 
-            product.sizes.some(size => selectedSizes.includes(size))
-        );
-    }
-    
-    // Color filter
-    const selectedColors = Array.from(document.querySelectorAll('.color-btn.active'))
-        .map(btn => btn.dataset.color);
-    if (selectedColors.length > 0) {
-        filteredProducts = filteredProducts.filter(product => 
-            product.colors.some(color => selectedColors.includes(color))
-        );
-    }
-    
-    renderProducts(filteredProducts);
-}
-
-function setupSorting() {
-    const sortSelect = document.getElementById('sortBy');
-    if (sortSelect) {
-        sortSelect.addEventListener('change', function() {
-            const sortValue = this.value;
-            let sortedProducts = [...mensFashionProducts];
-            
-            switch (sortValue) {
-                case 'price-low':
-                    sortedProducts.sort((a, b) => a.price - b.price);
-                    break;
-                case 'price-high':
-                    sortedProducts.sort((a, b) => b.price - a.price);
-                    break;
-                case 'newest':
-                    // Keep original order (newest first)
-                    break;
-                case 'popular':
-                    // Sort by some popularity metric (mock)
-                    sortedProducts.sort((a, b) => b.id - a.id);
-                    break;
-            }
-            
-            renderProducts(sortedProducts);
-        });
-    }
-}
-
-function quickView(productId) {
-    const product = mensFashionProducts.find(p => p.id === productId);
-    if (!product) return;
-    
-    // Create quick view modal (basic implementation)
-    alert(`${product.name}\n₺${product.price}\n\n${product.description}`);
-}
-
-// Smooth scrolling for anchor links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
-        }
-    });
+    console.log('SS Voila - Modern Men\'s Fashion Platform Initialized! 🚀');
 });
-
-// Newsletter form
-const newsletterForm = document.querySelector('.newsletter-form');
-if (newsletterForm) {
-    newsletterForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        const email = this.querySelector('input[type="email"]').value;
-        if (email) {
-            showNotification('E-bülten aboneliğiniz tamamlandı!');
-            this.reset();
-        }
-    });
-}
