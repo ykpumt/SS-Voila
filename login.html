@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giriş Yap - SS Voila | Hesabına Giriş Yap</title>
+    <meta name="description" content="SS Voila hesabınıza giriş yapın ve kişiselleştirilmiş alışveriş deneyiminin keyfini çıkarın.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="page-login">
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-left">
+                <a href="index.html" class="logo">
+                    <span class="logo-text">SS Voila</span>
+                    <span class="logo-tagline">MODERN MEN</span>
+                </a>
+            </div>
+            
+            <div class="nav-center">
+                <ul class="nav-links">
+                    <li><a href="index.html" class="nav-link">Ana Sayfa</a></li>
+                    <li class="nav-dropdown">
+                        <a href="shop.html" class="nav-link">Koleksiyon</a>
+                    </li>
+                    <li><a href="campaigns.html" class="nav-link">Kampanyalar</a></li>
+                    <li><a href="about.html" class="nav-link">Hakkında</a></li>
+                    <li><a href="contact.html" class="nav-link">İletişim</a></li>
+                </ul>
+            </div>
+            
+            <div class="nav-right">
+                <div class="auth-links">
+                    <a href="login.html" class="auth-link active">Giriş Yap</a>
+                    <a href="register.html" class="auth-link">Kaydol</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Login Content -->
+    <main class="login-main">
+        <div class="auth-container">
+            <div class="auth-layout">
+                <!-- Left Side - Form -->
+                <div class="auth-form-section">
+                    <div class="auth-header">
+                        <h1>Hoş Geldiniz</h1>
+                        <p>Hesabınıza giriş yapın ve alışverişe devam edin</p>
+                    </div>
+
+                    <form class="auth-form" id="loginForm">
+                        <div class="form-group">
+                            <label for="email">E-posta Adresi*</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="password">Şifre*</label>
+                            <div class="password-input">
+                                <input type="password" id="password" name="password" required>
+                                <button type="button" class="password-toggle">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M1 12S5 4 12 4S23 12 23 12S19 20 12 20S1 12 1 12Z" stroke="currentColor" stroke-width="2"/>
+                                        <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="form-options">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="remember" name="remember">
+                                <span class="checkmark"></span>
+                                Beni hatırla
+                            </label>
+                            <a href="#" class="forgot-link">Şifremi unuttum</a>
+                        </div>
+
+                        <button type="submit" class="auth-submit-btn">
+                            Giriş Yap
+                        </button>
+                    </form>
+
+                    <div class="auth-footer">
+                        <p>Hesabınız yok mu? <a href="register.html" class="link">Hemen kaydolun</a></p>
+                    </div>
+
+                    <div class="social-login">
+                        <div class="divider">
+                            <span>veya</span>
+                        </div>
+                        <div class="social-buttons">
+                            <button class="social-btn google">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M22.56 12.25C22.56 11.47 22.49 10.72 22.36 10H12V14.26H17.92C17.66 15.63 16.88 16.79 15.71 17.57V20.34H19.28C21.36 18.42 22.56 15.6 22.56 12.25Z" fill="#4285F4"/>
+                                    <path d="M12 23C15.24 23 17.96 21.92 19.28 20.34L15.71 17.57C14.74 18.22 13.48 18.62 12 18.62C8.87 18.62 6.22 16.68 5.36 14H1.64V16.85C2.96 19.49 7.7 23 12 23Z" fill="#34A853"/>
+                                    <path d="M5.36 14C5.15 13.35 5.03 12.68 5.03 12C5.03 11.32 5.15 10.65 5.36 10V7.15H1.64C0.89 8.65 0.5 10.32 0.5 12C0.5 13.68 0.89 15.35 1.64 16.85L5.36 14Z" fill="#FBBC05"/>
+                                    <path d="M12 5.38C13.62 5.38 15.06 5.94 16.21 7.02L19.36 3.87C17.95 2.54 15.23 1.5 12 1.5C7.7 1.5 2.96 4.51 1.64 7.15L5.36 10C6.22 7.32 8.87 5.38 12 5.38Z" fill="#EA4335"/>
+                                </svg>
+                                Google ile Giriş
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Side - Image -->
+                <div class="auth-image-section">
+                    <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=800&h=1000&fit=crop" alt="SS Voila Collection" loading="lazy">
+                    <div class="image-overlay">
+                        <div class="overlay-content">
+                            <h2>Modern Erkek Tarzı</h2>
+                            <p>Kaliteli kumaşlar, özgün tasarımlar ve zamansız elegans</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/main.js"></script>
+    <script src="js/auth.js"></script>
+</body>
+</html> 

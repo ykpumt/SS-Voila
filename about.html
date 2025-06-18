@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hakkında - SS Voila | Samet Soluk'un Hikayesi</title>
+    <meta name="description" content="SS Voila'nın kurucusu Samet Soluk'un ilham verici hikayesi. Modern erkek giyim markasının doğuşu ve vizyonu.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="page-about">
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-left">
+                <a href="index.html" class="logo">
+                    <span class="logo-text">SS Voila</span>
+                    <span class="logo-tagline">MODERN MEN</span>
+                </a>
+            </div>
+            
+            <div class="nav-center">
+                <ul class="nav-links">
+                    <li><a href="index.html" class="nav-link">Ana Sayfa</a></li>
+                    <li class="nav-dropdown">
+                        <a href="shop.html" class="nav-link">Koleksiyon <svg width="12" height="12" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2"/></svg></a>
+                        <div class="dropdown-menu">
+                            <div class="dropdown-grid">
+                                <div class="dropdown-column">
+                                    <h4>Kategoriler</h4>
+                                    <a href="shop.html?category=t-shirts">Tişörtler</a>
+                                    <a href="shop.html?category=shirts">Gömlekler</a>
+                                    <a href="shop.html?category=polos">Polo Tişörtler</a>
+                                    <a href="shop.html?category=shorts">Şortlar</a>
+                                    <a href="shop.html?category=pants">Pantolonlar</a>
+                                    <a href="shop.html?category=sets">Set Ürünler</a>
+                                    <a href="shop.html?category=accessories">Aksesuarlar</a>
+                                </div>
+                                <div class="dropdown-column">
+                                    <h4>Özel Koleksiyonlar</h4>
+                                    <a href="shop.html?category=new">Yeni Gelenler</a>
+                                    <a href="shop.html?category=bestsellers">En Çok Satanlar</a>
+                                    <a href="shop.html?category=premium">Premium Koleksiyon</a>
+                                    <a href="shop.html?category=summer">Yaz Koleksiyonu</a>
+                                    <a href="shop.html?category=sale">İndirimli Ürünler</a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li><a href="campaigns.html" class="nav-link">Kampanyalar</a></li>
+                    <li><a href="about.html" class="nav-link active">Hakkında</a></li>
+                    <li><a href="contact.html" class="nav-link">İletişim</a></li>
+                </ul>
+            </div>
+            
+            <div class="nav-right">
+                <button class="search-btn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="11" cy="11" r="8" stroke="currentColor" stroke-width="2"/>
+                        <path d="M21 21l-4.35-4.35" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+                </button>
+                <button class="wishlist-btn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" stroke="currentColor" stroke-width="2" fill="none"/>
+                    </svg>
+                    <span class="counter wishlist-counter">0</span>
+                </button>
+                <button class="cart-btn" id="cartBtn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M3 3H5L5.4 5M7 13H17L21 5H5.4M7 13L5.4 5M7 13L4.7 15.3C4.3 15.7 4.6 16.5 5.1 16.5H17M17 13V17C17 18.1 16.1 19 15 19H9C7.9 19 7 18.1 7 17V13M17 13H7" stroke="currentColor" stroke-width="2" fill="none"/>
+                    </svg>
+                    <span class="counter cart-counter">0</span>
+                </button>
+                <div class="auth-links">
+                    <a href="login.html" class="auth-link">Giriş Yap</a>
+                    <a href="register.html" class="auth-link">Kaydol</a>
+                </div>
+                <button class="mobile-nav-toggle" id="mobileNavToggle">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M3 12H21M3 6H21M3 18H21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="about-hero">
+        <div class="hero-content">
+            <div class="container">
+                <div class="breadcrumb">
+                    <a href="index.html">Ana Sayfa</a>
+                    <span class="separator">/</span>
+                    <span class="current">Hakkında</span>
+                </div>
+                <h1 class="hero-title">Samet Soluk'un Hikayesi</h1>
+                <p class="hero-subtitle">Bir hayalin gerçeğe dönüştüğü, modern erkeğin tarzını yeniden tanımlayan yolculuk</p>
+            </div>
+        </div>
+        <div class="hero-background">
+            <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1920&h=800&fit=crop" alt="Samet Soluk SS Voila" loading="lazy">
+            <div class="hero-overlay"></div>
+        </div>
+    </section>
+
+    <!-- Founder Story -->
+    <main class="about-main">
+        <div class="container">
+            <!-- Introduction -->
+            <section class="founder-intro">
+                <div class="intro-content">
+                    <div class="intro-text">
+                        <span class="section-label">Kurucumuz</span>
+                        <h2>Samet Soluk</h2>
+                        <p class="intro-description">
+                            "Moda, sadece giyinmek değildir. Kendinizi ifade etme sanatıdır. Her erkek, kendini güçlü ve özgüvenli hissedeceği kıyafetleri hak eder."
+                        </p>
+                        <div class="founder-stats">
+                            <div class="stat">
+                                <span class="stat-number">2018</span>
+                                <span class="stat-label">Kuruluş Yılı</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">15+</span>
+                                <span class="stat-label">Yıl Deneyim</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">50K+</span>
+                                <span class="stat-label">Mutlu Müşteri</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="intro-visual">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=800&fit=crop&crop=face" alt="Samet Soluk" loading="lazy">
+                        <div class="visual-overlay">
+                            <div class="quote">
+                                <blockquote>"Her tasarımımda, modern erkeğin ruhunu yansıtmaya çalışıyorum."</blockquote>
+                                <cite>- Samet Soluk, Kurucu</cite>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- The Journey -->
+            <section class="founder-journey">
+                <div class="section-header">
+                    <span class="section-label">Yolculuk</span>
+                    <h2>Başlangıçtan Bugüne</h2>
+                    <p>Samet Soluk'un ilham verici hikayesi ve SS Voila'nın doğuşu</p>
+                </div>
+
+                <div class="journey-timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-marker">
+                            <span class="year">2003</span>
+                        </div>
+                        <div class="timeline-content">
+                            <h3>İlk Adım</h3>
+                            <p>Samet Soluk, İstanbul Teknik Üniversitesi Tekstil Mühendisliği bölümünden mezun olduktan sonra, moda dünyasına ilk adımını attı. Ailesinin küçük konfeksiyon atölyesinde çalışmaya başlayarak, kumaştan tasarıma kadar her sürecin inceliklerini öğrendi.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-marker">
+                            <span class="year">2008</span>
+                        </div>
+                        <div class="timeline-content">
+                            <h3>Avrupa Deneyimi</h3>
+                            <p>Milano ve Paris'te önde gelen moda evlerinde 5 yıl çalışarak uluslararası deneyim kazandı. Armani, Zegna gibi lüks markaların üretim süreçlerini yakından gözlemledi ve modern erkek modasının inceliklerini öğrendi.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-marker">
+                            <span class="year">2013</span>
+                        </div>
+                        <div class="timeline-content">
+                            <h3>Türkiye'ye Dönüş</h3>
+                            <p>Edindiği deneyimlerle Türkiye'ye dönen Samet, yerli tekstil firmalarında tasarım müdürü olarak çalıştı. Bu süreçte Türk erkeklerinin giyim alışkanlıklarını ve ihtiyaçlarını derinlemesine analiz etti.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-marker">
+                            <span class="year">2018</span>
+                        </div>
+                        <div class="timeline-content">
+                            <h3>SS Voila'nın Doğuşu</h3>
+                            <p>"Modern Türk erkeği için kaliteli, şık ve uygun fiyatlı kıyafetler tasarlamak istiyorum" vizyonuyla SS Voila'yı kurdu. İlk koleksiyonu sadece 12 parçadan oluşuyordu ama her biri özenle seçilmiş kumaşlardan üretilmişti.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-marker">
+                            <span class="year">2020</span>
+                        </div>
+                        <div class="timeline-content">
+                            <h3>Dijital Dönüşüm</h3>
+                            <p>Pandemi döneminde e-ticaret platformuna ağırlık veren SS Voila, online müşteri deneyimini geliştirdi. Virtual fitting, 3D ürün görüntüleme gibi yenilikçi teknolojileri entegre etti.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-marker">
+                            <span class="year">2025</span>
+                        </div>
+                        <div class="timeline-content">
+                            <h3>Bugün</h3>
+                            <p>SS Voila, bugün Türkiye'nin en sevilen erkek giyim markalarından biri. 50.000'den fazla mutlu müşteriyle, sürdürülebilir moda anlayışını benimseyen ve her mevsim yeni koleksiyonlarla modern erkeğin yanında olan bir marka.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Philosophy -->
+            <section class="philosophy-section">
+                <div class="philosophy-content">
+                    <div class="philosophy-visual">
+                        <img src="https://images.unsplash.com/photo-1488161628813-04466f872be2?w=600&h=800&fit=crop" alt="SS Voila Felsefe" loading="lazy">
+                    </div>
+                    <div class="philosophy-text">
+                        <span class="section-label">Felsefemiz</span>
+                        <h2>Modern Erkek, Zamansız Elegans</h2>
+                        <p>Samet Soluk'un tasarım felsefesi, modern yaşamın getirdiği hız ve dinamizmi, zamansız elégansla harmanlama üzerine kurulu.</p>
+                        
+                        <div class="philosophy-principles">
+                            <div class="principle">
+                                <div class="principle-icon">
+                                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="currentColor" stroke-width="2"/>
+                                        <path d="M8 12L11 15L16 9" stroke="currentColor" stroke-width="2"/>
+                                    </svg>
+                                </div>
+                                <div class="principle-content">
+                                    <h4>Kalite Önceliği</h4>
+                                    <p>Her ürün, en iyi kumaşlardan özenle seçilir ve detaylı işçilik ile üretilir.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="principle">
+                                <div class="principle-icon">
+                                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M21 16V8C20.9996 7.64927 20.9071 7.30481 20.7315 7.00116C20.556 6.69751 20.3037 6.44536 20 6.27L13 2.27C12.696 2.09446 12.3511 2.00205 12 2.00205C11.6489 2.00205 11.304 2.09446 11 2.27L4 6.27C3.69626 6.44536 3.44398 6.69751 3.26846 7.00116C3.09294 7.30481 3.00036 7.64927 3 8V16C3.00036 16.3507 3.09294 16.6952 3.26846 16.9988C3.44398 17.3025 3.69626 17.5546 4 17.73L11 21.73C11.304 21.9055 11.6489 21.9979 12 21.9979C12.3511 21.9979 12.696 21.9055 13 21.73L20 17.73C20.3037 17.5546 20.556 17.3025 20.7315 16.9988C20.9071 16.6952 20.9996 16.3507 21 16Z" stroke="currentColor" stroke-width="2"/>
+                                        <path d="M7.5 4.21L12 6.81L16.5 4.21" stroke="currentColor" stroke-width="2"/>
+                                        <path d="M7.5 19.79V14.6L3 12" stroke="currentColor" stroke-width="2"/>
+                                        <path d="M21 12L16.5 14.6V19.79" stroke="currentColor" stroke-width="2"/>
+                                        <path d="M12 13.01V21.8" stroke="currentColor" stroke-width="2"/>
+                                    </svg>
+                                </div>
+                                <div class="principle-content">
+                                    <h4>Sürdürülebilirlik</h4>
+                                    <p>Çevre dostu üretim süreçleri ve sorumlu kaynak kullanımı.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="principle">
+                                <div class="principle-icon">
+                                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M17 21V19C17 16.7909 15.2091 15 13 15H5C2.79086 15 1 16.7909 1 19V21" stroke="currentColor" stroke-width="2"/>
+                                        <circle cx="9" cy="7" r="4" stroke="currentColor" stroke-width="2"/>
+                                        <path d="M23 21V19C23 18.1411 22.5759 17.4086 21.9196 16.9"/>
+                                        <path d="M16 3.13C16.8604 3.35031 17.623 3.85071 18.1676 4.55332C18.7122 5.25594 19.0078 6.11675 19.0078 7.005C19.0078 7.89325 18.7122 8.75406 18.1676 9.45668C17.623 10.1593 16.8604 10.6597 16 10.88" stroke="currentColor" stroke-width="2"/>
+                                    </svg>
+                                </div>
+                                <div class="principle-content">
+                                    <h4>Müşteri Odaklılık</h4>
+                                    <p>Her müşterinin kendi tarzını bulmasına yardımcı olacak kişiselleştirilmiş yaklaşım.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <blockquote class="founder-quote">
+                            "Bir giysiyi satın aldığınızda, sadece kumaş almıyorsunuz. O tasarımın arkasındaki hikayeyi, emeği ve sevgiyi de alıyorsunuz. SS Voila'da her ürün, bir yaşam tarzının parçası olmak için tasarlanır."
+                            <cite>— Samet Soluk</cite>
+                        </blockquote>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Awards & Recognition -->
+            <section class="awards-section">
+                <div class="section-header">
+                    <span class="section-label">Başarılarımız</span>
+                    <h2>Ödüller ve Tanınırlık</h2>
+                    <p>Sektördeki çalışmalarımızın karşılığı olarak aldığımız ödüller</p>
+                </div>
+                
+                <div class="awards-grid">
+                    <div class="award-item">
+                        <div class="award-icon">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 2L13.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="currentColor"/>
+                            </svg>
+                        </div>
+                        <h3>Yılın En İyi Erkek Giyim Markası</h3>
+                        <p>2023 Türkiye Moda Ödülleri</p>
+                        <span class="award-year">2023</span>
+                    </div>
+                    
+                    <div class="award-item">
+                        <div class="award-icon">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 2L13.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="currentColor"/>
+                            </svg>
+                        </div>
+                        <h3>Sürdürülebilir Moda Ödülü</h3>
+                        <p>Çevre Dostu Üretim Süreçleri</p>
+                        <span class="award-year">2022</span>
+                    </div>
+                    
+                    <div class="award-item">
+                        <div class="award-icon">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 2L13.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="currentColor"/>
+                            </svg>
+                        </div>
+                        <h3>En İyi E-Ticaret Deneyimi</h3>
+                        <p>Digital Commerce Türkiye</p>
+                        <span class="award-year">2024</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Values -->
+            <section class="values-section">
+                <div class="values-content">
+                    <div class="values-text">
+                        <span class="section-label">Değerlerimiz</span>
+                        <h2>Neye İnanıyoruz</h2>
+                        <p>SS Voila olarak, sadece giysi üretmekle kalmayıp, modern erkeğin yaşam felsefesine katkıda bulunmaya inanıyoruz.</p>
+                        
+                        <div class="values-list">
+                            <div class="value-item">
+                                <h4>Otantiklik</h4>
+                                <p>Her tasarımımızda özgün bir yaklaşım benimser, trendleri takip ederken kendi kimliğimizi koruruz.</p>
+                            </div>
+                            <div class="value-item">
+                                <h4>Şeffaflık</h4>
+                                <p>Üretim süreçlerimizden fiyatlandırmamıza kadar her konuda müşterilerimizle açık iletişim kurarız.</p>
+                            </div>
+                            <div class="value-item">
+                                <h4>İnovasyon</h4>
+                                <p>Teknoloji ve tasarımı harmanlayarak, geleceğin moda anlayışını bugünden yaşatırız.</p>
+                            </div>
+                            <div class="value-item">
+                                <h4>Toplumsal Sorumluluk</h4>
+                                <p>Yerel üreticilerle çalışır, topluma ve çevreye değer katan projeler geliştiririz.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="values-visual">
+                        <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=600&h=600&fit=crop" alt="SS Voila Değerleri" loading="lazy">
+                    </div>
+                </div>
+            </section>
+
+            <!-- Future Vision -->
+            <section class="vision-section">
+                <div class="vision-background">
+                    <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=1200&h=600&fit=crop" alt="Gelecek Vizyonu" loading="lazy">
+                    <div class="vision-overlay"></div>
+                </div>
+                <div class="vision-content">
+                    <span class="section-label">Geleceğe Bakış</span>
+                    <h2>2030 Vizyonumuz</h2>
+                    <p>SS Voila olarak, 2030 yılına kadar Türkiye'nin en sevilen ve uluslararası arenada tanınan erkek giyim markası olmayı hedefliyoruz. Samet Soluk'un vizyonu, modayı demokratikleştirmek ve her erkeğin kaliteli tasarımlara erişebilmesini sağlamaktır.</p>
+                    
+                    <div class="vision-goals">
+                        <div class="goal">
+                            <div class="goal-number">100+</div>
+                            <div class="goal-text">Mağaza Sayısı</div>
+                        </div>
+                        <div class="goal">
+                            <div class="goal-number">5</div>
+                            <div class="goal-text">Ülkede Faaliyet</div>
+                        </div>
+                        <div class="goal">
+                            <div class="goal-number">500K+</div>
+                            <div class="goal-text">Mutlu Müşteri</div>
+                        </div>
+                        <div class="goal">
+                            <div class="goal-number">%100</div>
+                            <div class="goal-text">Sürdürülebilir Üretim</div>
+                        </div>
+                    </div>
+                    
+                    <a href="shop.html" class="vision-cta">
+                        Koleksiyonu Keşfet
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                    </a>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <span class="logo-text">SS Voila</span>
+                        <span class="logo-tagline">MODERN MEN</span>
+                    </div>
+                    <p class="footer-description">
+                        Samet Soluk'un vizyonuyla kurulan SS Voila, modern erkeğin tarzını belirleyen, kaliteli ve özgün tasarımları buluşturan Türkiye'nin önde gelen erkek giyim markasıdır.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Instagram">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="Facebook">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="Twitter">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Alışveriş</h4>
+                        <ul>
+                            <li><a href="shop.html">Tüm Ürünler</a></li>
+                            <li><a href="shop.html?category=new">Yeni Gelenler</a></li>
+                            <li><a href="shop.html?category=bestsellers">En Çok Satanlar</a></li>
+                            <li><a href="campaigns.html">Kampanyalar</a></li>
+                            <li><a href="shop.html?category=sale">İndirimli Ürünler</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h4>Kategoriler</h4>
+                        <ul>
+                            <li><a href="shop.html?category=t-shirts">Tişörtler</a></li>
+                            <li><a href="shop.html?category=shirts">Gömlekler</a></li>
+                            <li><a href="shop.html?category=shorts">Şortlar</a></li>
+                            <li><a href="shop.html?category=sets">Set Ürünler</a></li>
+                            <li><a href="shop.html?category=accessories">Aksesuarlar</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h4>Hesap</h4>
+                        <ul>
+                            <li><a href="profile.html">Profilim</a></li>
+                            <li><a href="cart.html">Sepetim</a></li>
+                            <li><a href="login.html">Giriş Yap</a></li>
+                            <li><a href="register.html">Kaydol</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h4>Kurumsal</h4>
+                        <ul>
+                            <li><a href="about.html">Hakkımızda</a></li>
+                            <li><a href="contact.html">İletişim</a></li>
+                            <li><a href="#">Kariyer</a></li>
+                            <li><a href="#">Basın</a></li>
+                            <li><a href="#">İş Ortaklığı</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <p>&copy; 2024 SS Voila. Samet Soluk tarafından kurulmuştur. Tüm hakları saklıdır.</p>
+                    <div class="footer-legal">
+                        <a href="#">Gizlilik Politikası</a>
+                        <a href="#">Kullanım Şartları</a>
+                        <a href="#">Çerez Politikası</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html> 

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profilim - SS Voila</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="page-profile">
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-left">
+                <a href="index.html" class="logo">
+                    <span class="logo-text">SS Voila</span>
+                    <span class="logo-tagline">MODERN MEN</span>
+                </a>
+            </div>
+            <div class="nav-center">
+                <ul class="nav-links">
+                    <li><a href="index.html" class="nav-link">Ana Sayfa</a></li>
+                    <li><a href="shop.html" class="nav-link">Koleksiyon</a></li>
+                    <li><a href="about.html" class="nav-link">Hakkında</a></li>
+                    <li><a href="contact.html" class="nav-link">İletişim</a></li>
+                </ul>
+            </div>
+            <div class="nav-right">
+                <button class="cart-btn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M3 3H5L5.4 5M7 13H17L21 5H5.4M7 13L5.4 5M7 13L4.7 15.3C4.3 15.7 4.6 16.5 5.1 16.5H17M17 13V17C17 18.1 16.1 19 15 19H9C7.9 19 7 18.1 7 17V13M17 13H7" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+                    <span class="counter cart-counter">0</span>
+                </button>
+                <div class="auth-links">
+                    <a href="profile.html" class="auth-link active">Profilim</a>
+                    <a href="#" class="auth-link" onclick="logout()">Çıkış</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="profile-main">
+        <div class="container">
+            <div class="profile-layout">
+                <div class="profile-sidebar">
+                    <div class="profile-header">
+                        <div class="profile-avatar">
+                            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&h=80&fit=crop&crop=face" alt="Profil Fotoğrafı">
+                        </div>
+                        <div class="profile-info">
+                            <h3>Ahmet Yılmaz</h3>
+                            <p>Üye olduğunuz tarih: Ocak 2023</p>
+                        </div>
+                    </div>
+                    
+                    <nav class="profile-nav">
+                        <a href="#" class="nav-item active" data-section="account">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M20 21V19C20 16.7909 18.2091 15 16 15H8C5.79086 15 4 16.7909 4 19V21" stroke="currentColor" stroke-width="2"/>
+                                <circle cx="12" cy="7" r="4" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                            Hesap Bilgileri
+                        </a>
+                        <a href="#" class="nav-item" data-section="orders">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M3 3H5L5.4 5M7 13H17L21 5H5.4M7 13L5.4 5M7 13L4.7 15.3C4.3 15.7 4.6 16.5 5.1 16.5H17M17 13V17C17 18.1 16.1 19 15 19H9C7.9 19 7 18.1 7 17V13M17 13H7" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                            Siparişlerim
+                        </a>
+                        <a href="#" class="nav-item" data-section="addresses">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M21 10C21 17 12 23 12 23S3 17 3 10C3 5.02944 7.02944 1 12 1C16.9706 1 21 5.02944 21 10Z" stroke="currentColor" stroke-width="2"/>
+                                <circle cx="12" cy="10" r="3" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                            Adreslerim
+                        </a>
+                        <a href="#" class="nav-item" data-section="wishlist">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                            Favorilerim
+                        </a>
+                    </nav>
+                </div>
+
+                <div class="profile-content">
+                    <!-- Hesap Bilgileri -->
+                    <div class="content-section active" id="account">
+                        <h2>Hesap Bilgileri</h2>
+                        <form class="account-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="firstName">Ad</label>
+                                    <input type="text" id="firstName" value="Ahmet">
+                                </div>
+                                <div class="form-group">
+                                    <label for="lastName">Soyad</label>
+                                    <input type="text" id="lastName" value="Yılmaz">
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email">E-posta</label>
+                                <input type="email" id="email" value="ahmet@example.com">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="phone">Telefon</label>
+                                <input type="tel" id="phone" value="+90 532 123 45 67">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="birthDate">Doğum Tarihi</label>
+                                <input type="date" id="birthDate" value="1990-05-15">
+                            </div>
+                            
+                            <button type="submit" class="save-btn">Değişiklikleri Kaydet</button>
+                        </form>
+                    </div>
+
+                    <!-- Siparişlerim -->
+                    <div class="content-section" id="orders">
+                        <h2>Siparişlerim</h2>
+                        <div class="orders-list">
+                            <div class="order-item">
+                                <div class="order-header">
+                                    <span class="order-number">#SS2024001</span>
+                                    <span class="order-date">15 Ocak 2024</span>
+                                    <span class="order-status delivered">Teslim Edildi</span>
+                                </div>
+                                <div class="order-products">
+                                    <div class="product-item">
+                                        <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=60&h=60&fit=crop" alt="Premium Polo">
+                                        <div class="product-info">
+                                            <h4>Premium Pamuk Polo</h4>
+                                            <p>Lacivert - L × 1</p>
+                                        </div>
+                                        <span class="price">₺349</span>
+                                    </div>
+                                </div>
+                                <div class="order-total">Toplam: ₺349</div>
+                            </div>
+                            
+                            <div class="order-item">
+                                <div class="order-header">
+                                    <span class="order-number">#SS2024002</span>
+                                    <span class="order-date">28 Ocak 2024</span>
+                                    <span class="order-status processing">Hazırlanıyor</span>
+                                </div>
+                                <div class="order-products">
+                                    <div class="product-item">
+                                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=60&h=60&fit=crop" alt="Keten Gömlek">
+                                        <div class="product-info">
+                                            <h4>Keten Karışım Gömlek</h4>
+                                            <p>Beyaz - M × 2</p>
+                                        </div>
+                                        <span class="price">₺1,058</span>
+                                    </div>
+                                </div>
+                                <div class="order-total">Toplam: ₺1,058</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Adreslerim -->
+                    <div class="content-section" id="addresses">
+                        <h2>Adreslerim</h2>
+                        <div class="addresses-list">
+                            <div class="address-item">
+                                <div class="address-header">
+                                    <h4>Ev Adresi</h4>
+                                    <span class="default-badge">Varsayılan</span>
+                                </div>
+                                <div class="address-content">
+                                    <p>Ahmet Yılmaz</p>
+                                    <p>Atatürk Mahallesi, Cumhuriyet Caddesi No: 123/5</p>
+                                    <p>Kadıköy, İstanbul 34710</p>
+                                    <p>+90 532 123 45 67</p>
+                                </div>
+                                <div class="address-actions">
+                                    <button class="edit-btn">Düzenle</button>
+                                    <button class="delete-btn">Sil</button>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="add-address-btn">Yeni Adres Ekle</button>
+                    </div>
+
+                    <!-- Favorilerim -->
+                    <div class="content-section" id="wishlist">
+                        <h2>Favorilerim</h2>
+                        <div class="wishlist-grid">
+                            <div class="wishlist-item">
+                                <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=200&h=200&fit=crop" alt="Premium Polo">
+                                <div class="item-info">
+                                    <h4>Premium Pamuk Polo</h4>
+                                    <p class="price">₺349</p>
+                                    <button class="add-to-cart-btn">Sepete Ekle</button>
+                                    <button class="remove-wishlist">Favorilerden Çıkar</button>
+                                </div>
+                            </div>
+                            
+                            <div class="wishlist-item">
+                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop" alt="Keten Gömlek">
+                                <div class="item-info">
+                                    <h4>Keten Karışım Gömlek</h4>
+                                    <p class="price">₺529</p>
+                                    <button class="add-to-cart-btn">Sepete Ekle</button>
+                                    <button class="remove-wishlist">Favorilerden Çıkar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/main.js"></script>
+    <script src="js/profile.js"></script>
+</body>
+</html> 

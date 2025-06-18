@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kaydol - SS Voila | Hesap Oluştur</title>
+    <meta name="description" content="SS Voila'ya üye olun ve özel avantajlardan yararlanın. Ücretsiz üyelik, hızlı alışveriş ve özel indirimler sizi bekliyor.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="page-register">
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-left">
+                <a href="index.html" class="logo">
+                    <span class="logo-text">SS Voila</span>
+                    <span class="logo-tagline">MODERN MEN</span>
+                </a>
+            </div>
+            
+            <div class="nav-center">
+                <ul class="nav-links">
+                    <li><a href="index.html" class="nav-link">Ana Sayfa</a></li>
+                    <li class="nav-dropdown">
+                        <a href="shop.html" class="nav-link">Koleksiyon <svg width="12" height="12" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2"/></svg></a>
+                        <div class="dropdown-menu">
+                            <div class="dropdown-grid">
+                                <div class="dropdown-column">
+                                    <h4>Kategoriler</h4>
+                                    <a href="shop.html?category=t-shirts">Tişörtler</a>
+                                    <a href="shop.html?category=shirts">Gömlekler</a>
+                                    <a href="shop.html?category=polos">Polo Tişörtler</a>
+                                    <a href="shop.html?category=shorts">Şortlar</a>
+                                    <a href="shop.html?category=pants">Pantolonlar</a>
+                                    <a href="shop.html?category=sets">Set Ürünler</a>
+                                    <a href="shop.html?category=accessories">Aksesuarlar</a>
+                                </div>
+                                <div class="dropdown-column">
+                                    <h4>Özel Koleksiyonlar</h4>
+                                    <a href="shop.html?category=new">Yeni Gelenler</a>
+                                    <a href="shop.html?category=bestsellers">En Çok Satanlar</a>
+                                    <a href="shop.html?category=premium">Premium Koleksiyon</a>
+                                    <a href="shop.html?category=summer">Yaz Koleksiyonu</a>
+                                    <a href="shop.html?category=sale">İndirimli Ürünler</a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li><a href="campaigns.html" class="nav-link">Kampanyalar</a></li>
+                    <li><a href="about.html" class="nav-link">Hakkında</a></li>
+                    <li><a href="contact.html" class="nav-link">İletişim</a></li>
+                </ul>
+            </div>
+            
+            <div class="nav-right">
+                <button class="search-btn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="11" cy="11" r="8" stroke="currentColor" stroke-width="2"/>
+                        <path d="M21 21l-4.35-4.35" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+                </button>
+                <button class="wishlist-btn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" stroke="currentColor" stroke-width="2" fill="none"/>
+                    </svg>
+                    <span class="counter wishlist-counter">0</span>
+                </button>
+                <button class="cart-btn" id="cartBtn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M3 3H5L5.4 5M7 13H17L21 5H5.4M7 13L5.4 5M7 13L4.7 15.3C4.3 15.7 4.6 16.5 5.1 16.5H17M17 13V17C17 18.1 16.1 19 15 19H9C7.9 19 7 18.1 7 17V13M17 13H7" stroke="currentColor" stroke-width="2" fill="none"/>
+                    </svg>
+                    <span class="counter cart-counter">0</span>
+                </button>
+                <div class="auth-links">
+                    <a href="login.html" class="auth-link">Giriş Yap</a>
+                    <a href="register.html" class="auth-link active">Kaydol</a>
+                </div>
+                <button class="mobile-nav-toggle" id="mobileNavToggle">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M3 12H21M3 6H21M3 18H21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mini Cart -->
+    <div class="mini-cart" id="miniCart">
+        <div class="mini-cart-header">
+            <h3>Sepetim</h3>
+            <button class="close-cart" id="closeCart">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2"/>
+                </svg>
+            </button>
+        </div>
+        <div class="mini-cart-content">
+            <div class="empty-cart">
+                <div class="empty-cart-icon">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M3 3H5L5.4 5M7 13H17L21 5H5.4M7 13L5.4 5M7 13L4.7 15.3C4.3 15.7 4.6 16.5 5.1 16.5H17M17 13V17C17 18.1 16.1 19 15 19H9C7.9 19 7 18.1 7 17V13M17 13H7" stroke="currentColor" stroke-width="2" opacity="0.3"/>
+                    </svg>
+                </div>
+                <p>Sepetiniz henüz boş</p>
+                <a href="shop.html" class="shop-now-btn">Alışverişe Başla</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Register Content -->
+    <main class="register-main">
+        <div class="auth-container">
+            <div class="auth-layout">
+                <!-- Left Side - Form -->
+                <div class="auth-form-section">
+                    <div class="auth-header">
+                        <h1>Hesap Oluştur</h1>
+                        <p>SS Voila ailesine katılın ve özel avantajlardan yararlanın</p>
+                    </div>
+
+                    <form class="auth-form" id="registerForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="firstName">Ad*</label>
+                                <input type="text" id="firstName" name="firstName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName">Soyad*</label>
+                                <input type="text" id="lastName" name="lastName" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">E-posta Adresi*</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone">Telefon Numarası*</label>
+                            <input type="tel" id="phone" name="phone" required placeholder="+90 (5XX) XXX XX XX">
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="birthDate">Doğum Tarihi</label>
+                                <input type="date" id="birthDate" name="birthDate">
+                            </div>
+                            <div class="form-group">
+                                <label for="gender">Cinsiyet</label>
+                                <select id="gender" name="gender">
+                                    <option value="">Seçiniz</option>
+                                    <option value="male">Erkek</option>
+                                    <option value="female">Kadın</option>
+                                    <option value="other">Diğer</option>
+                                    <option value="prefer-not-to-say">Belirtmek istemiyorum</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="password">Şifre*</label>
+                            <div class="password-input">
+                                <input type="password" id="password" name="password" required>
+                                <button type="button" class="password-toggle" id="passwordToggle">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M1 12S5 4 12 4S23 12 23 12S19 20 12 20S1 12 1 12Z" stroke="currentColor" stroke-width="2"/>
+                                        <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2"/>
+                                    </svg>
+                                </button>
+                            </div>
+                            <div class="password-strength" id="passwordStrength">
+                                <div class="strength-bar">
+                                    <div class="strength-fill"></div>
+                                </div>
+                                <span class="strength-text">Şifre gücü</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="confirmPassword">Şifre Tekrar*</label>
+                            <div class="password-input">
+                                <input type="password" id="confirmPassword" name="confirmPassword" required>
+                                <button type="button" class="password-toggle" id="confirmPasswordToggle">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M1 12S5 4 12 4S23 12 23 12S19 20 12 20S1 12 1 12Z" stroke="currentColor" stroke-width="2"/>
+                                        <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="form-group checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="terms" name="terms" required>
+                                <span class="checkmark"></span>
+                                <a href="#" class="link">Kullanım Şartları</a> ve <a href="#" class="link">Gizlilik Politikası</a>'nı okudum ve kabul ediyorum.*
+                            </label>
+                        </div>
+
+                        <div class="form-group checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="newsletter" name="newsletter">
+                                <span class="checkmark"></span>
+                                Kampanya ve yenilikleri e-posta ile almak istiyorum.
+                            </label>
+                        </div>
+
+                        <div class="form-group checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="sms" name="sms">
+                                <span class="checkmark"></span>
+                                SMS ile kampanya bilgileri almak istiyorum.
+                            </label>
+                        </div>
+
+                        <button type="submit" class="auth-submit-btn">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M20 21V19C20 16.7909 18.2091 15 16 15H8C5.79086 15 4 16.7909 4 19V21" stroke="currentColor" stroke-width="2"/>
+                                <circle cx="12" cy="7" r="4" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                            Hesap Oluştur
+                        </button>
+                    </form>
+
+                    <div class="auth-footer">
+                        <p>Zaten hesabınız var mı? <a href="login.html" class="link">Giriş yapın</a></p>
+                    </div>
+
+                    <div class="social-login">
+                        <div class="divider">
+                            <span>veya</span>
+                        </div>
+                        <div class="social-buttons">
+                            <button class="social-btn google">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M22.56 12.25C22.56 11.47 22.49 10.72 22.36 10H12V14.26H17.92C17.66 15.63 16.88 16.79 15.71 17.57V20.34H19.28C21.36 18.42 22.56 15.6 22.56 12.25Z" fill="#4285F4"/>
+                                    <path d="M12 23C15.24 23 17.96 21.92 19.28 20.34L15.71 17.57C14.74 18.22 13.48 18.62 12 18.62C8.87 18.62 6.22 16.68 5.36 14H1.64V16.85C2.96 19.49 7.7 23 12 23Z" fill="#34A853"/>
+                                    <path d="M5.36 14C5.15 13.35 5.03 12.68 5.03 12C5.03 11.32 5.15 10.65 5.36 10V7.15H1.64C0.89 8.65 0.5 10.32 0.5 12C0.5 13.68 0.89 15.35 1.64 16.85L5.36 14Z" fill="#FBBC05"/>
+                                    <path d="M12 5.38C13.62 5.38 15.06 5.94 16.21 7.02L19.36 3.87C17.95 2.54 15.23 1.5 12 1.5C7.7 1.5 2.96 4.51 1.64 7.15L5.36 10C6.22 7.32 8.87 5.38 12 5.38Z" fill="#EA4335"/>
+                                </svg>
+                                Google ile Kaydol
+                            </button>
+                            <button class="social-btn facebook">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M24 12.073C0 6.627-5.373-12-12-12S-12 5.373-12 12C-12 17.99 4.388 22.954 10.125 23.854V15.469H7.078V12.073H10.125V9.43C10.125 6.423 11.917 4.769 14.658 4.769C15.97 4.769 17.344 5.004 17.344 5.004V7.957H15.83C14.34 7.957 13.875 8.883 13.875 9.832V12.073H17.204L16.672 15.469H13.875V23.854C19.612 22.954 24 17.99 24 12.073Z"/>
+                                </svg>
+                                Facebook ile Kaydol
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Side - Benefits -->
+                <div class="auth-benefits-section">
+                    <div class="benefits-content">
+                        <h2>SS Voila Üyelik Avantajları</h2>
+                        <div class="benefits-list">
+                            <div class="benefit-item">
+                                <div class="benefit-icon">
+                                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M16 21V19C16 16.7909 14.2091 15 12 15H5C2.79086 15 1 16.7909 1 19V21" stroke="currentColor" stroke-width="2"/>
+                                        <circle cx="8.5" cy="7" r="4" stroke="currentColor" stroke-width="2"/>
+                                        <path d="M20 8V21L17 19L14 21V8" stroke="currentColor" stroke-width="2"/>
+                                    </svg>
+                                </div>
+                                <div class="benefit-content">
+                                    <h3>Özel Üye İndirimleri</h3>
+                                    <p>Sadece üyelerimize özel %20'ye varan indirimlerden yararlanın</p>
+                                </div>
+                            </div>
+                            
+                            <div class="benefit-item">
+                                <div class="benefit-icon">
+                                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M13 2L3 14H12L11 22L21 10H12L13 2Z" stroke="currentColor" stroke-width="2"/>
+                                    </svg>
+                                </div>
+                                <div class="benefit-content">
+                                    <h3>Hızlı Alışveriş</h3>
+                                    <p>Kayıtlı adres ve ödeme bilgileriyle tek tıkla alışveriş yapın</p>
+                                </div>
+                            </div>
+                            
+                            <div class="benefit-item">
+                                <div class="benefit-icon">
+                                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M12 21.35L10.55 20.03C5.4 15.36 2 12.28 2 8.5C2 5.42 4.42 3 7.5 3C9.24 3 10.91 3.81 12 5.09C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.42 22 8.5C22 12.28 18.6 15.36 13.45 20.04L12 21.35Z" stroke="currentColor" stroke-width="2"/>
+                                    </svg>
+                                </div>
+                                <div class="benefit-content">
+                                    <h3>Favori Listesi</h3>
+                                    <p>Beğendiğiniz ürünleri favorilerinize ekleyin ve kaçırmayın</p>
+                                </div>
+                            </div>
+                            
+                            <div class="benefit-item">
+                                <div class="benefit-icon">
+                                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M21 11.5A8.38 8.38 0 0 1 14.5 21A8.38 8.38 0 0 1 3 14.5A8.38 8.38 0 0 1 9.5 3A8.38 8.38 0 0 1 21 11.5Z" stroke="currentColor" stroke-width="2"/>
+                                        <path d="M12 7V13L16 15" stroke="currentColor" stroke-width="2"/>
+                                    </svg>
+                                </div>
+                                <div class="benefit-content">
+                                    <h3>Erken Erişim</h3>
+                                    <p>Yeni koleksiyonları ve kampanyaları herkesten önce keşfedin</p>
+                                </div>
+                            </div>
+                            
+                            <div class="benefit-item">
+                                <div class="benefit-icon">
+                                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M12 2L13.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" stroke="currentColor" stroke-width="2"/>
+                                    </svg>
+                                </div>
+                                <div class="benefit-content">
+                                    <h3>Doğum Günü Hediyesi</h3>
+                                    <p>Doğum gününüzde özel hediye kuponu kazanın</p>
+                                </div>
+                            </div>
+                            
+                            <div class="benefit-item">
+                                <div class="benefit-icon">
+                                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M3 3H5L5.4 5M7 13H17L21 5H5.4M7 13L5.4 5M7 13L4.7 15.3C4.3 15.7 4.6 16.5 5.1 16.5H17M17 13V17C17 18.1 16.1 19 15 19H9C7.9 19 7 18.1 7 17V13M17 13H7" stroke="currentColor" stroke-width="2"/>
+                                    </svg>
+                                </div>
+                                <div class="benefit-content">
+                                    <h3>Sipariş Takibi</h3>
+                                    <p>Siparişlerinizi detaylı olarak takip edin ve geçmişinizi görün</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <span class="logo-text">SS Voila</span>
+                        <span class="logo-tagline">MODERN MEN</span>
+                    </div>
+                    <p class="footer-description">
+                        Modern erkeğin tarzını belirleyen, kaliteli ve özgün tasarımları buluşturan Türkiye'nin önde gelen erkek giyim markası.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Instagram">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="Facebook">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="Twitter">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Alışveriş</h4>
+                        <ul>
+                            <li><a href="shop.html">Tüm Ürünler</a></li>
+                            <li><a href="shop.html?category=new">Yeni Gelenler</a></li>
+                            <li><a href="shop.html?category=bestsellers">En Çok Satanlar</a></li>
+                            <li><a href="campaigns.html">Kampanyalar</a></li>
+                            <li><a href="shop.html?category=sale">İndirimli Ürünler</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h4>Kategoriler</h4>
+                        <ul>
+                            <li><a href="shop.html?category=t-shirts">Tişörtler</a></li>
+                            <li><a href="shop.html?category=shirts">Gömlekler</a></li>
+                            <li><a href="shop.html?category=shorts">Şortlar</a></li>
+                            <li><a href="shop.html?category=sets">Set Ürünler</a></li>
+                            <li><a href="shop.html?category=accessories">Aksesuarlar</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h4>Hesap</h4>
+                        <ul>
+                            <li><a href="profile.html">Profilim</a></li>
+                            <li><a href="cart.html">Sepetim</a></li>
+                            <li><a href="login.html">Giriş Yap</a></li>
+                            <li><a href="register.html">Kaydol</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h4>Yardım</h4>
+                        <ul>
+                            <li><a href="contact.html">İletişim</a></li>
+                            <li><a href="#">Beden Rehberi</a></li>
+                            <li><a href="#">Kargo & İade</a></li>
+                            <li><a href="#">SSS</a></li>
+                            <li><a href="#">Müşteri Hizmetleri</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <p>&copy; 2024 SS Voila. Tüm hakları saklıdır.</p>
+                    <div class="footer-legal">
+                        <a href="#">Gizlilik Politikası</a>
+                        <a href="#">Kullanım Şartları</a>
+                        <a href="#">Çerez Politikası</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/auth.js"></script>
+</body>
+</html> 
